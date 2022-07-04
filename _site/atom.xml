@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-04T17:25:40+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WeiChang’s diary</title><subtitle>something</subtitle><author><name>Wei Chang</name></author><entry><title type="html">建置jekyll+Github Page</title><link href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/" rel="alternate" type="text/html" title="建置jekyll+Github Page" /><published>2022-07-04T00:00:00+08:00</published><updated>2022-07-04T00:00:00+08:00</updated><id>http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build</id><content type="html" xml:base="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-04T18:41:51+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WeiChang’s diary</title><subtitle>something</subtitle><author><name>Wei Chang</name></author><entry><title type="html">建置jekyll+Github Page</title><link href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/" rel="alternate" type="text/html" title="建置jekyll+Github Page" /><published>2022-07-04T00:00:00+08:00</published><updated>2022-07-04T00:00:00+08:00</updated><id>http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build</id><content type="html" xml:base="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/">&lt;hr /&gt;
 &lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
-&lt;p&gt;原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裏面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。&lt;/p&gt;
+&lt;p&gt;原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裡面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。&lt;/p&gt;
 
 &lt;h1 id=&quot;使用的工具&quot;&gt;使用的工具&lt;/h1&gt;
 &lt;ul&gt;
@@ -40,4 +40,122 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/001/2.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;到這邊之後GitHub pages基本已經建置完成。如果你有匠人精神可以直接在這邊手刻CSS跟HTML來做網頁，但小弟不才又懶所以接著要使用Jekyll來繼續布置網站。&lt;/p&gt;</content><author><name>Wei Chang</name></author><category term="前端" /><category term="jekyll" /><category term="github" /><category term="ruby" /><summary type="html">前言 原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裏面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。</summary></entry></feed>
+&lt;p&gt;到這邊之後GitHub pages基本已經建置完成。如果你有匠人精神可以直接在這邊手刻CSS跟HTML來做網頁，但小弟不才又懶所以接著要使用Jekyll來繼續佈置網站。&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;jekyll&quot;&gt;Jekyll&lt;/h1&gt;
+
+&lt;p&gt;Jekyll 是 Ruby 所編寫出來的 framework，因此在安裝 Jekyll 之前要先安裝Ruby。&lt;/p&gt;
+
+&lt;h2 id=&quot;基本安裝&quot;&gt;基本安裝&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://rubyinstaller.org/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;我是選擇當前最新版本&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ruby+Devkit 3.1.2-1 (x64)&lt;/code&gt;來進行安裝&lt;/p&gt;
+
+&lt;p&gt;根據Jekyll官方文件所述，要使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WITH DEVKIT&lt;/code&gt;的版本來裝。之前沒有仔細看文件直接裝了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WITHOUT DEVKIT&lt;/code&gt;版本導致後面在裝&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MINGGW&lt;/code&gt;的時候出現一堆error = =&lt;/p&gt;
+
+&lt;p&gt;跟著安裝精靈同意服務條款之後會要你選擇安裝的項目，這邊先不勾選&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MSYS2&lt;/code&gt;
+&lt;img src=&quot;/assets/images/001/3.png&quot; alt=&quot;3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;安裝完成之後直接勾選  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Run &apos;ridk install&apos; to set up MSYS2 ...&lt;/code&gt;。
+&lt;img src=&quot;/assets/images/001/4.png&quot; alt=&quot;4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;接著會自動在terminal開啟ruby安裝的介面，這邊直接key in 選項 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3&lt;/code&gt;來安裝
+&lt;img src=&quot;/assets/images/001/5.png&quot; alt=&quot;5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;看到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Install MSYS2 and MINGW development toolchain succeeded&lt;/code&gt;就代表安裝好了!&lt;/p&gt;
+
+&lt;p&gt;再來在執行&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll bundler
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;接下來將專案（e.g. myblog 資料夾）設為 Jekyll 的網站，由於我的專案中已經存在些檔案，所以我在指令的後面加上 force 避免覆蓋。網站設置完時，它會動配置一組預設主題 - minima。&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll new myblog  --force 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;到此網站就算建立完成了，若想在上線前預覽建置的結果，可先進入專案進行編譯。&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd myblog
+jekyll serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;編譯結果可在瀏覽器輸入 http://localhost:4000 後查看。若可以順利執行，就將這次的 diff 進行 commit 後送上 github了。&lt;/p&gt;
+
+&lt;p&gt;在這邊我遇到一個BUG&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cannot load such file -- webrick (LoadError)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;根據官方的項目的說明：&lt;/p&gt;
+
+&lt;p&gt;這是因為：
+從 Ruby 3.0 開始 webrick 已經不在綁定到 Ruby 中了，&lt;/p&gt;
+
+&lt;p&gt;webrick 需要手動進行添加。&lt;/p&gt;
+
+&lt;p&gt;添加的指令為：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle add webrick
+bundle install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;後就可以解決這個問題了。&lt;/p&gt;
+
+&lt;h2 id=&quot;主題更換&quot;&gt;主題更換&lt;/h2&gt;
+
+&lt;h3 id=&quot;挑選主題&quot;&gt;挑選主題&lt;/h3&gt;
+
+&lt;p&gt;網路上搜尋jekyll theme就有很多網站供應jekyll的模板了，我是使用&lt;a href=&quot;http://theme-next.simpleyyt.com/getting-started.html&quot;&gt;jekyll-theme-next&lt;/a&gt;- &lt;a href=&quot;https://simpleyyt.com/jekyll-theme-next/&quot;&gt;demo&lt;/a&gt;這個主題，照著他的步驟：&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/Simpleyyt/jekyll-theme-next.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;我自己是把&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll-theme-next&lt;/code&gt;這個資料夾內除了.git相關的檔案移到剛剛建立的my-blog資料夾內，並刪除&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile.lock&lt;/code&gt;後執行&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在run&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle exec jekyll server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;這個時候用瀏覽器訪問&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost:4000&lt;/code&gt;就可以看到&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/001/6.png&quot; alt=&quot;6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;但是看terminal上面會有&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GitHub Metadata: No GitHub API authentication could be found&lt;/code&gt;這個報錯，原因很複雜可以自己去估狗一下XD。有個簡單的方法可以解決，到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;中找到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;description&lt;/code&gt;給他填上值就OK了!&lt;/p&gt;
+
+&lt;h2 id=&quot;撰寫文章&quot;&gt;撰寫文章&lt;/h2&gt;
+
+&lt;p&gt;終於把環境弄好了，接著可以看該模板內的_posts這個資料夾內的MD檔，把MD檔丟進去jekyll就會把它變成html然後顯示到你的網站上面了，只是要注意MD檔的格式一定要是&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YYYY-MM-DD-name.md&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;並且MD檔的開頭必須是：&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+title: 文章標題
+date: 2022-07-04
+categories:
+- 他可以
+tags:
+- 穿過
+- 我的
+- 巴巴
+--- 
+
+// 以下開始撰寫你的文章
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;根據我參考的這篇作者表示，不同的模板可能有不同的規範，這部分如果使用不同模板的同學自己留意一下。&lt;/p&gt;
+
+&lt;h1 id=&quot;總結&quot;&gt;總結&lt;/h1&gt;
+&lt;p&gt;整個網站包含查資料跟寫這篇文章的時間大概花了4-5小時，但真正build網站大概只花了30分鐘，使用GitHub pages跟jekyll來建置個人網站真的很快又很簡單XD，希望之後有毅力能持續的更新這個網站!&lt;/p&gt;
+
+&lt;h1 id=&quot;參考資料&quot;&gt;參考資料&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cynthiachuang.github.io/Setting-Up-a-GitHub-Pages-Site-with-Jekyll/&quot;&gt;辛西亞的技能樹- 【種樹】使用 Jekyll 和搭建 Github Pages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://theme-next.simpleyyt.com/getting-started.html&quot;&gt;NexT使用文檔&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/huyuchengus/p/15473035.html&quot;&gt;Jekyll 运行的时候提示错误 cannot load such file – webrick (LoadError)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll官方文檔&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://giselle527.github.io/2018/02/12/problems&quot;&gt;見字如畫 - githubPages+jekyll搭建博客和使用jekyll模板&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/pfysw/article/details/109247846&quot;&gt;搭建msys2基礎開發平台&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Wei Chang</name></author><category term="前端" /><category term="jekyll" /><category term="github" /><category term="ruby" /><summary type="html">前言 原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裡面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。</summary></entry></feed>

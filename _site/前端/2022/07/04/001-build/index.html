@@ -109,19 +109,23 @@
 
 
 
-<meta name="description" content="前言 原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裏面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。">
+<meta name="description" content="前言 原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裡面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。">
 <meta name="keywords" content="jekyll, github, ruby">
 <meta property="og:type" content="article">
 <meta property="og:title" content="建置jekyll+Github Page">
 <meta property="og:url" content="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/">
 <meta property="og:site_name" content="WeiChang&apos;s diary">
-<meta property="og:description" content="前言 原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裏面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。">
+<meta property="og:description" content="前言 原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裡面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="/assets/images/001/1.png">
 <meta property="og:image" content="/assets/images/001/2.png">
+<meta property="og:image" content="/assets/images/001/3.png">
+<meta property="og:image" content="/assets/images/001/4.png">
+<meta property="og:image" content="/assets/images/001/5.png">
+<meta property="og:image" content="/assets/images/001/6.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="建置jekyll+Github Page">
-<meta name="twitter:description" content="前言 原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裏面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。">
+<meta name="twitter:description" content="前言 原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裡面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。">
 <meta name="twitter:image" content="/assets/images/001/1.png">
 
 
@@ -420,7 +424,7 @@
 
   <hr />
 <h1 id="前言">前言</h1>
-<p>原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裏面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。</p>
+<p>原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裡面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。</p>
 
 <h1 id="使用的工具">使用的工具</h1>
 <ul>
@@ -460,8 +464,125 @@
 
 <p><img src="/assets/images/001/2.png" alt="2" /></p>
 
-<p>到這邊之後GitHub pages基本已經建置完成。如果你有匠人精神可以直接在這邊手刻CSS跟HTML來做網頁，但小弟不才又懶所以接著要使用Jekyll來繼續布置網站。</p>
+<p>到這邊之後GitHub pages基本已經建置完成。如果你有匠人精神可以直接在這邊手刻CSS跟HTML來做網頁，但小弟不才又懶所以接著要使用Jekyll來繼續佈置網站。</p>
 
+<hr />
+<h1 id="jekyll">Jekyll</h1>
+
+<p>Jekyll 是 Ruby 所編寫出來的 framework，因此在安裝 Jekyll 之前要先安裝Ruby。</p>
+
+<h2 id="基本安裝">基本安裝</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>https://rubyinstaller.org/
+</code></pre></td></tr></tbody></table></div></div>
+<p>我是選擇當前最新版本<code class="language-plaintext highlighter-rouge">Ruby+Devkit 3.1.2-1 (x64)</code>來進行安裝</p>
+
+<p>根據Jekyll官方文件所述，要使用<code class="language-plaintext highlighter-rouge">WITH DEVKIT</code>的版本來裝。之前沒有仔細看文件直接裝了<code class="language-plaintext highlighter-rouge">WITHOUT DEVKIT</code>版本導致後面在裝<code class="language-plaintext highlighter-rouge">MINGGW</code>的時候出現一堆error = =</p>
+
+<p>跟著安裝精靈同意服務條款之後會要你選擇安裝的項目，這邊先不勾選<code class="language-plaintext highlighter-rouge">MSYS2</code>
+<img src="/assets/images/001/3.png" alt="3" /></p>
+
+<p>安裝完成之後直接勾選  <code class="language-plaintext highlighter-rouge">Run 'ridk install' to set up MSYS2 ...</code>。
+<img src="/assets/images/001/4.png" alt="4" /></p>
+
+<p>接著會自動在terminal開啟ruby安裝的介面，這邊直接key in 選項 <code class="language-plaintext highlighter-rouge">3</code>來安裝
+<img src="/assets/images/001/5.png" alt="5" /></p>
+
+<p>看到 <code class="language-plaintext highlighter-rouge">Install MSYS2 and MINGW development toolchain succeeded</code>就代表安裝好了!</p>
+
+<p>再來在執行</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>gem install jekyll bundler
+</code></pre></td></tr></tbody></table></div></div>
+<p>接下來將專案（e.g. myblog 資料夾）設為 Jekyll 的網站，由於我的專案中已經存在些檔案，所以我在指令的後面加上 force 避免覆蓋。網站設置完時，它會動配置一組預設主題 - minima。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>jekyll new myblog  --force 
+</code></pre></td></tr></tbody></table></div></div>
+<p>到此網站就算建立完成了，若想在上線前預覽建置的結果，可先進入專案進行編譯。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>cd myblog
+jekyll serve
+</code></pre></td></tr></tbody></table></div></div>
+<p>編譯結果可在瀏覽器輸入 http://localhost:4000 後查看。若可以順利執行，就將這次的 diff 進行 commit 後送上 github了。</p>
+
+<p>在這邊我遇到一個BUG</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>cannot load such file -- webrick (LoadError)
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>根據官方的項目的說明：</p>
+
+<p>這是因為：
+從 Ruby 3.0 開始 webrick 已經不在綁定到 Ruby 中了，</p>
+
+<p>webrick 需要手動進行添加。</p>
+
+<p>添加的指令為：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>bundle add webrick
+bundle install
+</code></pre></td></tr></tbody></table></div></div>
+<p>後就可以解決這個問題了。</p>
+
+<h2 id="主題更換">主題更換</h2>
+
+<h3 id="挑選主題">挑選主題</h3>
+
+<p>網路上搜尋jekyll theme就有很多網站供應jekyll的模板了，我是使用<a href="http://theme-next.simpleyyt.com/getting-started.html">jekyll-theme-next</a>- <a href="https://simpleyyt.com/jekyll-theme-next/">demo</a>這個主題，照著他的步驟：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>git clone https://github.com/Simpleyyt/jekyll-theme-next.git
+</code></pre></td></tr></tbody></table></div></div>
+<p>我自己是把<code class="language-plaintext highlighter-rouge">jekyll-theme-next</code>這個資料夾內除了.git相關的檔案移到剛剛建立的my-blog資料夾內，並刪除<code class="language-plaintext highlighter-rouge">Gemfile.lock</code>後執行</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>bundle install
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>在run</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>bundle exec jekyll server
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>這個時候用瀏覽器訪問<code class="language-plaintext highlighter-rouge">localhost:4000</code>就可以看到</p>
+
+<p><img src="/assets/images/001/6.png" alt="6" /></p>
+
+<p>但是看terminal上面會有<code class="language-plaintext highlighter-rouge">GitHub Metadata: No GitHub API authentication could be found</code>這個報錯，原因很複雜可以自己去估狗一下XD。有個簡單的方法可以解決，到<code class="language-plaintext highlighter-rouge">_config.yml</code>中找到<code class="language-plaintext highlighter-rouge">description</code>給他填上值就OK了!</p>
+
+<h2 id="撰寫文章">撰寫文章</h2>
+
+<p>終於把環境弄好了，接著可以看該模板內的_posts這個資料夾內的MD檔，把MD檔丟進去jekyll就會把它變成html然後顯示到你的網站上面了，只是要注意MD檔的格式一定要是</p>
+
+<p><code class="language-plaintext highlighter-rouge">YYYY-MM-DD-name.md</code></p>
+
+<p>並且MD檔的開頭必須是：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12</pre></td><td class="code"><pre class="highlight"><code>---
+title: 文章標題
+date: 2022-07-04
+categories:
+- 他可以
+tags:
+- 穿過
+- 我的
+- 巴巴
+--- 
+
+// 以下開始撰寫你的文章
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>根據我參考的這篇作者表示，不同的模板可能有不同的規範，這部分如果使用不同模板的同學自己留意一下。</p>
+
+<h1 id="總結">總結</h1>
+<p>整個網站包含查資料跟寫這篇文章的時間大概花了4-5小時，但真正build網站大概只花了30分鐘，使用GitHub pages跟jekyll來建置個人網站真的很快又很簡單XD，希望之後有毅力能持續的更新這個網站!</p>
+
+<h1 id="參考資料">參考資料</h1>
+
+<ol>
+  <li><a href="https://cynthiachuang.github.io/Setting-Up-a-GitHub-Pages-Site-with-Jekyll/">辛西亞的技能樹- 【種樹】使用 Jekyll 和搭建 Github Pages</a></li>
+  <li><a href="http://theme-next.simpleyyt.com/getting-started.html">NexT使用文檔</a></li>
+  <li><a href="https://pages.github.com/">GitHub Pages</a></li>
+  <li><a href="https://www.cnblogs.com/huyuchengus/p/15473035.html">Jekyll 运行的时候提示错误 cannot load such file – webrick (LoadError)</a></li>
+  <li><a href="https://jekyllrb.com/">jekyll官方文檔</a></li>
+  <li><a href="https://giselle527.github.io/2018/02/12/problems">見字如畫 - githubPages+jekyll搭建博客和使用jekyll模板</a></li>
+  <li><a href="https://blog.csdn.net/pfysw/article/details/109247846">搭建msys2基礎開發平台</a></li>
+</ol>
 
 
       
@@ -657,7 +778,7 @@
             
               <div class="post-toc-content">
     <ol class=nav>
-      <li class="nav-item nav-level-1"> <a class="nav-link" href="#前言"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#使用的工具"> <span class="nav-number">2</span> <span class="nav-text">使用的工具</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#環境"> <span class="nav-number">3</span> <span class="nav-text">環境</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#github-pages"> <span class="nav-number">4</span> <span class="nav-text">GitHub pages</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#initialization"> <span class="nav-number">4.1</span> <span class="nav-text">initialization</span> </a> </li> </ol> </li>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#前言"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#使用的工具"> <span class="nav-number">2</span> <span class="nav-text">使用的工具</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#環境"> <span class="nav-number">3</span> <span class="nav-text">環境</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#github-pages"> <span class="nav-number">4</span> <span class="nav-text">GitHub pages</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#initialization"> <span class="nav-number">4.1</span> <span class="nav-text">initialization</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#jekyll"> <span class="nav-number">5</span> <span class="nav-text">Jekyll</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#基本安裝"> <span class="nav-number">5.1</span> <span class="nav-text">基本安裝</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#主題更換"> <span class="nav-number">5.2</span> <span class="nav-text">主題更換</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#挑選主題"> <span class="nav-number">5.2.1</span> <span class="nav-text">挑選主題</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#撰寫文章"> <span class="nav-number">5.3</span> <span class="nav-text">撰寫文章</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#總結"> <span class="nav-number">6</span> <span class="nav-text">總結</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#參考資料"> <span class="nav-number">7</span> <span class="nav-text">參考資料</span> </a> </li>
     </ol>
   </div>
             
