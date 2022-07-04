@@ -1,1 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-04T14:35:11+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WeiChang’s diary</title><subtitle>something</subtitle><author><name>Wei Chang</name></author></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-04T16:15:37+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WeiChang’s diary</title><subtitle>something</subtitle><author><name>Wei Chang</name></author><entry><title type="html">建置jekyll+Github Page</title><link href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/" rel="alternate" type="text/html" title="建置jekyll+Github Page" /><published>2022-07-04T00:00:00+08:00</published><updated>2022-07-04T00:00:00+08:00</updated><id>http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build</id><content type="html" xml:base="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+&lt;p&gt;原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裏面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。&lt;/p&gt;
+&lt;h1 id=&quot;使用的工具&quot;&gt;使用的工具&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;GitHub pages&lt;/li&gt;
+  &lt;li&gt;Jekyll&lt;/li&gt;
+  &lt;li&gt;PowerShell&lt;/li&gt;
+  &lt;li&gt;VSCode
+    &lt;h1 id=&quot;環境&quot;&gt;環境&lt;/h1&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Windows 10&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;github-pages&quot;&gt;GitHub pages&lt;/h1&gt;
+&lt;p&gt;其實我本身寫的code跟上班寫的code都是放在GitLab上，但當我看到GitLab pages的時候已經把這個網站架好了所以沒什麼意外的話應該會繼續使用GitHub pages來當我的個人web site。&lt;/p&gt;
+
+&lt;p&gt;關於GitHub pages其實網路上的教學很多而且都寫得很清楚，所以除了基本的作業流程另外補充一下我自己遇到的問題。&lt;/p&gt;
+
+&lt;h2 id=&quot;initialization&quot;&gt;initialization&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;需要的東西
+    &lt;ul&gt;
+      &lt;li&gt;GitHub帳號&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;新增名為「username.github.io」的專案，這個 username 指的是自己的 GitHub 帳號。這不僅是你的專案名稱，也是你的 blog 網址。專案成立後，按照 Quick setup 的提示準備好專案的資料夾。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/001/1.png&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Clone下來到本地資料夾，這邊可以先照著GitHub pages 上面的教學create一個index.html然後推上去連接到自己的網站上面看看效果 :)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;:::info
+如果沒有跑出來等個兩三分鐘再刷新一下
+:::&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/001/2.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;</content><author><name>Wei Chang</name></author><category term="前端" /><category term="jekyll" /><category term="github" /><category term="ruby" /><summary type="html">前言 原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裏面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。 使用的工具 GitHub pages Jekyll PowerShell VSCode 環境 Windows 10</summary></entry></feed>
