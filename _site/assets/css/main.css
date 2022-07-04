@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /** 1. Set default font family to sans-serif. 2. Prevent iOS text size adjust after orientation change, without disabling user zoom. */
 html { font-family: sans-serif; /* 1 */ -ms-text-size-adjust: 100%; /* 2 */ -webkit-text-size-adjust: 100%; /* 2 */ }
@@ -558,7 +559,7 @@ pre .k, pre .kd, pre .kn, pre .kp, pre .kr, pre .kt, pre .javascript .function {
 .links-of-author { margin-top: 20px; }
 
 .links-of-author a { display: inline-block; vertical-align: middle; margin-right: 10px; margin-bottom: 10px; border-bottom-color: #555; font-size: 13px; }
-.links-of-author a:before { display: inline-block; vertical-align: middle; margin-right: 3px; content: " "; width: 4px; height: 4px; border-radius: 50%; background: #29ffff; }
+.links-of-author a:before { display: inline-block; vertical-align: middle; margin-right: 3px; content: " "; width: 4px; height: 4px; border-radius: 50%; background: #ff8a00; }
 
 .links-of-blogroll { font-size: 13px; }
 
@@ -870,3 +871,15 @@ hr { margin: 20px 0; height: 2px; }
 
 .footer-inner { margin: 0 auto; text-align: left; }
 @media (max-width: 767px) { .footer-inner { width: auto; text-align: center; } }
+
+.post-body .alert { position: relative; padding: 15px; margin-bottom: 20px; border: initial; border-left: 4px solid; border-radius: 4px; background-color: #eee; border-left-color: #666; color: #666; }
+.post-body .alert a { color: #666; border-bottom-color: #666; }
+.post-body .alert a:hover { color: #222; border-bottom-color: #222; }
+.post-body .alert h2, .post-body .alert h3, .post-body .alert h4, .post-body .alert h5, .post-body .alert h6 { margin-bottom: 0; border-bottom: initial; padding-top: 0 !important; }
+.post-body .alert h2 if note_icons, .post-body .alert h3 if note_icons, .post-body .alert h4 if note_icons, .post-body .alert h5 if note_icons, .post-body .alert h6 if note_icons { margin-top: 3px; }
+.post-body .alert h2 else, .post-body .alert h3 else, .post-body .alert h4 else, .post-body .alert h5 else, .post-body .alert h6 else { margin-top: 0; }
+.post-body .alert p:first-child, .post-body .alert ul:first-child, .post-body .alert ol:first-child, .post-body .alert table:first-child, .post-body .alert pre:first-child, .post-body .alert blockquote:first-child { margin-top: 0; }
+.post-body .alert p:last-child, .post-body .alert ul:last-child, .post-body .alert ol:last-child, .post-body .alert table:last-child, .post-body .alert pre:last-child, .post-body .alert blockquote:last-child { margin-bottom: 0; }
+.post-body .alert .head { font-weight: bold; }
+.post-body .alert:not(.no-icon) { padding-left: 45px; }
+.post-body .alert:not(.no-icon):before { position: absolute; font-family: 'FontAwesome'; font-size: larger; top: 13px; left: 15px; content: ""; color: #666; }

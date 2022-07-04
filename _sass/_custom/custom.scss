@@ -1,1 +1,66 @@
 // Custom styles.
+.post-body .alert {
+    position:             relative;
+    padding:              15px;
+    margin-bottom:        20px;
+  
+    // commit setting
+    border:             initial;
+    border-left:        4px solid; 
+    border-radius: 4px;
+    
+    // default seeting
+    background-color:   $alert-default-bg;
+    border-left-color:  $alert-default-border;
+    color:  $alert-default-text;
+  
+    a {
+      color: $alert-default-text;
+      border-bottom-color: $alert-default-text;
+      &:hover {
+        color: $alert-default-hover  ; 
+        border-bottom-color: $alert-default-hover;
+      } 
+    }
+    
+    h2, h3, h4, h5, h6 {
+        if note_icons {
+          margin-top:       3px;
+        } else {
+          margin-top:       0;
+        }
+        margin-bottom:      0;
+        border-bottom:      initial;
+        padding-top:        0 !important;
+      }
+    
+    p, ul, ol, table, pre, blockquote {
+        &:first-child {
+            margin-top:       0;
+        }
+        &:last-child {
+            margin-bottom:    0;
+        }
+    }
+  
+    .head {
+      font-weight:bold;
+    }
+  
+    &:not(.no-icon) {
+        padding-left:     45px;
+        &:before {
+          // common setting
+          position:       absolute;
+          font-family:    'FontAwesome';
+          font-size:      larger;
+          top:            13px;
+          left:           15px;
+  
+          // default setting
+          content: $alert-default-icon;
+          color : $alert-default-text;
+        }
+      }
+  
+  }

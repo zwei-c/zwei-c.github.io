@@ -657,7 +657,7 @@ vendors:
   _internal: assets/lib
 
   # Internal version: 2.1.3
-  jquery:
+  jquery: //cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js
 
   # Internal version: 2.1.5
   # See: http://fancyapps.com/fancybox/
@@ -686,7 +686,7 @@ vendors:
 
   # Internal version: 4.6.2
   # See: http://fontawesome.io/
-  fontawesome:
+  fontawesome: /assets/fontawesome/css/all.min.css
 
   # Internal version: 1
   # https://www.algolia.com
