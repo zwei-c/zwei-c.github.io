@@ -694,6 +694,18 @@
 
   <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+<script>
+	document.addEventListener("copy", function (evt) {
+		let text = document.getSelection().toString();
+		if (text.length >= 100) {
+			text = text + "\n\n" + "=========================================\n" + "你複製整段要幹嘛==?";
+		}
+        console.log(text)
+		let clipdata = evt.clipboardData || window.clipboardData;
+		clipdata.setData("text", text);
+		evt.preventDefault();
+	});
+</script>
 
 
   

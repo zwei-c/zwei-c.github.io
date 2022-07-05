@@ -601,6 +601,21 @@ tags:
     <div>
       
         
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Wei Chang
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文連結：</strong>
+      <a href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/" title="建置jekyll+Github Page">http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版權聲明： </strong>
+      除非另有標注，部落格中所有文章，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。 轉載請標明作者、連結與出處！
+    </li>
+  </ul>
+
 
       
     </div>
@@ -915,6 +930,18 @@ tags:
 
   <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+<script>
+	document.addEventListener("copy", function (evt) {
+		let text = document.getSelection().toString();
+		if (text.length >= 100) {
+			text = text + "\n\n" + "=========================================\n" + "你複製整段要幹嘛==?";
+		}
+        console.log(text)
+		let clipdata = evt.clipboardData || window.clipboardData;
+		clipdata.setData("text", text);
+		evt.preventDefault();
+	});
+</script>
 
 
   
