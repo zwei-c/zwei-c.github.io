@@ -345,7 +345,9 @@
 
     <div>
       {% unless is_index %}
-        {% include _macro/post-copyright.html %}
+        {% if page.copyright != false %}
+          {% include _macro/post-copyright.html %}
+        {% endif %}
       {% endunless %}
     </div>
 

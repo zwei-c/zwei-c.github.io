@@ -394,7 +394,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -416,7 +416,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -639,21 +639,59 @@
 
 
 
+ 
+<script src="/assets/js/Valine.min.js"></script>
+<script>
+	var langName = "tw",
+		langMode = {
+			nick: "NickName(必填)",
+			mail: "E-Mail(必填)",
+			link: "Website(http://)",
+			nickFail: "NickName cannot be less than 3 bytes.",
+			mailFail: "Please confirm your email address.",
+			sofa: "No comment yet.",
+			submit: "Submit",
+			reply: "Reply",
+			cancelReply: "Cancel reply",
+			comments: "Comments",
+			cancel: "Cancel",
+			confirm: "Confirm",
+			continue: "Continue",
+			more: "Load More...",
+			preview: "Preview",
+			emoji: "Emoji",
+			expand: "See more....",
+			seconds: "seconds ago",
+			minutes: "minutes ago",
+			hours: "hours ago",
+			days: "days ago",
+			now: "just now",
+			uploading: "Uploading ...",
+			uploadDone: "Upload completed!",
+			busy: "Submit is busy, please wait...",
+			"code-98": "Valine initialization failed, please check your version of av-min.js.",
+			"code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+			"code-100": "Valine initialization failed, Please check your appId and appKey.",
+			"code-140": "The total number of API calls today has exceeded the development version limit.",
+			"code-401": "Unauthorized operation, Please check your appId and appKey.",
+			"code-403": "Access denied by API domain white list, Please check your security domain.",
+		};
 
-  
-  <script src="/assets/js/Valine.min.js"></script>
-  <script>
-      new Valine({
-          el: '#comments',
-          app_id: 'JKnSyYYosilnYSK5qqBw9Ewd-MdYXbMMI',   //这里变量的取值在网站配置文件里_config.yml
-          app_key: 'nsxgeLYfEW1x8CBRdAzBbIsU', //这里变量的取值在网站配置文件里_config.yml
-          placeholder:'提供您的寶貴意見。',   //这里变量的取值在网站配置文件里_config.yml
-          serverURLs: 'https://jknsyyyo.api.lncldglobal.com',
-          requiredFields: ['nick','mail'],
-          verify: true
-      });</script>
-  
-  
+	new Valine({
+		el: "#comments",
+		app_id: "JKnSyYYosilnYSK5qqBw9Ewd-MdYXbMMI", //这里变量的取值在网站配置文件里_config.yml
+		app_key: "nsxgeLYfEW1x8CBRdAzBbIsU", //这里变量的取值在网站配置文件里_config.yml
+		placeholder: "提供您的寶貴意見。", //这里变量的取值在网站配置文件里_config.yml
+		serverURLs: "https://jknsyyyo.api.lncldglobal.com",
+		requiredFields: ["nick", "mail"],
+		lang: langName,
+		langMode: langMode,
+		verify: true,
+        avatar: 'retro',
+	});
+</script>
+ 
+
   
 
 

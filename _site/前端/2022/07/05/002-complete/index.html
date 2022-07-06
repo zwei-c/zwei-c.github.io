@@ -1,0 +1,1632 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/fontawesome/css/all.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="jekyll,Valine,App Script," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言">
+<meta name="keywords" content="jekyll, Valine, App Script">
+<meta property="og:type" content="article">
+<meta property="og:title" content="完善網誌：留言區、版權資訊、訪問人數">
+<meta property="og:url" content="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete/">
+<meta property="og:site_name" content="WeiChang&apos;s diary">
+<meta property="og:description" content="前言">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="/assets/images/002/1.png">
+<meta property="og:image" content="/assets/images/002/2.png">
+<meta property="og:image" content="/assets/images/002/4.png">
+<meta property="og:image" content="/assets/images/002/5.png">
+<meta property="og:image" content="/assets/images/002/6.png">
+<meta property="og:image" content="/assets/images/002/7.png">
+<meta property="og:image" content="/assets/images/002/8.png">
+<meta property="og:image" content="/assets/images/002/9.png">
+<meta property="og:image" content="/assets/images/002/10.png">
+<meta property="og:image" content="/assets/images/002/11.png">
+<meta property="og:image" content="/assets/images/002/12.png">
+<meta property="og:image" content="/assets/images/002/13.png">
+<meta property="og:image" content="/assets/images/002/14.png">
+<meta property="og:image" content="/assets/images/002/15.png">
+<meta property="og:image" content="/assets/images/002/17.png">
+<meta property="og:image" content="/assets/images/002/16.png">
+<meta property="og:image" content="/assets/images/002/18.png">
+<meta property="og:image" content="/assets/images/002/19.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14309741/166483491-fe57a3b3-0a53-42f7-b40f-46f397de3561.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14309741/166483577-b27986fd-e849-4a16-8127-7090bcbba86c.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14309741/166483633-47b95aaa-c335-4e8c-a7c3-50cbc4600a71.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14309741/166483747-bbae3c87-37cb-4d60-9bef-61b92b2a29d1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14309741/166483837-1ce5390d-cb62-4684-9c30-9c7af31db27f.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14309741/166483898-a6735412-9239-4992-b4be-98b75d12b3a9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14309741/166483972-08031ee7-b574-4ae1-b5b4-1e897ec3c677.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14309741/166484064-1de5210a-81b9-43af-ac9d-496308072694.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14309741/166484111-215d89a0-61b5-40d6-b3dd-a0c8bcc8fb83.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14309741/166484166-bbd2ffa9-d6c2-430a-9df0-86896b014596.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14309741/166484293-8f9e1207-3ca7-435f-954d-6c98362fb44c.png">
+<meta property="og:image" content="/assets/images/002/20.png">
+<meta property="og:image" content="/assets/images/002/21.png">
+<meta property="og:image" content="/assets/images/002/22.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="完善網誌：留言區、版權資訊、訪問人數">
+<meta name="twitter:description" content="前言">
+<meta name="twitter:image" content="/assets/images/002/1.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>完善網誌：留言區、版權資訊、訪問人數 | WeiChang's diary</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WeiChang's diary</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            關於
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wei Chang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/dog.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WeiChang's diary">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            完善網誌：留言區、版權資訊、訪問人數
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-07-05T00:00:00+08:00">
+                2022-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/%E5%89%8D%E7%AB%AF" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <hr />
+<h1 id="前言">前言</h1>
+
+<p>續昨天 <a href="https://zwei-c.github.io/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/">建置jekyll+Github Page</a>完成基本設定後，我又參考<a href="https://ankmak.com/">Ank’s Blog</a>、<a href="https://cynthiachuang.github.io/">辛西亞的技能樹</a>等大大的網誌內的教學文，新增一些功能到我的網誌內，讓功能更完善一些。</p>
+
+<h1 id="新增版權資料">新增版權資料</h1>
+
+<p>參考了<a href="https://cynthiachuang.github.io/">辛西亞大大</a>的<a href="https://cynthiachuang.github.io/Add-Post-Copyright/">版權訊息配置</a>，我這邊做了一些更改，簡單來說就是用jekyll內的UI把自訂的版權信息放到文章底部。</p>
+
+<h2 id="開啟版權訊息功能">開啟版權訊息功能</h2>
+
+<p>到 <code class="language-plaintext highlighter-rouge">/_config_yml</code> 找到 <code class="language-plaintext highlighter-rouge">post_copyright</code> 把 <code class="language-plaintext highlighter-rouge">false</code> 改成 <code class="language-plaintext highlighter-rouge">true</code>，再把版權資訊<code class="language-plaintext highlighter-rouge">license</code>、<code class="language-plaintext highlighter-rouge">license_url</code>填進去。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4</pre></td><td class="code"><pre class="highlight"><code>post_copyright:
+  enable: true
+  license: CC BY-NC-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>顯示在頁面中的版權資訊則是要到<code class="language-plaintext highlighter-rouge">_data/languages/default.yml</code>裡面修改，不過因為我在<code class="language-plaintext highlighter-rouge">/_config_yml</code>裡面設定的預設語言是<code class="language-plaintext highlighter-rouge">zh-tw</code>所以我要找到<code class="language-plaintext highlighter-rouge">_data/languages/zh-tw.yml</code>去修改。我覺得原本辛西亞大大寫的內容已經夠好了再去改就有點顯得畫蛇添足，所以這邊直接使用她的範例。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8</pre></td><td class="code"><pre class="highlight"><code> copyright:
+   author: 本文作者
+   link: 本文連結
+   license_title: 版權聲明
+   license_content: '除非另有標注，部落格中所有文章，均採用
+     &lt;a href="%s" rel="external nofollow" target="_blank"&gt;%s&lt;/a&gt; 許可協議。
+     轉載請標明作者、連結與出處！'
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>這樣版權訊息就會出現在文章底部囉!
+<img src="/assets/images/002/1.png" alt="1" /></p>
+
+<h2 id="版權訊息關閉選項">版權訊息關閉選項</h2>
+
+<p>因為辛西亞大大的聲明裡面寫到：「除非另有標注…」，既然寫說另有標注代表可能會有不加訊息的狀況，因此可以加個開關可以決定是否放置版權訊息：</p>
+
+<ol>
+  <li>
+    <p>修改 HTLM 檔
+ 先回到 <code class="language-plaintext highlighter-rouge">_includes/_macro/post.html</code> 中找到剛剛引入 <code class="language-plaintext highlighter-rouge">post-copyright.html</code> 的位置，並在 <code class="language-plaintext highlighter-rouge">include</code> 外加上條件式。
+ 在這邊設定了一個名為 <code class="language-plaintext highlighter-rouge">copyright</code> 的 <code class="language-plaintext highlighter-rouge">flag</code>，且僅希望在 <code class="language-plaintext highlighter-rouge">copyright</code> 設定為 <code class="language-plaintext highlighter-rouge">false</code> 時才會隱藏該區域；若未設定或設定為 <code class="language-plaintext highlighter-rouge">ture</code> 時，則正常顯示該區，因此我必須明確寫出它的條件式：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code> + {％ if page.copyright != false ％}
+     {％ include _macro/post-copyright.html ％}   
+ + {％ endif ％}
+</code></pre></td></tr></tbody></table></div>    </div>
+  </li>
+  <li>
+    <p>ymal 設定
+ 搞定後，當你某篇文章不放置版權訊息時，就在文章上方的 yaml 區，設定的 <code class="language-plaintext highlighter-rouge">copyright</code> 的 flag：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5</pre></td><td class="code"><pre class="highlight"><code> ---
+ title: "完善網誌：留言區、版權資訊、訪問人數"
+ date: 2022-07-05
+ + copyright: false
+ ---
+</code></pre></td></tr></tbody></table></div>    </div>
+  </li>
+</ol>
+
+<h2 id="複製網頁文字時加上網站的作者與網址">複製網頁文字時，加上網站的作者與網址</h2>
+
+<p>另外一個是常見的在複製文字的時候會自動加上版權訊息，這個在辛西亞大大的文章中也有教學，我這邊主要做了一點修改(真的是一點XD)，下面將直接實作。</p>
+
+<p>直接在 <code class="language-plaintext highlighter-rouge">_includes/_scripts/pages/post-details.html</code>裡面新增</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10</pre></td><td class="code"><pre class="highlight"><code>document.addEventListener("copy", function (evt) {
+		let text = document.getSelection().function toString() { [native code] }(); //抓取反白區塊的文字。
+		if (text.length &gt;= 100) {  //當複製超過一百個字元加上文字。
+			text = text + "\n\n" + "=========================================\n" + "你複製整段要幹嘛==?";
+		}
+        console.log(text)
+		let clipdata = evt.clipboardData || window.clipboardData;
+		clipdata.setData("text", text); //將剪貼簿的文字改成剛剛產生的text
+		evt.preventDefault();
+	});
+</code></pre></td></tr></tbody></table></div></div>
+<p>成果如圖:
+<img src="/assets/images/002/2.png" alt="2" /></p>
+
+<h1 id="新增留言區">新增留言區</h1>
+
+<p>不論是Blogger、CSDN、IT邦等等網誌都有留言區，除了可以讓網友給作者留言另外最重要的就是<strong>酷</strong>，在爬了一段時間之後決定使用<code class="language-plaintext highlighter-rouge">Valine</code>來當本網站的留言系統，選擇<code class="language-plaintext highlighter-rouge">Valine</code>的原因是因為：輕量化、好部署、可匿名留言、沒廣告，對，最重要的一點就是沒有廣告！對這方面有興趣的朋友可以看Ivan Mak大大的這篇<a href="https://ankmak.com/tech/2021/03/11/use-valine-as-comments-in-jekyll.html">在 Jekyll 上使用 Valine 作為評論系統/留言版</a>這裡寫得比我詳細太多了，我主要也是參考這篇文章完成留言系統架設的，但人生就像OO充滿皺褶，所以這邊除了部署步驟還要額外紀錄一下我遇到的BUG。</p>
+
+<h2 id="valine-的安裝和配置"><a href="https://valine.js.org/">Valine</a> 的安裝和配置</h2>
+<blockquote>
+  <p>Valine 誕生於2017年8月7日，是一款基於LeanCloud的快速、簡潔且高效的無後端評論系統。</p>
+</blockquote>
+
+<h3 id="註冊-leancloud">註冊 <a href="https://console.leancloud.app/">leancloud</a></h3>
+<p>選擇註冊<strong>國際版</strong>的就好了。</p>
+<h3 id="appid跟appkey">AppID跟AppKey</h3>
+<p>進入控制檯點擊左上角創建應用填入應用名稱，選擇<strong>開發版</strong>即可，然後進到<em>設置/應用憑證</em>找到並記住你的AppID跟AppKey，等等要用。<img src="/assets/images/002/4.png" alt="4" /></p>
+<h3 id="新增各個頁面">新增各個頁面</h3>
+<p>因為我用的next這個模板沒有內建Valine，所以要自己新增各個頁面。</p>
+<h4 id="新增valinehtm">新增<code class="language-plaintext highlighter-rouge">valine.htm</code></h4>
+<p>在 <code class="language-plaintext highlighter-rouge">_includes_third-party\comments</code>裡面添加一個文件<code class="language-plaintext highlighter-rouge">valine.htm</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18</pre></td><td class="code"><pre class="highlight"><code>{% unless site.duoshuo_shortname
+  or site.disqus_shortname
+  or site.hypercomments_id
+  or site.gentie_productKey
+  or site.duoshuo and site.duoshuo.shortname %}
+{% if site.valine_comment.enable %}
+&lt;script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"&gt;&lt;/script&gt; //我自己是沒有下是這行，因為沒有在*中國境內*會404
+&lt;script src='//unpkg.com/valine/dist/Valine.min.js'&gt;&lt;/script&gt; //這個我打包下來放在本地
+&lt;script&gt;
+    new Valine({
+        el: '#comments',
+        app_id: '{{ site.valine_comment.leancloud_appid }}',   //這裡變量的取值在網站配置文件裡_config.yml
+        app_key: '{{ site.valine_comment.leancloud_appkey }}', //這裡變量的取值在網站配置文件裡_config.yml
+        placeholder:'{{ site.valine_comment.placeholder }}'    //這裡變量的取值在網站配置文件裡_config.yml,
+        serverURLs: "your_REST_API網址"
+    });&lt;/script&gt;
+{% endif %}
+{% endunless %}
+</code></pre></td></tr></tbody></table></div></div>
+
+<h4 id="修改_configyml配置">修改<code class="language-plaintext highlighter-rouge">_config.yml</code>配置</h4>
+
+<p>在_config.yml添加變量<code class="language-plaintext highlighter-rouge">app_id</code>，<code class="language-plaintext highlighter-rouge">app_key</code>， <code class="language-plaintext highlighter-rouge">placeholde</code>的值，關於取值傳遞到valine.html，是通過jekyll變量構建。
+  具體程式碼如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9</pre></td><td class="code"><pre class="highlight"><code>valine_comment:
+  enable: true
+  # app_id
+  leancloud_appid: your_appid
+  # app_key
+  leancloud_appkey: your_appkey
+  # placeholde
+  placeholder: "提供您的寶貴意見",
+  
+</code></pre></td></tr></tbody></table></div></div>
+
+<h4 id="套用valinehtml">套用<code class="language-plaintext highlighter-rouge">valine.html</code></h4>
+
+<p>由於前面創建了<code class="language-plaintext highlighter-rouge">valine.html</code>，需要jekyll套用這個html才能夠執行這個頁面的程式碼，使評論框顯示在每篇文章的頁面，需要在<code class="language-plaintext highlighter-rouge">_includes\_third-party\comments\index.html</code>裡面添加程式碼：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>{% include _third-party/comments/valine.html %}
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>並在<code class="language-plaintext highlighter-rouge">_includes/_partials/comments.html</code>裡面插入程式碼：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>{% elsif site.valine_comment.enable %}
+ &lt;div id="vcomments"&gt;&lt;/div&gt;
+</code></pre></td></tr></tbody></table></div></div>
+
+<h3 id="大功告成">大功告成?</h3>
+<p>到這邊重載入一下jekyll看一下文章下面應該就會出現評論框了！
+<img src="/assets/images/002/5.png" alt="5" /></p>
+
+<p>你也可以到<code class="language-plaintext highlighter-rouge">LeanCloud</code>的<em>數據存儲/結構化數據/Comment</em>看一下有沒有留言進來。<img src="/assets/images/002/6.png" alt="6" /></p>
+
+<h2 id="valine-的擴充">Valine 的擴充</h2>
+
+<p>雖然大致上完成了留言系統的建構，但是仍然有些鑑別度跟安全性上的問題還要解決。另外一點就是回覆留言的通知，這個很酷必須要做！</p>
+
+<h3 id="回覆通知">回覆通知</h3>
+
+<p>我這邊是用<code class="language-plaintext highlighter-rouge">Gmail</code>來做<code class="language-plaintext highlighter-rouge">SMTP</code>的服務系統，因為今年6月之後Google關閉了<del>不安全性行為</del>也因為把自己的密碼傳到別的網站本身就是一件不好的事，所以我們要申請一個for <code class="language-plaintext highlighter-rouge">Valine</code>使用的應用程式密碼。</p>
+
+<h4 id="生成app專用密碼">生成APP專用密碼</h4>
+
+<p>Google 的 App 專用密碼生成網址 : https://myaccount.google.com/apppasswords</p>
+
+<p><img src="/assets/images/002/7.png" alt="7" /></p>
+
+<p><strong>選取應用程式</strong>和<strong>選取裝置</strong>都可以任意選，只是方便自己記憶這個密碼是用來作什麼用途。我自己<strong>選取應用程式</strong>是有乖乖選<strong>郵件</strong>、<strong>選取裝置</strong>那邊填上<code class="language-plaintext highlighter-rouge">Valine</code></p>
+
+<p>之後就會獲得一個16字元的密碼。</p>
+
+<p><img src="/assets/images/002/8.png" alt="8" /></p>
+
+<h4 id="設定leancloud">設定<code class="language-plaintext highlighter-rouge">LeanCloud</code></h4>
+
+<p>到 <code class="language-plaintext highlighter-rouge">雲引擎</code>/<code class="language-plaintext highlighter-rouge">WEB</code>/<code class="language-plaintext highlighter-rouge">設置</code>/<code class="language-plaintext highlighter-rouge">添加新變量</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>變量</th>
+      <th style="text-align: center">例子</th>
+      <th>說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SITE_NAME</td>
+      <td style="text-align: center">AnkMak Blog	[必須]</td>
+      <td>網站名稱</td>
+    </tr>
+    <tr>
+      <td>SITE_URL</td>
+      <td style="text-align: center">https://ankmak.com	[必須]</td>
+      <td>網站 URL</td>
+    </tr>
+    <tr>
+      <td>SMTP_SERVICE</td>
+      <td style="text-align: center">Gmail	[必須]</td>
+      <td>SMTP 服務(<a href="https://nodemailer.com/smtp/well-known/#supported-services">支援列表</a>)</td>
+    </tr>
+    <tr>
+      <td>SMTP_USER</td>
+      <td style="text-align: center">xxx@gmail.com	[必須]</td>
+      <td>Gmail 郵箱名稱</td>
+    </tr>
+    <tr>
+      <td>SMTP_PASS</td>
+      <td style="text-align: center">wnxxxxxxxxxxxxkv	[必須]</td>
+      <td>剛才產生的 App 密碼</td>
+    </tr>
+    <tr>
+      <td>SENDER_NAME</td>
+      <td style="text-align: center">Ank Mak	[必須]</td>
+      <td>寄件人名稱</td>
+    </tr>
+    <tr>
+      <td>SENDER_EMAIL</td>
+      <td style="text-align: center">xxx@xxx.xx	[必須]</td>
+      <td>寄件人 Email</td>
+    </tr>
+    <tr>
+      <td>ADMIN_URL</td>
+      <td style="text-align: center">https://xxx-xxx.avosapps.us	[建議]</td>
+      <td>自動喚醒服務用(填入剛才創建的雲引擎域名)</td>
+    </tr>
+    <tr>
+      <td>BLOGGER_EMAIL</td>
+      <td style="text-align: center">xxx@xxx.xx	[可選]</td>
+      <td>收件 email，默認為 SENDER_EMAIL</td>
+    </tr>
+    <tr>
+      <td>AKISMET_KEY</td>
+      <td style="text-align: center">xxxxxxxx	[可選]</td>
+      <td>Akismet Key 用於垃圾評論檢測，設為 MANUAL_REVIEW 表示開啟人工審核，留空為不使用</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>更多參數的說明可以看Github 上 Valine-Admin 文檔: https://github.com/DesertsP/Valine-Admin</p>
+
+<p><img src="/assets/images/002/9.png" alt="9" /></p>
+
+<h4 id="部署-leancloud-雲引擎">部署 <code class="language-plaintext highlighter-rouge">LeanCloud</code> 雲引擎</h4>
+
+<p><code class="language-plaintext highlighter-rouge">雲引擎</code>/<code class="language-plaintext highlighter-rouge">部署</code>/<code class="language-plaintext highlighter-rouge">Git部署</code>/<code class="language-plaintext highlighter-rouge">部署</code></p>
+
+<p>Git網址填上 <code class="language-plaintext highlighter-rouge">https://github.com/DesertsP/Valine-Admin.git</code></p>
+
+<p>直接按部署就好了。</p>
+
+<p><img src="/assets/images/002/10.png" alt="10" /></p>
+
+<div class="alert">
+  這邊可以試一下回復留言，應該可以收到信了。
+</div>
+
+<h4 id="評論管理">評論管理</h4>
+
+<p>要先<strong>註冊管理員</strong>用於管理信息，註冊網址為 <code class="language-plaintext highlighter-rouge">https://雲引擎域名.avosapps.us/sign-up</code> (可以在部署狀態裡找到)</p>
+
+<p><img src="/assets/images/002/11.png" alt="11" /></p>
+
+<p>註冊好之後到<code class="language-plaintext highlighter-rouge">https://雲引擎域名.avosapps.us/</code>登入就可以管理留言了，我是覺得有點雞肋拉哈哈。</p>
+
+<p><img src="/assets/images/002/12.png" alt="12" /></p>
+
+<h4 id="定時自動喚醒">定時自動喚醒</h4>
+
+<p>由於免費版的雲引擎每天最多運行 18 個小時，而且每半個小時會執行休眠策略，在休眠期間會暫停郵件通知服務，所以我們需要啟動 2 項雲函數定時任務來解決休眠時的問題:</p>
+
+<ul>
+  <li>自動喚醒 : 每半小時執行一次喚醒以防止休眠(先要創建雲引擎域名)</li>
+  <li>漏發郵件檢查 : 每天的固定時間檢查過去 24 小時內漏發的郵件並重發</li>
+</ul>
+
+<p>以下是我參考AnkMak大大對雲函數的設定:</p>
+
+<p>選擇 <code class="language-plaintext highlighter-rouge">self-wake</code> 雲函數，Cron 表達式為 <code class="language-plaintext highlighter-rouge">0 */30 0-17 * * ?</code>，表示每天 00:00 到 17:59 ，每隔 30 分鐘訪問雲引擎。(由於國際版使用 UTC-0 時間，即每天早上 8 點到 凌晨 01:59，所以最後一次執行為 01:30)</p>
+
+<p>選擇 <code class="language-plaintext highlighter-rouge">resend-mails</code> 雲函數，Cron 表達式為 <code class="language-plaintext highlighter-rouge">0 0 0-16 * * ?</code>，表示每天 00:00 到 16:59 內，每小時一次檢查過去 24 小時內漏發的通知郵件並補發。</p>
+
+<p><img src="/assets/images/002/13.png" alt="13" /></p>
+
+<h4 id="leancloud-流控問題的解決方法">LeanCloud 流控問題的解決方法</h4>
+
+<div class="alert">
+  “error”:”因流控原因，通过定时任务唤醒体验版实例失败，建议升级至标准版云引擎实例避免休眠 https://url.leanapp.cn/dwAEksv”
+</div>
+
+<p>由於官方有流量控制的問題，所以 LeanCloud 內建的定時任務只適用於當天，隔天早上起床後就會在日誌裡出現定時任務喚醒體驗版實例失敗的訊息:</p>
+
+<p><img src="/assets/images/002/14.png" alt="14" /></p>
+
+<p>解決思路：</p>
+
+<blockquote>
+  <p>只要當天登入過一次評論管理系統，定時任務裡的自動喚醒又會正常運作，但流控問題隔天又會發生。所以這種方法就需要每天早上手動的登錄雲引擎的後台，用來激活容器。</p>
+</blockquote>
+
+<p>所以我是使用Google的<code class="language-plaintext highlighter-rouge">AppScript</code>寫一個腳本每30分鐘訪問一次管理介面，使用方法如下：</p>
+
+<h5 id="新增appscript專案">新增<code class="language-plaintext highlighter-rouge">AppScript</code>專案</h5>
+
+<p><img src="/assets/images/002/15.png" alt="15" /></p>
+
+<p>點選新專案並新增這段程式碼：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5</pre></td><td class="code"><pre class="highlight"><code>function doResponse() {
+  var response = UrlFetchApp.fetch('https://weichang.avosapps.us'); //訪問你的後台連結
+  Logger.log(response.getContentText());
+}
+
+</code></pre></td></tr></tbody></table></div></div>
+<p>然後<code class="language-plaintext highlighter-rouge">部署</code>/<code class="language-plaintext highlighter-rouge">新增部署作業</code></p>
+
+<p><img src="/assets/images/002/17.png" alt="17" /></p>
+
+<p>點旁邊鬧鐘的圖案新增觸發條件：</p>
+
+<p><img src="/assets/images/002/16.png" alt="16" /></p>
+
+<p><img src="/assets/images/002/18.png" alt="18" /></p>
+
+<p>這樣就會每半小時自動訪問一次評論管理系統了!</p>
+
+<h4 id="必填欄位設定">必填欄位設定</h4>
+
+<p>由於新增了郵件的通知功能，如果留言時不提供郵箱的話就沒用了，因此我把 NickName 和 Email 都設定為必要選項。</p>
+
+<p>到 <code class="language-plaintext highlighter-rouge">_includes\_third-party\comments\valine.htm</code>  (每個人的目錄位置可能不同)</p>
+
+<p>在括號行內加入 <code class="language-plaintext highlighter-rouge">requiredFields: ['nick','mail']</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9</pre></td><td class="code"><pre class="highlight"><code>new Valine({
+          el: '#comments',
+          app_id: 'JKnSyYYosilnYSK5qqBw9Ewd-MdYXbMMI',   
+          app_key: 'nsxgeLYfEW1x8CBRdAzBbIsU', 
+          placeholder:'提供您的寶貴意見。',   
+          serverURLs: 'https://jknsyyyo.api.lncldglobal.com',
+          requiredFields: ['nick','mail'],
+          verify: true
+      });
+</code></pre></td></tr></tbody></table></div></div>
+
+<h4 id="自訂文字">自訂文字</h4>
+<p>一樣到到 <code class="language-plaintext highlighter-rouge">_includes\_third-party\comments\valine.htm</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39<br/>40<br/>41<br/>42<br/>43<br/>44<br/>45<br/>46<br/>47<br/>48</pre></td><td class="code"><pre class="highlight"><code>&lt;script&gt;
+	var langName = "tw",
+		langMode = {
+			nick: "NickName(必填)",
+			mail: "E-Mail(必填)",
+			link: "Website(http://)",
+			nickFail: "NickName cannot be less than 3 bytes.",
+			mailFail: "Please confirm your email address.",
+			sofa: "No comment yet.",
+			submit: "Submit",
+			reply: "Reply",
+			cancelReply: "Cancel reply",
+			comments: "Comments",
+			cancel: "Cancel",
+			confirm: "Confirm",
+			continue: "Continue",
+			more: "Load More...",
+			preview: "Preview",
+			emoji: "Emoji",
+			expand: "See more....",
+			seconds: "seconds ago",
+			minutes: "minutes ago",
+			hours: "hours ago",
+			days: "days ago",
+			now: "just now",
+			uploading: "Uploading ...",
+			uploadDone: "Upload completed!",
+			busy: "Submit is busy, please wait...",
+			"code-98": "Valine initialization failed, please check your version of av-min.js.",
+			"code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+			"code-100": "Valine initialization failed, Please check your appId and appKey.",
+			"code-140": "The total number of API calls today has exceeded the development version limit.",
+			"code-401": "Unauthorized operation, Please check your appId and appKey.",
+			"code-403": "Access denied by API domain white list, Please check your security domain.",
+		};
+
+	new Valine({
+		el: "#comments",
+		app_id: "JKnSyYYosilnYSK5qqBw9Ewd-MdYXbMMI",
+		app_key: "nsxgeLYfEW1x8CBRdAzBbIsU",
+		placeholder: "提供您的寶貴意見。",
+		serverURLs: "https://jknsyyyo.api.lncldglobal.com",
+		requiredFields: ["nick", "mail"],
+		lang: langName,
+		langMode: langMode,
+		verify: true,
+	});
+&lt;/script&gt;
+</code></pre></td></tr></tbody></table></div></div>
+<p>因為我覺得英文也滿好看的所以就沒改了，這邊langName不能跟預設<code class="language-plaintext highlighter-rouge">zh-CN</code>、<code class="language-plaintext highlighter-rouge">zh-TW</code>、<code class="language-plaintext highlighter-rouge">en</code>、<code class="language-plaintext highlighter-rouge">ja</code>的一樣。</p>
+
+<p>官方文檔：https://valine.js.org/i18n.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80</p>
+
+<p>效果如圖：
+<img src="/assets/images/002/19.png" alt="19" /></p>
+
+<h4 id="頭像設定">頭像設定</h4>
+
+<p>Valine 目前是使用 <code class="language-plaintext highlighter-rouge">Gravatar</code> 作為留言板的頭像</p>
+
+<p>到 <a href="https://en.gravatar.com">Gravatar</a> 官網註冊一個帳號並設定頭像，請確定自己註冊時所使用的郵箱，評論時填寫一樣的郵箱便會顯示頭像。</p>
+
+<h4 id="其他用戶的頭像">其他用戶的頭像</h4>
+
+<p>沒有自定義的郵箱，有以下 7 種默認值可選:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>參數值</th>
+      <th>頭像</th>
+      <th>說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>空字符串’’</td>
+      <td><img src="https://user-images.githubusercontent.com/14309741/166483491-fe57a3b3-0a53-42f7-b40f-46f397de3561.png" alt="" /></td>
+      <td>Gravatar 官方圖形</td>
+    </tr>
+    <tr>
+      <td>mp</td>
+      <td><img src="https://user-images.githubusercontent.com/14309741/166483577-b27986fd-e849-4a16-8127-7090bcbba86c.png" alt="" /></td>
+      <td>神秘人(一個灰白頭像)</td>
+    </tr>
+    <tr>
+      <td>identicon</td>
+      <td><img src="https://user-images.githubusercontent.com/14309741/166483633-47b95aaa-c335-4e8c-a7c3-50cbc4600a71.png" alt="" />、<img src="https://user-images.githubusercontent.com/14309741/166483747-bbae3c87-37cb-4d60-9bef-61b92b2a29d1.png" alt="" /></td>
+      <td>抽象幾何圖形(根據郵箱生成)</td>
+    </tr>
+    <tr>
+      <td>monsterid</td>
+      <td><img src="https://user-images.githubusercontent.com/14309741/166483837-1ce5390d-cb62-4684-9c30-9c7af31db27f.png" alt="" />、<img src="https://user-images.githubusercontent.com/14309741/166483898-a6735412-9239-4992-b4be-98b75d12b3a9.png" alt="" /></td>
+      <td>小怪物(根據郵箱生成)</td>
+    </tr>
+    <tr>
+      <td>wavatar</td>
+      <td><img src="https://user-images.githubusercontent.com/14309741/166483972-08031ee7-b574-4ae1-b5b4-1e897ec3c677.png" alt="" />、<img src="https://user-images.githubusercontent.com/14309741/166484064-1de5210a-81b9-43af-ac9d-496308072694.png" alt="" /></td>
+      <td>用不同面孔和背景組合生成的頭像(根據郵箱生成)</td>
+    </tr>
+    <tr>
+      <td>retro</td>
+      <td><img src="https://user-images.githubusercontent.com/14309741/166484111-215d89a0-61b5-40d6-b3dd-a0c8bcc8fb83.png" alt="" />、<img src="https://user-images.githubusercontent.com/14309741/166484166-bbd2ffa9-d6c2-430a-9df0-86896b014596.png" alt="" /></td>
+      <td>八位像素復古頭像(根據郵箱生成)</td>
+    </tr>
+    <tr>
+      <td>robohash</td>
+      <td><img src="https://user-images.githubusercontent.com/14309741/166484293-8f9e1207-3ca7-435f-954d-6c98362fb44c.png" alt="" /></td>
+      <td>一種具有不同顏色、面部等的機器人(根據郵箱生成)</td>
+    </tr>
+    <tr>
+      <td>hide</td>
+      <td> </td>
+      <td>不顯示頭像</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>根據個人喜好選擇，這裡我自己選擇了 <code class="language-plaintext highlighter-rouge">retro</code> 小怪物作為其他用戶的頭像。</p>
+
+<p>一樣到到 <code class="language-plaintext highlighter-rouge">_includes\_third-party\comments\valine.htm</code></p>
+
+<p>在括號行內加入<code class="language-plaintext highlighter-rouge"> avatar: 'retro'</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12</pre></td><td class="code"><pre class="highlight"><code>new Valine({
+		el: "#comments",
+		app_id: "JKnSyYYosilnYSK5qqBw9Ewd-MdYXbMMI",
+		app_key: "nsxgeLYfEW1x8CBRdAzBbIsU",
+		placeholder: "提供您的寶貴意見。",
+		serverURLs: "https://jknsyyyo.api.lncldglobal.com",
+		requiredFields: ["nick", "mail"],
+		lang: langName,
+		langMode: langMode,
+		verify: true,
+        avatar: 'retro',
+	});
+</code></pre></td></tr></tbody></table></div></div>
+<p>效果如下：
+<img src="/assets/images/002/20.png" alt="20" /></p>
+
+<h4 id="垃圾評論檢測">垃圾評論檢測</h4>
+
+<blockquote>
+  <p>Akismet (Automattic Kismet)是應用廣泛的一個垃圾留言過濾系統，其作者是大名鼎鼎的WordPress 創始人 Matt Mullenweg，Akismet也是WordPress默認安裝的插件，其使用非常廣泛，設計目標便是幫助博客網站來過濾留言Spam。有了Akismet之後，基本上不用擔心垃圾留言的煩惱了。啟用Akismet後，當博客再收到留言會自動將其提交到Akismet並與Akismet上的黑名單進行比對，如果名列該黑名單中，則該條留言會被標記為垃圾評論且不會發布。</p>
+</blockquote>
+
+<h5 id="先到-akismet-官網httpsakismetcomdevelopment註冊一個帳號這裡我-選擇用-gravatar-的帳號登入">先到 <a href="https://akismet.com/development/">akismet 官網(https://akismet.com/development/)</a>註冊一個帳號，這裡我##### 選擇用 Gravatar 的帳號登入</h5>
+<h5 id="選擇-developers-plan">選擇 Developers Plan</h5>
+<h5 id="取得-akismet-api-key">取得 AKISMET API KEY</h5>
+<h5 id="把-akismet-api-key-填入到-leancloud-的-akismet_key-參數裡">把 AKISMET API KEY 填入到 leancloud 的 AKISMET_KEY 參數裡</h5>
+<h5 id="重啟部署">重啟部署</h5>
+
+<h4 id="自定义邮件模板">自定义邮件模板</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>變量</th>
+      <th>範本</th>
+      <th>說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MAIL_SUBJECT</td>
+      <td>${PARENT_NICK}，您在 ${SITE_NAME} 上的評論收到了回覆	[可選]</td>
+      <td>@回覆時郵件標題</td>
+    </tr>
+    <tr>
+      <td>MAIL_TEMPLATE</td>
+      <td>見下文	[可選]</td>
+      <td>@回覆時郵件內容</td>
+    </tr>
+    <tr>
+      <td>MAIL_SUBJECT_ADMIN</td>
+      <td>${SITE_NAME} 上有新評論了	[可選]</td>
+      <td>博主通知時的郵件標題</td>
+    </tr>
+    <tr>
+      <td>MAIL_TEMPLATE_ADMIN</td>
+      <td>見下文	[可選]</td>
+      <td>博主通知時郵件內容</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>郵件通知分成了兩種:</p>
+
+<ul>
+  <li>通知博主</li>
+  <li>被@通知</li>
+</ul>
+
+<p>通知博主</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>&lt;div style="border-top:2px solid #12ADDB;box-shadow:0 1px 3px #AAAAAA;line-height:180%;padding:0 15px 12px;margin:50px auto;font-size:12px;"&gt;&lt;h2 style="border-bottom:1px solid #DDD;font-size:14px;font-weight:normal;padding:13px 0 10px 8px;"&gt;您在&lt;a style="text-decoration:none;color: #12ADDB;" href="${SITE_URL}" target="_blank"&gt;${SITE_NAME}&lt;/a&gt;上的文章有了新的评论&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;${NICK}&lt;/strong&gt;回复说：&lt;/p&gt;&lt;div style="background-color: #f5f5f5;padding: 10px 15px;margin:18px 0;word-wrap:break-word;"&gt; ${COMMENT}&lt;/div&gt;&lt;p&gt;您可以点击&lt;a style="text-decoration:none; color:#12addb" href="${POST_URL}" target="_blank"&gt;查看回复的完整內容&lt;/a&gt;&lt;br&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>被@通知 的默認範本</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code>&lt;div style="border-top:2px solid #12ADDB;box-shadow:0 1px 3px #AAAAAA;line-height:180%;padding:0 15px 12px;margin:50px auto;font-size:12px;"&gt;&lt;h2 style="border-bottom:1px solid #DDD;font-size:14px;font-weight:normal;padding:13px 0 10px 8px;"&gt;您在&lt;a style="text-decoration:none;color: #12ADDB;" href="${SITE_URL}" target="_blank"&gt;            ${SITE_NAME}&lt;/a&gt;上的评论有了新的回复&lt;/h2&gt; ${PARENT_NICK} 同学，您曾发表评论：&lt;div style="padding:0 12px 0 12px;margin-top:18px"&gt;&lt;div style="background-color: #f5f5f5;padding: 10px 15px;margin:18px 0;word-wrap:break-word;"&gt;            ${PARENT_COMMENT}&lt;/div&gt;&lt;p&gt;&lt;strong&gt;${NICK}&lt;/strong&gt;回复说：&lt;/p&gt;&lt;div style="background-color: #f5f5f5;padding: 10px 15px;margin:18px 0;word-wrap:break-word;"&gt; ${COMMENT}&lt;/div&gt;&lt;p&gt;您可以点击&lt;a style="text-decoration:none; color:#12addb" href="${POST_URL}" target="_blank"&gt;查看回复的完整內容&lt;/a&gt;，欢迎再次光临&lt;a style="text-decoration:none; color:#12addb" href="${SITE_URL}" target="_blank"&gt;${SITE_NAME}&lt;/a&gt;。&lt;br&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<div class="alert">
+注意，下列變數僅用於郵件範本裡的 HTML 變數中，請勿與雲引擎環境變數混淆
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>範本裡的變數</th>
+      <th>說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SITE_NAME</td>
+      <td>網站名稱</td>
+    </tr>
+    <tr>
+      <td>SITE_URL</td>
+      <td>網站 URL</td>
+    </tr>
+    <tr>
+      <td>POST_URL</td>
+      <td>文章 URL (完整路徑)</td>
+    </tr>
+    <tr>
+      <td>PARENT_NICK</td>
+      <td>收件人名稱 (被@者、父級評論人)</td>
+    </tr>
+    <tr>
+      <td>PARENT_COMMENT</td>
+      <td>父級評論內容</td>
+    </tr>
+    <tr>
+      <td>NICK</td>
+      <td>新評論者名稱</td>
+    </tr>
+    <tr>
+      <td>COMMENT</td>
+      <td>新評論內容</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>我只有把簡體換成繁體而已，我也有把專案fork下來把系統內的部分文字改成繁體的，下面這是我改的版本</p>
+
+<p>Git:<a href="https://github.com/zwei-c/Valine-Admin">https://github.com/zwei-c/Valine-Admin</a></p>
+
+<p>效果如圖:
+<img src="/assets/images/002/21.png" alt="21" /></p>
+
+<h3 id="瀏覽人數">瀏覽人數</h3>
+
+<p>在網站上顯示瀏覽人數是以前玩無名小站覺得很酷的功能，雖然會越用越心寒==</p>
+
+<p>我是使用 <a href="http://ibruce.info/2015/04/04/busuanzi/">不蒜子</a> 這個js套件：</p>
+
+<ul>
+  <li>顯示站點總訪問量</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code>&lt;span id="busuanzi_container_site_pv"&gt;
+    本站总访问量&lt;span id="busuanzi_value_site_pv"&gt;&lt;/span&gt;次
+&lt;/span&gt;
+</code></pre></td></tr></tbody></table></div></div>
+
+<ul>
+  <li>顯示單頁面訪問量</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code>&lt;span id="busuanzi_container_page_pv"&gt;
+  本文总阅读量&lt;span id="busuanzi_value_page_pv"&gt;&lt;/span&gt;次
+&lt;/span&gt;
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>用在jekyll的方法：</p>
+
+<p>我是放在側邊攔所以直接到 <code class="language-plaintext highlighter-rouge">_includes/_custom/sidebar.html</code><strong>(不同模板位置可能不同)</strong>新增</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5</pre></td><td class="code"><pre class="highlight"><code>&lt;script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"&gt;&lt;/script&gt;
+
+本站總訪問量&lt;span id="busuanzi_value_site_pv"&gt;&lt;/span&gt;次. &lt;br&gt;
+本站總訪問人數&lt;span id="busuanzi_value_site_uv"&gt;&lt;/span&gt;位. &lt;br&gt;
+本頁面訪問次數&lt;span id="busuanzi_value_page_pv"&gt;&lt;/span&gt;次.
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>效果如圖:</p>
+
+<p><img src="/assets/images/002/22.png" alt="22" /></p>
+
+<h1 id="結論">結論</h1>
+
+<p>jekyll這部分的功能更新應該暫時告一段落，先記錄一下待完成(<del>這次搞不定的東西</del>)的項目：</p>
+
+<ul>
+  <li>Appscript沒辦法設定某個時段不跑，這樣會導致某些時間會出現流控問題。</li>
+  <li>文章區分享按鈕</li>
+  <li>訂閱按鈕</li>
+  <li>待補充…</li>
+</ul>
+
+<p>再來要感謝辛西亞大大、AnkMar大大提供思路跟很完整的實作經驗，其實本篇文章寫的內容基本上都是兩位大大的經驗，我只是將我本身的實作過程記錄下來並加上一些我在實作過程中遇到的bug解決方法，老實說架設網站不難，但是寫網誌真的好難。看起來只要把步驟貼到文章上面就好了，但實際在寫的時候發現有時一些參數或函數、工具的用法說明，說明文件或是前人的文章已經寫得夠好了，搞得我只能把別人的東西Copy&amp;Paste到自己的文章上，有點怪不好意思的。</p>
+
+<h1 id="參考資料">參考資料</h1>
+
+<ul>
+  <li><a href="https://ankmak.com/tech/2021/03/11/use-valine-as-comments-in-jekyll.html">在 Jekyll 上使用 Valine 作為評論系統/留言版</a></li>
+  <li><a href="https://ankmak.com/tech/2022/05/04/valine-admin-setting-and-comments-notification-from-email.html">Valine Admin 配置教學 - 設定 Valine 作為評論區/留言版並透過 Email 取得留言通知</a></li>
+  <li><a href="https://busuanzi.ibruce.info/">不蒜子</a></li>
+  <li><a href="https://valine.js.org/">Valine</a></li>
+  <li><a href="https://github.com/DesertsP/Valine-Admin">Valine-Admin</a></li>
+  <li><a href="https://cynthiachuang.github.io/Add-Post-Copyright/">【種樹】新增版權訊息</a></li>
+  <li><a href="https://cynthiachuang.github.io/Copy-Text-to-Clipboard-and-Append-Source-Hyperlink/">【種樹】複製網頁文字時，加上網站的作者與網址</a></li>
+  <li><a href="https://www.heson10.com/posts/28396.html">所有关于Valine评论系统的配置都在这里【合集】</a></li>
+  <li><a href="https://blog.csdn.net/jiunian_2761/article/details/97388997">Hexo博客进阶：为Next主题添加Valine评论系统</a></li>
+</ul>
+
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+          
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Wei Chang
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文連結：</strong>
+      <a href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete/" title="完善網誌：留言區、版權資訊、訪問人數">http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版權聲明： </strong>
+      除非另有標注，部落格中所有文章，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。 轉載請標明作者、連結與出處！
+    </li>
+  </ul>
+
+
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/jekyll" rel="tag"># jekyll</a>
+          
+            
+            <a href="/tag/#/Valine" rel="tag"># Valine</a>
+          
+            
+            <a href="/tag/#/App%20Script" rel="tag"># App Script</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/" rel="prev" title="建置jekyll+Github Page">
+                建置jekyll+Github Page <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="vcomments"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/dog.png"
+               alt="Wei Chang" />
+          <p class="site-author-name" itemprop="name">Wei Chang</p>
+           
+              <p class="site-description motion-element" itemprop="description">something</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分類</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">標籤</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span> -->
+
+本站總訪問量<span id="busuanzi_value_site_pv"></span>次. <br>
+本站總訪問人數<span id="busuanzi_value_site_uv"></span>位. <br>
+本頁面訪問次數<span id="busuanzi_value_page_pv"></span>次.
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#前言"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#新增版權資料"> <span class="nav-number">2</span> <span class="nav-text">新增版權資料</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#開啟版權訊息功能"> <span class="nav-number">2.1</span> <span class="nav-text">開啟版權訊息功能</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#版權訊息關閉選項"> <span class="nav-number">2.2</span> <span class="nav-text">版權訊息關閉選項</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#複製網頁文字時加上網站的作者與網址"> <span class="nav-number">2.3</span> <span class="nav-text">複製網頁文字時，加上網站的作者與網址</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#新增留言區"> <span class="nav-number">3</span> <span class="nav-text">新增留言區</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#valine-的安裝和配置"> <span class="nav-number">3.1</span> <span class="nav-text">Valine 的安裝和配置</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#註冊-leancloud"> <span class="nav-number">3.1.1</span> <span class="nav-text">註冊 leancloud</a</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#appid跟appkey"> <span class="nav-number">3.1.2</span> <span class="nav-text">AppID跟AppKey</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#新增各個頁面"> <span class="nav-number">3.1.3</span> <span class="nav-text">新增各個頁面</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#新增valinehtm"> <span class="nav-number">3.1.3.1</span> <span class="nav-text">新增valine.htm</code</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#修改_configyml配置"> <span class="nav-number">3.1.3.2</span> <span class="nav-text">修改_config.yml配置</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#套用valinehtml"> <span class="nav-number">3.1.3.3</span> <span class="nav-text">套用valine.html</code</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#大功告成"> <span class="nav-number">3.1.4</span> <span class="nav-text">大功告成?</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#valine-的擴充"> <span class="nav-number">3.2</span> <span class="nav-text">Valine 的擴充</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#回覆通知"> <span class="nav-number">3.2.1</span> <span class="nav-text">回覆通知</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#生成app專用密碼"> <span class="nav-number">3.2.1.1</span> <span class="nav-text">生成APP專用密碼</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#設定leancloud"> <span class="nav-number">3.2.1.2</span> <span class="nav-text">設定LeanCloud</code</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#部署-leancloud-雲引擎"> <span class="nav-number">3.2.1.3</span> <span class="nav-text">部署 LeanCloud 雲引擎</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#評論管理"> <span class="nav-number">3.2.1.4</span> <span class="nav-text">評論管理</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#定時自動喚醒"> <span class="nav-number">3.2.1.5</span> <span class="nav-text">定時自動喚醒</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#leancloud-流控問題的解決方法"> <span class="nav-number">3.2.1.6</span> <span class="nav-text">LeanCloud 流控問題的解決方法</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#新增appscript專案"> <span class="nav-number">3.2.1.6.1</span> <span class="nav-text">新增AppScript專案</span> </a> </li> </ol> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#必填欄位設定"> <span class="nav-number">3.2.1.7</span> <span class="nav-text">必填欄位設定</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#自訂文字"> <span class="nav-number">3.2.1.8</span> <span class="nav-text">自訂文字</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#頭像設定"> <span class="nav-number">3.2.1.9</span> <span class="nav-text">頭像設定</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#其他用戶的頭像"> <span class="nav-number">3.2.1.10</span> <span class="nav-text">其他用戶的頭像</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#垃圾評論檢測"> <span class="nav-number">3.2.1.11</span> <span class="nav-text">垃圾評論檢測</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#先到-akismet-官網httpsakismetcomdevelopment註冊一個帳號這裡我-選擇用-gravatar-的帳號登入"> <span class="nav-number">3.2.1.11.1</span> <span class="nav-text">先到 akismet 官網(https://akismet.com/development/)註冊一個帳號，這裡我##### 選擇用 Gravatar 的帳號登入</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#選擇-developers-plan"> <span class="nav-number">3.2.1.11.2</span> <span class="nav-text">選擇 Developers Plan</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#取得-akismet-api-key"> <span class="nav-number">3.2.1.11.3</span> <span class="nav-text">取得 AKISMET API KEY</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#把-akismet-api-key-填入到-leancloud-的-akismet_key-參數裡"> <span class="nav-number">3.2.1.11.4</span> <span class="nav-text">把 AKISMET API KEY 填入到 leancloud 的 AKISMET_KEY 參數裡</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#重啟部署"> <span class="nav-number">3.2.1.11.5</span> <span class="nav-text">重啟部署</span> </a> </li> </ol> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#自定义邮件模板"> <span class="nav-number">3.2.1.12</span> <span class="nav-text">自定义邮件模板</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#瀏覽人數"> <span class="nav-number">3.2.2</span> <span class="nav-text">瀏覽人數</span> </a> </li> </ol> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#結論"> <span class="nav-number">4</span> <span class="nav-text">結論</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#參考資料"> <span class="nav-number">5</span> <span class="nav-text">參考資料</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wei Chang</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+<script>
+	document.addEventListener("copy", function (evt) {
+		let text = document.getSelection().toString();
+		if (text.length >= 100) {
+			text = text + "\n\n" + "=========================================\n" + "你複製整段要幹嘛==?";
+		}
+        console.log(text)
+		let clipdata = evt.clipboardData || window.clipboardData;
+		clipdata.setData("text", text);
+		evt.preventDefault();
+	});
+</script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+
+ 
+<script src="/assets/js/Valine.min.js"></script>
+<script>
+	var langName = "tw",
+		langMode = {
+			nick: "NickName(必填)",
+			mail: "E-Mail(必填)",
+			link: "Website(http://)",
+			nickFail: "NickName cannot be less than 3 bytes.",
+			mailFail: "Please confirm your email address.",
+			sofa: "No comment yet.",
+			submit: "Submit",
+			reply: "Reply",
+			cancelReply: "Cancel reply",
+			comments: "Comments",
+			cancel: "Cancel",
+			confirm: "Confirm",
+			continue: "Continue",
+			more: "Load More...",
+			preview: "Preview",
+			emoji: "Emoji",
+			expand: "See more....",
+			seconds: "seconds ago",
+			minutes: "minutes ago",
+			hours: "hours ago",
+			days: "days ago",
+			now: "just now",
+			uploading: "Uploading ...",
+			uploadDone: "Upload completed!",
+			busy: "Submit is busy, please wait...",
+			"code-98": "Valine initialization failed, please check your version of av-min.js.",
+			"code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+			"code-100": "Valine initialization failed, Please check your appId and appKey.",
+			"code-140": "The total number of API calls today has exceeded the development version limit.",
+			"code-401": "Unauthorized operation, Please check your appId and appKey.",
+			"code-403": "Access denied by API domain white list, Please check your security domain.",
+		};
+
+	new Valine({
+		el: "#comments",
+		app_id: "JKnSyYYosilnYSK5qqBw9Ewd-MdYXbMMI", //这里变量的取值在网站配置文件里_config.yml
+		app_key: "nsxgeLYfEW1x8CBRdAzBbIsU", //这里变量的取值在网站配置文件里_config.yml
+		placeholder: "提供您的寶貴意見。", //这里变量的取值在网站配置文件里_config.yml
+		serverURLs: "https://jknsyyyo.api.lncldglobal.com",
+		requiredFields: ["nick", "mail"],
+		lang: langName,
+		langMode: langMode,
+		verify: true,
+        avatar: 'retro',
+	});
+</script>
+ 
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
