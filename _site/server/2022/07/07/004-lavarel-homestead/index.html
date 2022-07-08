@@ -83,7 +83,7 @@
 <link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="jekyll,github,ruby," />
+  <meta name="keywords" content="Laravel,Vagrant," />
 
 
 
@@ -109,23 +109,17 @@
 
 
 
-<meta name="description" content="前言 原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裡面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。">
-<meta name="keywords" content="jekyll, github, ruby">
+<meta name="description" content="前言 以前寫的PHP專案都是用CodeIgniter當框架來開發，但最近公司要轉用Laravel來當之後的開發框架，因為之前虛擬環境都是用Vagrant來架設，估狗windows 開發 laravel裡面找到lavavel.tw裡面就有答案了。殊不知年輕人就是年輕人想得太少了…原來lavavel.tw這個官方文檔對應的laravel版本是5.3。看了一下公司專案的版本…8.x!會這樣講，是因為我又是裝完之後才發現的，因為要Build好開發環境才能看專案阿XD都怪我沒仔細看專案內容QQ，但裝了都裝了，我還是要記錄一下Laravel Homestead的架設過程。">
+<meta name="keywords" content="Laravel, Vagrant">
 <meta property="og:type" content="article">
-<meta property="og:title" content="建置jekyll+Github Page">
-<meta property="og:url" content="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/">
+<meta property="og:title" content="Windows部署Laravel Homestead">
+<meta property="og:url" content="http://localhost:4000/server/2022/07/07/004-lavarel-homestead/">
 <meta property="og:site_name" content="WeiChang&apos;s diary">
-<meta property="og:description" content="前言 原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裡面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。">
+<meta property="og:description" content="前言 以前寫的PHP專案都是用CodeIgniter當框架來開發，但最近公司要轉用Laravel來當之後的開發框架，因為之前虛擬環境都是用Vagrant來架設，估狗windows 開發 laravel裡面找到lavavel.tw裡面就有答案了。殊不知年輕人就是年輕人想得太少了…原來lavavel.tw這個官方文檔對應的laravel版本是5.3。看了一下公司專案的版本…8.x!會這樣講，是因為我又是裝完之後才發現的，因為要Build好開發環境才能看專案阿XD都怪我沒仔細看專案內容QQ，但裝了都裝了，我還是要記錄一下Laravel Homestead的架設過程。">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="/assets/images/001/1.png">
-<meta property="og:image" content="/assets/images/001/2.png">
-<meta property="og:image" content="/assets/images/001/4.png">
-<meta property="og:image" content="/assets/images/001/5.png">
-<meta property="og:image" content="/assets/images/001/6.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="建置jekyll+Github Page">
-<meta name="twitter:description" content="前言 原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裡面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。">
-<meta name="twitter:image" content="/assets/images/001/1.png">
+<meta name="twitter:title" content="Windows部署Laravel Homestead">
+<meta name="twitter:description" content="前言 以前寫的PHP專案都是用CodeIgniter當框架來開發，但最近公司要轉用Laravel來當之後的開發框架，因為之前虛擬環境都是用Vagrant來架設，估狗windows 開發 laravel裡面找到lavavel.tw裡面就有答案了。殊不知年輕人就是年輕人想得太少了…原來lavavel.tw這個官方文檔對應的laravel版本是5.3。看了一下公司專案的版本…8.x!會這樣講，是因為我又是裝完之後才發現的，因為要Build好開發環境才能看專案阿XD都怪我沒仔細看專案內容QQ，但裝了都裝了，我還是要記錄一下Laravel Homestead的架設過程。">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -158,7 +152,7 @@
 
 
 
-  <title>建置jekyll+Github Page | WeiChang's diary</title>
+  <title>Windows部署Laravel Homestead | WeiChang's diary</title>
   
 
 
@@ -308,7 +302,7 @@
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/server/2022/07/07/004-lavarel-homestead/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wei Chang">
@@ -328,7 +322,7 @@
           <h1 class="post-title" itemprop="name headline">
           
           
-            建置jekyll+Github Page
+            Windows部署Laravel Homestead
           
         </h1>
         
@@ -342,8 +336,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-07-04T00:00:00+08:00">
-                2022-07-04
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-07-07T00:00:00+08:00">
+                2022-07-07
               </time>
             
 
@@ -366,8 +360,8 @@
               
                 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/%E5%89%8D%E7%AB%AF" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/category/#/Server" itemprop="url" rel="index">
+                    <span itemprop="name">Server</span>
                   </a>
                 </span>
 
@@ -422,164 +416,95 @@
 
 
   <hr />
+
 <h1 id="前言">前言</h1>
-<p>原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裡面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。</p>
 
-<!-- more -->
-<h1 id="使用的工具">使用的工具</h1>
+<p>以前寫的PHP專案都是用<code class="language-plaintext highlighter-rouge">CodeIgniter</code>當框架來開發，但最近公司要轉用<code class="language-plaintext highlighter-rouge">Laravel</code>來當之後的開發框架，因為之前虛擬環境都是用<code class="language-plaintext highlighter-rouge">Vagrant</code>來架設，估狗<em>windows 開發 laravel</em>裡面找到<a href="https://laravel.tw/">lavavel.tw</a>裡面就有答案了。殊不知年輕人就是年輕人想得太少了…原來<code class="language-plaintext highlighter-rouge">lavavel.tw</code>這個官方文檔對應的<code class="language-plaintext highlighter-rouge">laravel</code>版本是<code class="language-plaintext highlighter-rouge">5.3</code>。看了一下公司專案的版本…<code class="language-plaintext highlighter-rouge">8.x</code>!會這樣講，是因為我又是裝完之後才發現的，<del>因為要Build好開發環境才能看專案阿XD</del>都怪我沒仔細看專案內容QQ，但裝了都裝了，我還是要記錄一下<code class="language-plaintext highlighter-rouge">Laravel Homestead</code>的架設過程。
+<!-- more --></p>
+<h1 id="vagrant">Vagrant</h1>
+
+<p><code class="language-plaintext highlighter-rouge">Vagrant</code>是一個用<code class="language-plaintext highlighter-rouge">Vagrantfile</code>來設定的虛擬環境軟體，要使用你要先安裝：</p>
 <ul>
-  <li>GitHub pages</li>
-  <li>Jekyll</li>
-  <li>PowerShell</li>
-  <li>VSCode</li>
+  <li><a href="https://www.vagrantup.com/">Vagrant</a></li>
+  <li><a href="https://www.virtualbox.org/">VirtualBox</a></li>
 </ul>
-
-<h1 id="環境">環境</h1>
-<ul>
-  <li>Windows 10</li>
-</ul>
-
-<h1 id="github-pages">GitHub pages</h1>
-<p>其實我本身寫的code跟上班寫的code都是放在GitLab上，但當我看到GitLab pages的時候已經把這個網站架好了所以沒什麼意外的話應該會繼續使用GitHub pages來當我的個人web site。</p>
-
-<p>關於GitHub pages其實網路上的教學很多而且都寫得很清楚，所以除了基本的作業流程另外補充一下我自己遇到的問題。</p>
-
-<h2 id="initialization">initialization</h2>
-
-<ul>
-  <li>需要的東西
-    <ul>
-      <li>GitHub帳號</li>
-    </ul>
-  </li>
-</ul>
-
-<ol>
-  <li>新增名為「username.github.io」的專案，這個 username 指的是自己的 GitHub 帳號。這不僅是你的專案名稱，也是你的 blog 網址。專案成立後，按照 Quick setup 的提示準備好專案的資料夾。<img src="/assets/images/001/1.png" alt="1" /></li>
-  <li>Clone下來到本地資料夾，這邊可以先照著GitHub pages 上面的教學create一個index.html然後推上去連接到自己的網站上面看看效果 :)</li>
-</ol>
 <div class="alert">
-  提交之後要過兩三分鐘才會顯示出來，所以不要緊張
+Vagrant跟VirtualBox的版本有對應關係，需要各自安裝對的版本才能正常運行！
 </div>
 
-<p><img src="/assets/images/001/2.png" alt="2" /></p>
+<p>具體上的教學網路有很多且不是本文重點，我就不贅述了。</p>
 
-<p>到這邊之後GitHub pages基本已經建置完成。如果你有匠人精神可以直接在這邊手刻CSS跟HTML來做網頁，但小弟不才又懶所以接著要使用Jekyll來繼續佈置網站。</p>
+<h1 id="laravel-homestead">Laravel Homestead</h1>
 
-<hr />
-<h1 id="jekyll">Jekyll</h1>
+<blockquote>
+  <p>Laravel Homestead 是一個官方預載的 Vagrant box，提供一個美好的開發環境，不需要在本機電腦安裝 PHP、HHVM、網頁伺服器或任何伺服器軟體。不用擔心搞亂你的系統！Vagrant box 可以搞定一切。如果有什麼地方搞爛掉了，還可以在幾分鐘內快速地砍掉並重建虛擬機器！</p>
+</blockquote>
 
-<p>Jekyll 是 Ruby 所編寫出來的 framework，因此在安裝 Jekyll 之前要先安裝Ruby。</p>
+<h2 id="安裝-homestead-vagrant-box">安裝 Homestead Vagrant Box</h2>
 
-<h2 id="基本安裝">基本安裝</h2>
+<p>當 VirtualBox / VMware 以及 Vagrant 安裝完成後，可以在終端機執行下列指令將 <code class="language-plaintext highlighter-rouge">laravel/homestead</code> 這個 box 安裝進你的 Vagrant 程式中。下載 box 會花一點時間，時間長短將依據你的網路速度決定：</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>https://rubyinstaller.org/
-</code></pre></td></tr></tbody></table></div></div>
-<p>我是選擇當前最新版本<code class="language-plaintext highlighter-rouge">Ruby+Devkit 3.1.2-1 (x64)</code>來進行安裝</p>
-
-<p>根據Jekyll官方文件所述，要使用<code class="language-plaintext highlighter-rouge">WITH DEVKIT</code>的版本來裝。之前沒有仔細看文件直接裝了<code class="language-plaintext highlighter-rouge">WITHOUT DEVKIT</code>版本導致後面在裝<code class="language-plaintext highlighter-rouge">MINGGW</code>的時候出現一堆error = =</p>
-
-<p>安裝完成之後直接勾選  <code class="language-plaintext highlighter-rouge">Run 'ridk install' to set up MSYS2 ...</code>。
-<img src="/assets/images/001/4.png" alt="4" /></p>
-
-<p>接著會自動在terminal開啟ruby安裝的介面，這邊他已經幫你key in好選項 <code class="language-plaintext highlighter-rouge">1 3</code>直接按enter來安裝就好了
-<img src="/assets/images/001/5.png" alt="5" /></p>
-
-<p>看到 <code class="language-plaintext highlighter-rouge">Install MSYS2 and MINGW development toolchain succeeded</code>就代表安裝好了!</p>
-
-<p>再來在執行</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>gem install jekyll bundler
-</code></pre></td></tr></tbody></table></div></div>
-<p>接下來將專案（e.g. myblog 資料夾）設為 Jekyll 的網站，由於我的專案中已經存在些檔案，所以我在指令的後面加上 force 避免覆蓋。網站設置完時，它會動配置一組預設主題 - minima。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>jekyll new myblog  --force 
-</code></pre></td></tr></tbody></table></div></div>
-<p>到此網站就算建立完成了，若想在上線前預覽建置的結果，可先進入專案進行編譯。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>cd myblog
-jekyll serve
-</code></pre></td></tr></tbody></table></div></div>
-<p>編譯結果可在瀏覽器輸入 http://localhost:4000 後查看。若可以順利執行，就將這次的 diff 進行 commit 後送上 github了。</p>
-
-<p>在這邊我遇到一個BUG</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>cannot load such file -- webrick (LoadError)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>vagrant box add laravel/homestead
 </code></pre></td></tr></tbody></table></div></div>
 
-<p>根據官方的項目的說明：</p>
+<h2 id="安裝-homestead">安裝 Homestead</h2>
 
-<p>這是因為：
-從 Ruby 3.0 開始 webrick 已經不在綁定到 Ruby 中了，</p>
+<p>可以簡單地透過複製(clone)儲存庫的方式來安裝 Homestead。建議可將儲存庫複製至你的「home」目錄中的 Homestead 資料夾，如此一來 Homestead box 將能提供主機服務給你所有的 Laravel 專案：</p>
 
-<p>webrick 需要手動進行添加。</p>
-
-<p>添加的指令為：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>bundle add webrick
-bundle install
-</code></pre></td></tr></tbody></table></div></div>
-<p>後就可以解決這個問題了。</p>
-
-<h2 id="主題更換">主題更換</h2>
-
-<h3 id="挑選主題">挑選主題</h3>
-
-<p>網路上搜尋jekyll theme就有很多網站供應jekyll的模板了，我是使用<a href="http://theme-next.simpleyyt.com/getting-started.html">jekyll-theme-next</a>- <a href="https://simpleyyt.com/jekyll-theme-next/">demo</a>這個主題，照著他的步驟：</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>git clone https://github.com/Simpleyyt/jekyll-theme-next.git
-</code></pre></td></tr></tbody></table></div></div>
-<p>我自己是把<code class="language-plaintext highlighter-rouge">jekyll-theme-next</code>這個資料夾內除了.git相關的檔案移到剛剛建立的my-blog資料夾內，並刪除<code class="language-plaintext highlighter-rouge">Gemfile.lock</code>後執行</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>bundle install
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>git clone https://github.com/laravel/homestead.git Homestead
 </code></pre></td></tr></tbody></table></div></div>
 
-<p>在run</p>
+<p>複製完 Homestead 儲存庫，即可在 Homestead 目錄中執行 <code class="language-plaintext highlighter-rouge">bash init.sh</code> 指令來建立 <code class="language-plaintext highlighter-rouge">Homestead.yaml</code> 設定檔。 <code class="language-plaintext highlighter-rouge">Homestead.yaml</code> 檔案將會被放置在<code class="language-plaintext highlighter-rouge">homestead</code>目錄中：</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>bundle exec jekyll server
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>./init.bat
+</code></pre></td></tr></tbody></table></div></div>
+<h2 id="設定-homestead">設定 Homestead</h2>
+
+<h3 id="設定提供者">設定提供者</h3>
+<p>在 <code class="language-plaintext highlighter-rouge">/homestead/Homestead.yaml</code> 檔案中的 <code class="language-plaintext highlighter-rouge">provider</code> 是用來設定想要使用哪一個 Vagrant 提供者，像是：<code class="language-plaintext highlighter-rouge">virtualbox</code>、<code class="language-plaintext highlighter-rouge">vmware_fusion</code>、<code class="language-plaintext highlighter-rouge">vmware_workstation</code> 或 <code class="language-plaintext highlighter-rouge">parallels</code>。這邊我們要填寫:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>provider: virtualbox
 </code></pre></td></tr></tbody></table></div></div>
 
-<p>這個時候用瀏覽器訪問<code class="language-plaintext highlighter-rouge">localhost:4000</code>就可以看到</p>
+<h3 id="設定共享目錄">設定共享目錄</h3>
 
-<p><img src="/assets/images/001/6.png" alt="6" /></p>
+<p>在 <code class="language-plaintext highlighter-rouge">Homestead.yaml</code> 檔案的 <code class="language-plaintext highlighter-rouge">folders</code> 屬性裡列出所有想與 Homestead 環境共享的目錄。這些目錄中的檔案若有更動，它們將會同步更動在你的本機電腦與 Homestead 環境。可以將多個共享目錄都設定於此：</p>
 
-<p>但是看terminal上面會有<code class="language-plaintext highlighter-rouge">GitHub Metadata: No GitHub API authentication could be found</code>這個報錯，原因很複雜可以自己去估狗一下XD。有個簡單的方法可以解決，到<code class="language-plaintext highlighter-rouge">_config.yml</code>中找到<code class="language-plaintext highlighter-rouge">description</code>給他填上值就OK了!</p>
-
-<h2 id="撰寫文章">撰寫文章</h2>
-
-<p>終於把環境弄好了，接著可以看該模板內的_posts這個資料夾內的MD檔，把MD檔丟進去jekyll就會把它變成html然後顯示到你的網站上面了，只是要注意MD檔的格式一定要是</p>
-
-<p><code class="language-plaintext highlighter-rouge">YYYY-MM-DD-name.md</code></p>
-
-<p>並且MD檔的開頭必須是：</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12</pre></td><td class="code"><pre class="highlight"><code>---
-title: 文章標題
-date: 2022-07-04
-categories:
-- 他可以
-tags:
-- 穿過
-- 我的
-- 巴巴
---- 
-
-// 以下開始撰寫你的文章
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code>folders:
+    - map: C:\Code
+      to: /home/vagrant/Code
 </code></pre></td></tr></tbody></table></div></div>
 
-<p>根據我參考的這篇作者表示，不同的模板可能有不同的規範，這部分如果使用不同模板的同學自己留意一下。</p>
+<h3 id="設定-nginx-網站">設定 Nginx 網站</h3>
+<p><code class="language-plaintext highlighter-rouge">sites</code> 屬性幫助你可以輕易的指定「網域」對應至 homestead 環境中的目錄。在 <code class="language-plaintext highlighter-rouge">Homestead.yaml</code> 檔案中已包含一個網站設定範例。同樣的，你可以增加數個網站到 Homestead 環境中。Homestead 可以為每個你正在開發中的 Laravel 專案提供方便的虛擬化環境：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code>sites:
+    - map: homestead.app
+      to: /home/vagrant/Code/Laravel/public
+</code></pre></td></tr></tbody></table></div></div>
+<p>在配置 Homestead box 之後，若有更改 sites 屬性，你應該重新執行配置指令 <code class="language-plaintext highlighter-rouge">vagrant reload --provision</code> 來更新虛擬機裡的 Nginx 設定。</p>
 
-<h1 id="總結">總結</h1>
-<p>整個網站包含查資料跟寫這篇文章的時間大概花了4-5小時，但真正build網站大概只花了30分鐘，使用GitHub pages跟jekyll來建置個人網站真的很快又很簡單XD，希望之後有毅力能持續的更新這個網站!</p>
+<h3 id="hosts-檔案">Hosts 檔案</h3>
+
+<p>你必須為 Nginx 網站在你機器中的 <code class="language-plaintext highlighter-rouge">hosts</code> 檔案增加「網域」。<code class="language-plaintext highlighter-rouge">hosts</code> 檔案會將你對 Homestead 網站的請求重導至 Homestead 機器。在 Mac 或 Linux 上，在 Windows 上，則存放於 <code class="language-plaintext highlighter-rouge">C:\Windows\System32\drivers\etc\hosts</code>。你增加至該檔案的內容看起來會像這樣：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>192.168.10.10  homestead.app
+</code></pre></td></tr></tbody></table></div></div>
+<p>務必確認 IP 位置與你的 <code class="language-plaintext highlighter-rouge">Homestead.yaml</code> 檔案中設定相同。一旦將網域設定在 hosts 檔案之後，你就可以透過網頁瀏覽器造訪網站！</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>http://homestead.app
+</code></pre></td></tr></tbody></table></div></div>
+
+<h2 id="啟動-vagrant-box">啟動 Vagrant Box</h2>
+
+<p>當你編輯完 <code class="language-plaintext highlighter-rouge">Homestead.yaml</code>後，開啟終端機，進入 Homestead 目錄，並執行 <code class="language-plaintext highlighter-rouge">vagrant up</code> 指令。Vagrant 就會自將虛擬主機啟動並自動設定共享目錄和 Nginx 網站。</p>
+
+<p>如果要移除虛擬機器，可以使用 <code class="language-plaintext highlighter-rouge">vagrant destroy --force</code> 指令。</p>
+
+<h2 id="透過-ssh-連接">透過 SSH 連接</h2>
+
+<p>你可以在終端機裡進入你的 Homestead 目錄，並執行 <code class="language-plaintext highlighter-rouge">vagrant ssh</code> 指令藉此以 SSH 連上你的虛擬主機。</p>
 
 <h1 id="參考資料">參考資料</h1>
 
-<ol>
-  <li><a href="https://cynthiachuang.github.io/Setting-Up-a-GitHub-Pages-Site-with-Jekyll/">辛西亞的技能樹- 【種樹】使用 Jekyll 和搭建 Github Pages</a></li>
-  <li><a href="http://theme-next.simpleyyt.com/getting-started.html">NexT使用文檔</a></li>
-  <li><a href="https://pages.github.com/">GitHub Pages</a></li>
-  <li><a href="https://www.cnblogs.com/huyuchengus/p/15473035.html">Jekyll 运行的时候提示错误 cannot load such file – webrick (LoadError)</a></li>
-  <li><a href="https://jekyllrb.com/">jekyll官方文檔</a></li>
-  <li><a href="https://giselle527.github.io/2018/02/12/problems">見字如畫 - githubPages+jekyll搭建博客和使用jekyll模板</a></li>
-  <li><a href="https://blog.csdn.net/pfysw/article/details/109247846">搭建msys2基礎開發平台</a></li>
-</ol>
+<p><a href="https://laravel.tw/docs/5.3/homestead">laravel.tw/docs/5.3/homestead</a></p>
 
 
       
@@ -610,7 +535,7 @@ tags:
     </li>
     <li class="post-copyright-link">
       <strong>本文連結：</strong>
-      <a href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/" title="建置jekyll+Github Page">http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/</a>
+      <a href="http://localhost:4000/server/2022/07/07/004-lavarel-homestead/" title="Windows部署Laravel Homestead">http://localhost:4000/server/2022/07/07/004-lavarel-homestead/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版權聲明： </strong>
@@ -628,13 +553,10 @@ tags:
         <div class="post-tags">
           
             
-            <a href="/tag/#/jekyll" rel="tag"># jekyll</a>
+            <a href="/tag/#/Laravel" rel="tag"># Laravel</a>
           
             
-            <a href="/tag/#/github" rel="tag"># github</a>
-          
-            
-            <a href="/tag/#/ruby" rel="tag"># ruby</a>
+            <a href="/tag/#/Vagrant" rel="tag"># Vagrant</a>
           
         </div>
       
@@ -650,15 +572,15 @@ tags:
         <div class="post-nav" id="post-nav-id">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete/" rel="next" title="完善網誌：留言區、版權資訊、訪問人數">
-                <i class="fa fa-chevron-left"></i> 完善網誌：留言區、版權資訊、訪問人數
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/%E5%89%8D%E7%AB%AF/2022/07/07/003-page/" rel="prev" title="文章預覽顯示設定">
+                文章預覽顯示設定 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -815,7 +737,7 @@ tags:
             
               <div class="post-toc-content">
     <ol class=nav>
-      <li class="nav-item nav-level-1"> <a class="nav-link" href="#前言"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#使用的工具"> <span class="nav-number">2</span> <span class="nav-text">使用的工具</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#環境"> <span class="nav-number">3</span> <span class="nav-text">環境</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#github-pages"> <span class="nav-number">4</span> <span class="nav-text">GitHub pages</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#initialization"> <span class="nav-number">4.1</span> <span class="nav-text">initialization</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#jekyll"> <span class="nav-number">5</span> <span class="nav-text">Jekyll</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#基本安裝"> <span class="nav-number">5.1</span> <span class="nav-text">基本安裝</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#主題更換"> <span class="nav-number">5.2</span> <span class="nav-text">主題更換</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#挑選主題"> <span class="nav-number">5.2.1</span> <span class="nav-text">挑選主題</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#撰寫文章"> <span class="nav-number">5.3</span> <span class="nav-text">撰寫文章</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#總結"> <span class="nav-number">6</span> <span class="nav-text">總結</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#參考資料"> <span class="nav-number">7</span> <span class="nav-text">參考資料</span> </a> </li>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#前言"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#vagrant"> <span class="nav-number">2</span> <span class="nav-text">Vagrant</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#laravel-homestead"> <span class="nav-number">3</span> <span class="nav-text">Laravel Homestead</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#安裝-homestead-vagrant-box"> <span class="nav-number">3.1</span> <span class="nav-text">安裝 Homestead Vagrant Box</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#安裝-homestead"> <span class="nav-number">3.2</span> <span class="nav-text">安裝 Homestead</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#設定-homestead"> <span class="nav-number">3.3</span> <span class="nav-text">設定 Homestead</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#設定提供者"> <span class="nav-number">3.3.1</span> <span class="nav-text">設定提供者</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#設定共享目錄"> <span class="nav-number">3.3.2</span> <span class="nav-text">設定共享目錄</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#設定-nginx-網站"> <span class="nav-number">3.3.3</span> <span class="nav-text">設定 Nginx 網站</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#hosts-檔案"> <span class="nav-number">3.3.4</span> <span class="nav-text">Hosts 檔案</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#啟動-vagrant-box"> <span class="nav-number">3.4</span> <span class="nav-text">啟動 Vagrant Box</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#透過-ssh-連接"> <span class="nav-number">3.5</span> <span class="nav-text">透過 SSH 連接</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#參考資料"> <span class="nav-number">4</span> <span class="nav-text">參考資料</span> </a> </li>
     </ol>
   </div>
             

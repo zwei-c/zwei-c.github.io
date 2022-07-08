@@ -83,7 +83,7 @@
 <link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Jekyll, NexT" />
+  <meta name="keywords" content="jekyll," />
 
 
 
@@ -109,17 +109,17 @@
 
 
 
-<meta name="description" content="something">
-<meta name="keywords" content="Jekyll, NexT">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WeiChang&apos;s diary">
-<meta property="og:url" content="http://localhost:4000/">
+<meta name="description" content="前言 看了一下自己的網誌之後覺得哪邊怪怪的，原來是因為在文章列表中顯示出來的預覽範圍的問題啊！趕緊查一下資料，將找到的方法紀錄一下。">
+<meta name="keywords" content="jekyll">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文章預覽顯示設定">
+<meta property="og:url" content="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/07/003-page/">
 <meta property="og:site_name" content="WeiChang&apos;s diary">
-<meta property="og:description" content="something">
+<meta property="og:description" content="前言 看了一下自己的網誌之後覺得哪邊怪怪的，原來是因為在文章列表中顯示出來的預覽範圍的問題啊！趕緊查一下資料，將找到的方法紀錄一下。">
 <meta property="og:locale" content="zh-tw">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WeiChang&apos;s diary">
-<meta name="twitter:description" content="something">
+<meta name="twitter:title" content="文章預覽顯示設定">
+<meta name="twitter:description" content="前言 看了一下自己的網誌之後覺得哪邊怪怪的，原來是因為在文章列表中顯示出來的預覽範圍的問題啊！趕緊查一下資料，將找到的方法紀錄一下。">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -152,7 +152,7 @@
 
 
 
-  <title>WeiChang's diary</title>
+  <title>文章預覽顯示設定 | WeiChang's diary</title>
   
 
 
@@ -177,7 +177,7 @@
   
   
 
-  <div class="container sidebar-position-left page-home ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -291,185 +291,9 @@
           <div id="content" class="content">
             
 
-
-
-<section id="posts" class="posts-expand">
-  
-    
-    
-
-  
-
+<div id="posts" class="posts-expand">
   
   
-  
-
-  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/server/2022/07/07/004-lavarel-homestead/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wei Chang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/dog.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WeiChang's diary">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-                
-                <a class="post-title-link" href="/server/2022/07/07/004-lavarel-homestead/" itemprop="url">
-                Windows部署Laravel Homestead
-              </a>
-            
-          
-        </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-07-07T00:00:00+08:00">
-                2022-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/Server" itemprop="url" rel="index">
-                    <span itemprop="name">Server</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  <hr />
-
-<h1 id="前言">前言</h1>
-
-<p>以前寫的PHP專案都是用<code class="language-plaintext highlighter-rouge">CodeIgniter</code>當框架來開發，但最近公司要轉用<code class="language-plaintext highlighter-rouge">Laravel</code>來當之後的開發框架，因為之前虛擬環境都是用<code class="language-plaintext highlighter-rouge">Vagrant</code>來架設，估狗<em>windows 開發 laravel</em>裡面找到<a href="https://laravel.tw/">lavavel.tw</a>裡面就有答案了。殊不知年輕人就是年輕人想得太少了…原來<code class="language-plaintext highlighter-rouge">lavavel.tw</code>這個官方文檔對應的<code class="language-plaintext highlighter-rouge">laravel</code>版本是<code class="language-plaintext highlighter-rouge">5.3</code>。看了一下公司專案的版本…<code class="language-plaintext highlighter-rouge">8.x</code>!會這樣講，是因為我又是裝完之後才發現的，<del>因為要Build好開發環境才能看專案阿XD</del>都怪我沒仔細看專案內容QQ，但裝了都裝了，我還是要記錄一下<code class="language-plaintext highlighter-rouge">Laravel Homestead</code>的架設過程。</p>
-
-
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/server/2022/07/07/004-lavarel-homestead/#" rel="contents">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-        
-        
-        
-        
-          <div class="post-eof"></div>
-        
-      
-    </footer>
-  </article>
-
-  
-    
-    
 
   
 
@@ -498,12 +322,7 @@
           <h1 class="post-title" itemprop="name headline">
           
           
-            
-                
-                <a class="post-title-link" href="/%E5%89%8D%E7%AB%AF/2022/07/07/003-page/" itemprop="url">
-                文章預覽顯示設定
-              </a>
-            
+            文章預覽顯示設定
           
         </h1>
         
@@ -564,6 +383,12 @@
           
 
           
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
 
         </div>
       </header>
@@ -576,7 +401,6 @@
 
       
         
-          
   
   
 
@@ -596,397 +420,114 @@
 
 <p>看了一下自己的網誌之後覺得哪邊怪怪的，原來是因為在文章列表中顯示出來的預覽範圍的問題啊！趕緊查一下資料，將找到的方法紀錄一下。</p>
 
+<!-- more -->
+
+<h1 id="實作">實作</h1>
+
+<p>通過分隔符的方式.
+需要先在<code class="language-plaintext highlighter-rouge">_config.yml</code>中配置分隔符</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>excerpt_separator:  '&lt;!-- more --&gt;'
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>然後就可以在正文中通過插入<code class="language-plaintext highlighter-rouge">&lt;!-- more --&gt;</code>來將以上的內容標記為文章摘要.</p>
+
+<h1 id="參考資料">參考資料</h1>
+
+<ul>
+  <li><a href="https://moonagic.com/configure-the-jekyll-article-list-summary/">Jekyll文章列表摘要設置</a></li>
+</ul>
 
 
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/%E5%89%8D%E7%AB%AF/2022/07/07/003-page/#" rel="contents">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+          
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Wei Chang
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文連結：</strong>
+      <a href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/07/003-page/" title="文章預覽顯示設定">http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/07/003-page/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版權聲明： </strong>
+      除非另有標注，部落格中所有文章，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。 轉載請標明作者、連結與出處！
+    </li>
+  </ul>
+
+
+        
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-        
-        
-        
-        
-          <div class="post-eof"></div>
-        
-      
-    </footer>
-  </article>
-
-  
-    
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wei Chang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/dog.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WeiChang's diary">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-          
+        <div class="post-tags">
           
             
-                
-                <a class="post-title-link" href="/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete/" itemprop="url">
-                完善網誌：留言區、版權資訊、訪問人數
+            <a href="/tag/#/jekyll" rel="tag"># jekyll</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/server/2022/07/07/004-lavarel-homestead/" rel="next" title="Windows部署Laravel Homestead">
+                <i class="fa fa-chevron-left"></i> Windows部署Laravel Homestead
               </a>
             
-          
-        </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-07-05T00:00:00+08:00">
-                2022-07-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/%E5%89%8D%E7%AB%AF" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  <hr />
-<h1 id="前言">前言</h1>
-
-<p>續昨天 <a href="https://zwei-c.github.io/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/">建置jekyll+Github Page</a>完成基本設定後，我又參考<a href="https://ankmak.com/">Ank’s Blog</a>、<a href="https://cynthiachuang.github.io/">辛西亞的技能樹</a>等大大的網誌內的教學文，新增一些功能到我的網誌內，讓功能更完善一些。</p>
-
-
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete/#" rel="contents">
-              閱讀全文 &raquo;
-            </a>
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
+          <span class="post-nav-divider"></span>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-        
-        
-        
-        
-          <div class="post-eof"></div>
-        
-      
-    </footer>
-  </article>
-
-  
-    
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wei Chang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/dog.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WeiChang's diary">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-          
-          
+          <div class="post-nav-prev post-nav-item">
             
-                
-                <a class="post-title-link" href="/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/" itemprop="url">
-                建置jekyll+Github Page
+              <a href="/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete/" rel="prev" title="完善網誌：留言區、版權資訊、訪問人數">
+                完善網誌：留言區、版權資訊、訪問人數 <i class="fa fa-chevron-right"></i>
               </a>
             
-          
-        </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-07-04T00:00:00+08:00">
-                2022-07-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/%E5%89%8D%E7%AB%AF" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  <hr />
-<h1 id="前言">前言</h1>
-<p>原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裡面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。</p>
-
-
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/#" rel="contents">
-              閱讀全文 &raquo;
-            </a>
           </div>
-          <!--/noindex-->
-        
+        </div>
       
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
       
 
-      
-
-      
-
-      
-        
-        
-        
-        
-          <div class="post-eof"></div>
-        
       
     </footer>
   </article>
 
-  
-</section>
-
-
-
+  <div class="post-spread">
+    
+  </div>
+</div>
 
 
           </div>
@@ -994,6 +535,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="vcomments"></div>
+    
+  </div>
+
 
         </div>
         
@@ -1011,10 +558,30 @@
     <div class="sidebar-inner">
 
       
+        
+        
+        
+
+
+
+
+
+
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/assets/dog.png"
@@ -1083,6 +650,34 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#前言"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#實作"> <span class="nav-number">2</span> <span class="nav-text">實作</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#參考資料"> <span class="nav-number">3</span> <span class="nav-text">參考資料</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

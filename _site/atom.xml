@@ -1,8 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-06T12:33:02+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WeiChang’s diary</title><subtitle>something</subtitle><author><name>Wei Chang</name></author><entry><title type="html">完善網誌：留言區、版權資訊、訪問人數</title><link href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete/" rel="alternate" type="text/html" title="完善網誌：留言區、版權資訊、訪問人數" /><published>2022-07-05T00:00:00+08:00</published><updated>2022-07-05T00:00:00+08:00</updated><id>http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete</id><content type="html" xml:base="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete/">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-07T18:50:18+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WeiChang’s diary</title><subtitle>something</subtitle><author><name>Wei Chang</name></author><entry><title type="html">Windows部署Laravel Homestead</title><link href="http://localhost:4000/server/2022/07/07/004-lavarel-homestead/" rel="alternate" type="text/html" title="Windows部署Laravel Homestead" /><published>2022-07-07T00:00:00+08:00</published><updated>2022-07-07T00:00:00+08:00</updated><id>http://localhost:4000/server/2022/07/07/004-lavarel-homestead</id><content type="html" xml:base="http://localhost:4000/server/2022/07/07/004-lavarel-homestead/">&lt;hr /&gt;
+
 &lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
 
-&lt;p&gt;續昨天 &lt;a href=&quot;https://zwei-c.github.io/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/&quot;&gt;建置jekyll+Github Page&lt;/a&gt;完成基本設定後，我又參考&lt;a href=&quot;https://ankmak.com/&quot;&gt;Ank’s Blog&lt;/a&gt;、&lt;a href=&quot;https://cynthiachuang.github.io/&quot;&gt;辛西亞的技能樹&lt;/a&gt;等大大的網誌內的教學文，新增一些功能到我的網誌內，讓功能更完善一些。&lt;/p&gt;
+&lt;p&gt;以前寫的PHP專案都是用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CodeIgniter&lt;/code&gt;當框架來開發，但最近公司要轉用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Laravel&lt;/code&gt;來當之後的開發框架，因為之前虛擬環境都是用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Vagrant&lt;/code&gt;來架設，估狗&lt;em&gt;windows 開發 laravel&lt;/em&gt;裡面找到&lt;a href=&quot;https://laravel.tw/&quot;&gt;lavavel.tw&lt;/a&gt;裡面就有答案了。殊不知年輕人就是年輕人想得太少了…原來&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lavavel.tw&lt;/code&gt;這個官方文檔對應的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;laravel&lt;/code&gt;版本是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5.3&lt;/code&gt;。看了一下公司專案的版本…&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8.x&lt;/code&gt;!會這樣講，是因為我又是裝完之後才發現的，&lt;del&gt;因為要Build好開發環境才能看專案阿XD&lt;/del&gt;都怪我沒仔細看專案內容QQ，但裝了都裝了，我還是要記錄一下&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Laravel Homestead&lt;/code&gt;的架設過程。
+&lt;!-- more --&gt;&lt;/p&gt;
+&lt;h1 id=&quot;vagrant&quot;&gt;Vagrant&lt;/h1&gt;
 
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Vagrant&lt;/code&gt;是一個用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Vagrantfile&lt;/code&gt;來設定的虛擬環境軟體，要使用你要先安裝：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.vagrantup.com/&quot;&gt;Vagrant&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;VirtualBox&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;alert&quot;&gt;
+Vagrant跟VirtualBox的版本有對應關係，需要各自安裝對的版本才能正常運行！
+&lt;/div&gt;
+
+&lt;p&gt;具體上的教學網路有很多且不是本文重點，我就不贅述了。&lt;/p&gt;
+
+&lt;h1 id=&quot;laravel-homestead&quot;&gt;Laravel Homestead&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Laravel Homestead 是一個官方預載的 Vagrant box，提供一個美好的開發環境，不需要在本機電腦安裝 PHP、HHVM、網頁伺服器或任何伺服器軟體。不用擔心搞亂你的系統！Vagrant box 可以搞定一切。如果有什麼地方搞爛掉了，還可以在幾分鐘內快速地砍掉並重建虛擬機器！&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;安裝-homestead-vagrant-box&quot;&gt;安裝 Homestead Vagrant Box&lt;/h2&gt;
+
+&lt;p&gt;當 VirtualBox / VMware 以及 Vagrant 安裝完成後，可以在終端機執行下列指令將 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;laravel/homestead&lt;/code&gt; 這個 box 安裝進你的 Vagrant 程式中。下載 box 會花一點時間，時間長短將依據你的網路速度決定：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vagrant box add laravel/homestead
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;安裝-homestead&quot;&gt;安裝 Homestead&lt;/h2&gt;
+
+&lt;p&gt;可以簡單地透過複製(clone)儲存庫的方式來安裝 Homestead。建議可將儲存庫複製至你的「home」目錄中的 Homestead 資料夾，如此一來 Homestead box 將能提供主機服務給你所有的 Laravel 專案：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/laravel/homestead.git Homestead
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;複製完 Homestead 儲存庫，即可在 Homestead 目錄中執行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bash init.sh&lt;/code&gt; 指令來建立 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Homestead.yaml&lt;/code&gt; 設定檔。 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Homestead.yaml&lt;/code&gt; 檔案將會被放置在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;homestead&lt;/code&gt;目錄中：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./init.bat
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;設定-homestead&quot;&gt;設定 Homestead&lt;/h2&gt;
+
+&lt;h3 id=&quot;設定提供者&quot;&gt;設定提供者&lt;/h3&gt;
+&lt;p&gt;在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/homestead/Homestead.yaml&lt;/code&gt; 檔案中的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;provider&lt;/code&gt; 是用來設定想要使用哪一個 Vagrant 提供者，像是：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;virtualbox&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vmware_fusion&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vmware_workstation&lt;/code&gt; 或 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;parallels&lt;/code&gt;。這邊我們要填寫:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;provider: virtualbox
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;設定共享目錄&quot;&gt;設定共享目錄&lt;/h3&gt;
+
+&lt;p&gt;在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Homestead.yaml&lt;/code&gt; 檔案的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;folders&lt;/code&gt; 屬性裡列出所有想與 Homestead 環境共享的目錄。這些目錄中的檔案若有更動，它們將會同步更動在你的本機電腦與 Homestead 環境。可以將多個共享目錄都設定於此：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;folders:
+    - map: C:\Code
+      to: /home/vagrant/Code
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;設定-nginx-網站&quot;&gt;設定 Nginx 網站&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sites&lt;/code&gt; 屬性幫助你可以輕易的指定「網域」對應至 homestead 環境中的目錄。在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Homestead.yaml&lt;/code&gt; 檔案中已包含一個網站設定範例。同樣的，你可以增加數個網站到 Homestead 環境中。Homestead 可以為每個你正在開發中的 Laravel 專案提供方便的虛擬化環境：&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sites:
+    - map: homestead.app
+      to: /home/vagrant/Code/Laravel/public
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;在配置 Homestead box 之後，若有更改 sites 屬性，你應該重新執行配置指令 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vagrant reload --provision&lt;/code&gt; 來更新虛擬機裡的 Nginx 設定。&lt;/p&gt;
+
+&lt;h3 id=&quot;hosts-檔案&quot;&gt;Hosts 檔案&lt;/h3&gt;
+
+&lt;p&gt;你必須為 Nginx 網站在你機器中的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hosts&lt;/code&gt; 檔案增加「網域」。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hosts&lt;/code&gt; 檔案會將你對 Homestead 網站的請求重導至 Homestead 機器。在 Mac 或 Linux 上，在 Windows 上，則存放於 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C:\Windows\System32\drivers\etc\hosts&lt;/code&gt;。你增加至該檔案的內容看起來會像這樣：&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;192.168.10.10  homestead.app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;務必確認 IP 位置與你的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Homestead.yaml&lt;/code&gt; 檔案中設定相同。一旦將網域設定在 hosts 檔案之後，你就可以透過網頁瀏覽器造訪網站！&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://homestead.app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;啟動-vagrant-box&quot;&gt;啟動 Vagrant Box&lt;/h2&gt;
+
+&lt;p&gt;當你編輯完 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Homestead.yaml&lt;/code&gt;後，開啟終端機，進入 Homestead 目錄，並執行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vagrant up&lt;/code&gt; 指令。Vagrant 就會自將虛擬主機啟動並自動設定共享目錄和 Nginx 網站。&lt;/p&gt;
+
+&lt;p&gt;如果要移除虛擬機器，可以使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vagrant destroy --force&lt;/code&gt; 指令。&lt;/p&gt;
+
+&lt;h2 id=&quot;透過-ssh-連接&quot;&gt;透過 SSH 連接&lt;/h2&gt;
+
+&lt;p&gt;你可以在終端機裡進入你的 Homestead 目錄，並執行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vagrant ssh&lt;/code&gt; 指令藉此以 SSH 連上你的虛擬主機。&lt;/p&gt;
+
+&lt;h1 id=&quot;參考資料&quot;&gt;參考資料&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://laravel.tw/docs/5.3/homestead&quot;&gt;laravel.tw/docs/5.3/homestead&lt;/a&gt;&lt;/p&gt;</content><author><name>Wei Chang</name></author><category term="Server" /><category term="Laravel" /><category term="Vagrant" /><summary type="html">前言 以前寫的PHP專案都是用CodeIgniter當框架來開發，但最近公司要轉用Laravel來當之後的開發框架，因為之前虛擬環境都是用Vagrant來架設，估狗windows 開發 laravel裡面找到lavavel.tw裡面就有答案了。殊不知年輕人就是年輕人想得太少了…原來lavavel.tw這個官方文檔對應的laravel版本是5.3。看了一下公司專案的版本…8.x!會這樣講，是因為我又是裝完之後才發現的，因為要Build好開發環境才能看專案阿XD都怪我沒仔細看專案內容QQ，但裝了都裝了，我還是要記錄一下Laravel Homestead的架設過程。</summary></entry><entry><title type="html">文章預覽顯示設定</title><link href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/07/003-page/" rel="alternate" type="text/html" title="文章預覽顯示設定" /><published>2022-07-07T00:00:00+08:00</published><updated>2022-07-07T00:00:00+08:00</updated><id>http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/07/003-page</id><content type="html" xml:base="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/07/003-page/">&lt;hr /&gt;
+&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;看了一下自己的網誌之後覺得哪邊怪怪的，原來是因為在文章列表中顯示出來的預覽範圍的問題啊！趕緊查一下資料，將找到的方法紀錄一下。&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h1 id=&quot;實作&quot;&gt;實作&lt;/h1&gt;
+
+&lt;p&gt;通過分隔符的方式.
+需要先在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;中配置分隔符&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;excerpt_separator:  &apos;&amp;lt;!-- more --&amp;gt;&apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然後就可以在正文中通過插入&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;!-- more --&amp;gt;&lt;/code&gt;來將以上的內容標記為文章摘要.&lt;/p&gt;
+
+&lt;h1 id=&quot;參考資料&quot;&gt;參考資料&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://moonagic.com/configure-the-jekyll-article-list-summary/&quot;&gt;Jekyll文章列表摘要設置&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Wei Chang</name></author><category term="前端" /><category term="jekyll" /><summary type="html">前言 看了一下自己的網誌之後覺得哪邊怪怪的，原來是因為在文章列表中顯示出來的預覽範圍的問題啊！趕緊查一下資料，將找到的方法紀錄一下。</summary></entry><entry><title type="html">完善網誌：留言區、版權資訊、訪問人數</title><link href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete/" rel="alternate" type="text/html" title="完善網誌：留言區、版權資訊、訪問人數" /><published>2022-07-05T00:00:00+08:00</published><updated>2022-07-05T00:00:00+08:00</updated><id>http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete</id><content type="html" xml:base="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/05/002-complete/">&lt;hr /&gt;
+&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;續昨天 &lt;a href=&quot;https://zwei-c.github.io/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/&quot;&gt;建置jekyll+Github Page&lt;/a&gt;完成基本設定後，我又參考&lt;a href=&quot;https://ankmak.com/&quot;&gt;Ank’s Blog&lt;/a&gt;、&lt;a href=&quot;https://cynthiachuang.github.io/&quot;&gt;辛西亞的技能樹&lt;/a&gt;等大大的網誌內的教學文，新增一些功能到我的網誌內，讓功能更完善一些。
+&lt;!-- more --&gt;&lt;/p&gt;
 &lt;h1 id=&quot;新增版權資料&quot;&gt;新增版權資料&lt;/h1&gt;
 
 &lt;p&gt;參考了&lt;a href=&quot;https://cynthiachuang.github.io/&quot;&gt;辛西亞大大&lt;/a&gt;的&lt;a href=&quot;https://cynthiachuang.github.io/Add-Post-Copyright/&quot;&gt;版權訊息配置&lt;/a&gt;，我這邊做了一些更改，簡單來說就是用jekyll內的UI把自訂的版權信息放到文章底部。&lt;/p&gt;
@@ -309,8 +419,14 @@
 &lt;p&gt;點選新專案並新增這段程式碼：&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function doResponse() {
-  var response = UrlFetchApp.fetch(&apos;https://weichang.avosapps.us&apos;); //訪問你的後台連結
-  Logger.log(response.getContentText());
+
+  const now_hour = new Date().getHours(); //獲取現在的時間(小時)
+  
+  if(now_hour &amp;gt;= 8 || now_hour &amp;lt;= 2)  //(凌晨2~8點不執行)
+  {
+      var response = UrlFetchApp.fetch(&apos;https://weichang.avosapps.us&apos;); //訪問後台登入頁
+      Logger.log(response.getContentText());
+  }
 }
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -667,10 +783,11 @@
   &lt;li&gt;&lt;a href=&quot;https://cynthiachuang.github.io/Copy-Text-to-Clipboard-and-Append-Source-Hyperlink/&quot;&gt;【種樹】複製網頁文字時，加上網站的作者與網址&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.heson10.com/posts/28396.html&quot;&gt;所有关于Valine评论系统的配置都在这里【合集】&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/jiunian_2761/article/details/97388997&quot;&gt;Hexo博客进阶：为Next主题添加Valine评论系统&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Wei Chang</name></author><category term="前端" /><category term="jekyll" /><category term="Valine" /><category term="App Script" /><summary type="html">前言</summary></entry><entry><title type="html">建置jekyll+Github Page</title><link href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/" rel="alternate" type="text/html" title="建置jekyll+Github Page" /><published>2022-07-04T00:00:00+08:00</published><updated>2022-07-04T00:00:00+08:00</updated><id>http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build</id><content type="html" xml:base="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/">&lt;hr /&gt;
+&lt;/ul&gt;</content><author><name>Wei Chang</name></author><category term="前端" /><category term="jekyll" /><category term="Valine" /><category term="App Script" /><summary type="html">前言 續昨天 建置jekyll+Github Page完成基本設定後，我又參考Ank’s Blog、辛西亞的技能樹等大大的網誌內的教學文，新增一些功能到我的網誌內，讓功能更完善一些。</summary></entry><entry><title type="html">建置jekyll+Github Page</title><link href="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/" rel="alternate" type="text/html" title="建置jekyll+Github Page" /><published>2022-07-04T00:00:00+08:00</published><updated>2022-07-04T00:00:00+08:00</updated><id>http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build</id><content type="html" xml:base="http://localhost:4000/%E5%89%8D%E7%AB%AF/2022/07/04/001-build/">&lt;hr /&gt;
 &lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
 &lt;p&gt;原本想在將自己遇到的問題或一些程式、讀書心得寫在Blogger裡面，但都要去web上面寫文章。第一不夠酷，第二則覺得有點麻煩。所以藉著有GitHub pages這個service可以用的機會將做一個個人網站這個放在心裡很久的想法實現。&lt;/p&gt;
 
+&lt;!-- more --&gt;
 &lt;h1 id=&quot;使用的工具&quot;&gt;使用的工具&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;GitHub pages&lt;/li&gt;
