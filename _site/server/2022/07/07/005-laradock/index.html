@@ -1,0 +1,1209 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/fontawesome/css/all.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Laravel,Docker," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 以往在Windows系統上建立 PHP 相關專案大多都使用 XAMPP 等集成軟體，或是在 Server 主機上安裝 LAMP/LNMP，不相同的平台建置各有各自的作法，在開發不同專案時如果有切換 PHP 版本的需求，跟依賴與Virtualbox導致I/O瓶頸的Vagrant相比使用 Laradock 除了I/O速度的問題外套件的未來維護也更勝一籌，所以以下我將記錄我在Windows10上面架設laradock的過程。">
+<meta name="keywords" content="Laravel, Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows部署Laradock">
+<meta property="og:url" content="http://localhost:4000/server/2022/07/07/005-laradock/">
+<meta property="og:site_name" content="WeiChang&apos;s diary">
+<meta property="og:description" content="前言 以往在Windows系統上建立 PHP 相關專案大多都使用 XAMPP 等集成軟體，或是在 Server 主機上安裝 LAMP/LNMP，不相同的平台建置各有各自的作法，在開發不同專案時如果有切換 PHP 版本的需求，跟依賴與Virtualbox導致I/O瓶頸的Vagrant相比使用 Laradock 除了I/O速度的問題外套件的未來維護也更勝一籌，所以以下我將記錄我在Windows10上面架設laradock的過程。">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="/assets/images/005/1.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows部署Laradock">
+<meta name="twitter:description" content="前言 以往在Windows系統上建立 PHP 相關專案大多都使用 XAMPP 等集成軟體，或是在 Server 主機上安裝 LAMP/LNMP，不相同的平台建置各有各自的作法，在開發不同專案時如果有切換 PHP 版本的需求，跟依賴與Virtualbox導致I/O瓶頸的Vagrant相比使用 Laradock 除了I/O速度的問題外套件的未來維護也更勝一籌，所以以下我將記錄我在Windows10上面架設laradock的過程。">
+<meta name="twitter:image" content="/assets/images/005/1.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>Windows部署Laradock | WeiChang's diary</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WeiChang's diary</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            關於
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/server/2022/07/07/005-laradock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wei Chang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/dog.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WeiChang's diary">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            Windows部署Laradock
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-07-07T00:00:00+08:00">
+                2022-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/Server" itemprop="url" rel="index">
+                    <span itemprop="name">Server</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <hr />
+
+<h1 id="前言">前言</h1>
+<p>以往在Windows系統上建立 PHP 相關專案大多都使用 <code class="language-plaintext highlighter-rouge">XAMPP</code> 等集成軟體，或是在 Server 主機上安裝 LAMP/LNMP，不相同的平台建置各有各自的作法，在開發不同專案時如果有切換 PHP 版本的需求，跟依賴與Virtualbox導致I/O瓶頸的Vagrant相比使用 <code class="language-plaintext highlighter-rouge">Laradock</code> 除了I/O速度的問題外套件的未來維護也更勝一籌，所以以下我將記錄我在Windows10上面架設laradock的過程。</p>
+
+<!-- more -->
+
+<h1 id="laradock">Laradock</h1>
+
+<p>Laradock 是基於 <code class="language-plaintext highlighter-rouge">Docker</code> 的一個快速建立 Laravel/PHP 的開發環境工具，<code class="language-plaintext highlighter-rouge">Docker</code> 則是在各作業系統上先做出一個共通的平台，將應用程式獨立於Container 當中，省去搭建作業系統的成本。</p>
+
+<p>Dokcer Desktop 在Windows中依賴WSL</p>
+
+<p><strong>什麼是 WSL？</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">WSL 2</code> 是<code class="language-plaintext highlighter-rouge">「Windows 子系統 Linux 版」</code>架構的新版本，可讓 Windows 子系統 Linux 版在 Windows 上執行 ELF64 Linux 二進位檔。 其主要目標是增加檔案系統效能，以及新增完整的系統呼叫相容性。
+與Virtualbox虛擬機相比有更接近系統底層的效能及相容性。</p>
+
+<h2 id="安裝步驟">安裝步驟</h2>
+
+<h3 id="系統需求">系統需求</h3>
+
+<ol>
+  <li>CPU為64位元</li>
+  <li>有4G以上的RAM</li>
+  <li>BIOS的虛擬化技術已啟用</li>
+</ol>
+
+<h3 id="windows-環境">Windows 環境</h3>
+
+<p><a href="https://docs.docker.com/desktop/windows/wsl/">官方說明：https://docs.docker.com/desktop/windows/wsl/</a></p>
+
+<p>用管理員身分執行 <code class="language-plaintext highlighter-rouge">Windows 終端機</code> 、 <code class="language-plaintext highlighter-rouge">cmd</code> 、 <code class="language-plaintext highlighter-rouge">powershell</code>，執行以下命令</p>
+
+<p><code class="language-plaintext highlighter-rouge">啟用 Windows 子系統 Linux 版</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+</code></pre></td></tr></tbody></table></div></div>
+<p><code class="language-plaintext highlighter-rouge">啟用虛擬機器功能</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+</code></pre></td></tr></tbody></table></div></div>
+
+<ul>
+  <li><a href="https://www.docker.com/products/docker-desktop/">Docker</a></li>
+</ul>
+
+<p>先下載<a href="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&amp;utm_medium=webreferral&amp;utm_campaign=dd-smartbutton&amp;utm_location=header">Windows版本的Docker Desktop Installer</a></p>
+
+<p>下載 Linux 核心更新套件並安裝
+<a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">WSL2 Linux 核心更新套件 (適用於 x64 電腦)</a></p>
+
+<p>完成後重新開機後Docker已可正常運作</p>
+
+<h3 id="設定laradock">設定Laradock</h3>
+
+<p>建立一個資料夾存放laradock</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>git clone https://github.com/laradock/laradock.git laradock
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>並新增 <code class="language-plaintext highlighter-rouge">www</code> 於同層資料夾。 並在<code class="language-plaintext highlighter-rouge">www</code>資料夾新增 <code class="language-plaintext highlighter-rouge">case-1</code> 、 <code class="language-plaintext highlighter-rouge">case-2</code> 兩個資料夾。</p>
+
+<p>結構如下</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4</pre></td><td class="code"><pre class="highlight"><code>├─Laradock
+└─www
+    ├─case-1
+    └─case-2
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>進入<code class="language-plaintext highlighter-rouge">Laradock</code>資料夾 並且複製已經準備好的範例檔 <code class="language-plaintext highlighter-rouge">env.example</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>cd laradock
+cp .env.example .env
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>打開<code class="language-plaintext highlighter-rouge">.env</code>文件進行編輯</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4</pre></td><td class="code"><pre class="highlight"><code>APP_CODE_PATH_HOST=../www
+
+APP_CODE_PATH_CONTAINER=/var/www
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>上面主要是修改專案存放路徑，其他如<code class="language-plaintext highlighter-rouge">PHP</code>、<code class="language-plaintext highlighter-rouge">MYSQL</code>、<code class="language-plaintext highlighter-rouge">PPMA</code>、<code class="language-plaintext highlighter-rouge">Nginx</code>等設定可以依自己的需求在<code class="language-plaintext highlighter-rouge">.env</code>修改。</p>
+
+<h3 id="設定nginx">設定Nginx</h3>
+
+<p>到 <code class="language-plaintext highlighter-rouge">/laradock/nginx/sites</code>資料夾複製<code class="language-plaintext highlighter-rouge">laravel.conf.example</code>為<code class="language-plaintext highlighter-rouge">primary.conf</code>，接下來編輯<code class="language-plaintext highlighter-rouge">primary.conf</code>。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13</pre></td><td class="code"><pre class="highlight"><code># 原本的
+root /var/www/laravel/public
+# 修改為(因為www 要放各項專案，且laravel任何request導入進來都需要走public目錄)
+root /var/www/case-1/public
+
+# 原本的
+server_name laravel.test;
+# 修改為 待會會建立兩個Laravel傳案做示範這邊以project1.test當作第一個傳案
+server_name project1.test;
+
+# server_name : 網域
+# root ：對應的檔案路徑
+# 所以這兩個網域只要後面的port號打對一樣都能進入相對應的檔案路徑 
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>再來新增<code class="language-plaintext highlighter-rouge">case-2</code>的config，為節省時間，全部的內容如下。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39<br/>40<br/>41<br/>42<br/>43<br/>44<br/>45<br/>46<br/>47<br/>48<br/>49<br/>50<br/>51<br/>52<br/>53<br/>54<br/>55<br/>56<br/>57<br/>58<br/>59<br/>60<br/>61<br/>62<br/>63<br/>64<br/>65<br/>66<br/>67<br/>68<br/>69<br/>70<br/>71<br/>72<br/>73<br/>74<br/>75<br/>76<br/>77<br/>78<br/>79<br/>80<br/>81<br/>82<br/>83<br/>84<br/>85<br/>86<br/>87<br/>88<br/>89<br/>90<br/>91<br/>92<br/>93</pre></td><td class="code"><pre class="highlight"><code>#server {
+#    listen 80;
+#    server_name laravel.com.co;
+#    return 301 https://laravel.com.co$request_uri;
+#}
+
+server {
+
+    listen 80;
+    listen [::]:80;
+
+    # For https
+    # listen 443 ssl;
+    # listen [::]:443 ssl ipv6only=on;
+    # ssl_certificate /etc/nginx/ssl/default.crt;
+    # ssl_certificate_key /etc/nginx/ssl/default.key;
+
+    server_name case-1.test;
+    root /var/www/case-1/public;
+    index index.php index.html index.htm;
+
+    location / {
+         try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ \.php$ {
+        try_files $uri /index.php =404;
+        fastcgi_pass php-upstream;
+        fastcgi_index index.php;
+        fastcgi_buffers 16 16k;
+        fastcgi_buffer_size 32k;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        #fixes timeouts
+        fastcgi_read_timeout 600;
+        include fastcgi_params;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/letsencrypt/;
+        log_not_found off;
+    }
+
+    error_log /var/log/nginx/laravel_error.log;
+    access_log /var/log/nginx/laravel_access.log;
+}
+
+server {
+
+    listen 80;
+    listen [::]:80;
+
+    # For https
+    # listen 443 ssl;
+    # listen [::]:443 ssl ipv6only=on;
+    # ssl_certificate /etc/nginx/ssl/default.crt;
+    # ssl_certificate_key /etc/nginx/ssl/default.key;
+
+    server_name case-2.test;
+    root /var/www/case-2/public;
+    index index.php index.html index.htm;
+
+    location / {
+         try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ \.php$ {
+        try_files $uri /index.php =404;
+        fastcgi_pass php-upstream;
+        fastcgi_index index.php;
+        fastcgi_buffers 16 16k;
+        fastcgi_buffer_size 32k;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        #fixes timeouts
+        fastcgi_read_timeout 600;
+        include fastcgi_params;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/letsencrypt/;
+        log_not_found off;
+    }
+
+    error_log /var/log/nginx/laravel_error.log;
+    access_log /var/log/nginx/laravel_access.log;
+}
+</code></pre></td></tr></tbody></table></div></div>
+
+<h3 id="build-docker-image-to-container">Build Docker Image to Container</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>docker-compose up -d nginx mysql phpmyadmin
+</code></pre></td></tr></tbody></table></div></div>
+<h3 id="開啟工作區域的bash">開啟工作區域的bash</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9</pre></td><td class="code"><pre class="highlight"><code>#****進入Container 內建立專案，可呼叫artisan、composer 相關指令**** 
+docker-compose exec workspace bash
+
+# 實際上在www資料夾位置，此時先使用Composer 安裝Laravel(項目各自為case-1、case-2)
+composer create-project laravel/laravel --prefer-dist case-1
+composer create-project laravel/laravel --prefer-dist case-2
+
+#離開 Container
+exit
+</code></pre></td></tr></tbody></table></div></div>
+
+<h3 id="選擇任一case專案的env做測試連線mysql">選擇任一case專案的.env做測試連線mysql</h3>
+
+<p>先去<code class="language-plaintext highlighter-rouge">phpMyAdmin</code>新建一個<code class="language-plaintext highlighter-rouge">case-1</code>的資料庫。</p>
+
+<p>接著複製<code class="language-plaintext highlighter-rouge">.env.example</code>為<code class="language-plaintext highlighter-rouge">.env</code>並修改以下內容。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7</pre></td><td class="code"><pre class="highlight"><code># 因為實際執行時是在docker容器內，容器內的mysql的port目前是3306
+# 外面連線時是依據剛剛MYSQL_PORT的設定
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=case-1
+DB_USERNAME=root
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>進行<code class="language-plaintext highlighter-rouge">migrate</code>測試是否有連上資料庫。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7</pre></td><td class="code"><pre class="highlight"><code>####當前目錄 : /laradock
+docker-compose exec workspace bash
+
+cd case-1
+
+php artisan migrate
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>如果正常應該可以看到</p>
+
+<p><img src="/assets/images/005/1.png" alt="1" /></p>
+
+<h3 id="手動設定網址與-ip-對應的-hosts-做測試">手動設定網址與 IP 對應的 hosts 做測試</h3>
+
+<p>在<code class="language-plaintext highlighter-rouge">C:\Windows\System32\drivers\etc</code>開啟<code class="language-plaintext highlighter-rouge">host</code>檔案並新增</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>127.0.0.1 case-1.test
+127.0.0.1 case-2.test
+</code></pre></td></tr></tbody></table></td></tr></tbody></table></div></div>
+
+<h3 id="開啟專案網址">開啟專案網址。</h3>
+
+<p>直接在瀏覽器的網址列輸入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>127.0.0.1 case-1.test
+127.0.0.1 case-2.test
+</code></pre></td></tr></tbody></table></td></tr></tbody></table></div></div>
+
+<p>可以看到laravel的歡迎畫面就代表設定成功了。</p>
+
+<h3 id="phpmyadmin-http1270018081">phpMyAdmin http://127.0.0.1:8081/</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6</pre></td><td class="code"><pre class="highlight"><code>root 預設值   
+帳號: root
+密碼: root
+user 預設值
+帳號: PMA_USER=default
+密碼: PMA_PASSWORD=secret
+</code></pre></td></tr></tbody></table></div></div>
+
+<h1 id="參考資料">參考資料</h1>
+
+<ul>
+  <li><a href="https://blog.twjoin.com/15f046d64c34">一步步教您使用 Laradock 快速打造Laravel/PHP 環境</a></li>
+  <li><a href="https://laradock.io/">laradock</a></li>
+  <li><a href="https://segmentfault.com/a/1190000040344047">laradock 笔记</a></li>
+</ul>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+          
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Wei Chang
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文連結：</strong>
+      <a href="http://localhost:4000/server/2022/07/07/005-laradock/" title="Windows部署Laradock">http://localhost:4000/server/2022/07/07/005-laradock/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版權聲明： </strong>
+      除非另有標注，部落格中所有文章，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。 轉載請標明作者、連結與出處！
+    </li>
+  </ul>
+
+
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/Laravel" rel="tag"># Laravel</a>
+          
+            
+            <a href="/tag/#/Docker" rel="tag"># Docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/server/2022/07/07/004-lavarel-homestead/" rel="prev" title="Windows部署Laravel Homestead">
+                Windows部署Laravel Homestead <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="vcomments"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/dog.png"
+               alt="Wei Chang" />
+          <p class="site-author-name" itemprop="name">Wei Chang</p>
+           
+              <p class="site-description motion-element" itemprop="description">something</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分類</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">標籤</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span> -->
+
+本站總訪問量<span id="busuanzi_value_site_pv"></span>次. <br>
+本站總訪問人數<span id="busuanzi_value_site_uv"></span>位. <br>
+本頁面訪問次數<span id="busuanzi_value_page_pv"></span>次.
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#前言"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#laradock"> <span class="nav-number">2</span> <span class="nav-text">Laradock</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#安裝步驟"> <span class="nav-number">2.1</span> <span class="nav-text">安裝步驟</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#系統需求"> <span class="nav-number">2.1.1</span> <span class="nav-text">系統需求</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#windows-環境"> <span class="nav-number">2.1.2</span> <span class="nav-text">Windows 環境</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#設定laradock"> <span class="nav-number">2.1.3</span> <span class="nav-text">設定Laradock</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#設定nginx"> <span class="nav-number">2.1.4</span> <span class="nav-text">設定Nginx</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#build-docker-image-to-container"> <span class="nav-number">2.1.5</span> <span class="nav-text">Build Docker Image to Container</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#開啟工作區域的bash"> <span class="nav-number">2.1.6</span> <span class="nav-text">開啟工作區域的bash</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#選擇任一case專案的env做測試連線mysql"> <span class="nav-number">2.1.7</span> <span class="nav-text">選擇任一case專案的.env做測試連線mysql</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#手動設定網址與-ip-對應的-hosts-做測試"> <span class="nav-number">2.1.8</span> <span class="nav-text">手動設定網址與 IP 對應的 hosts 做測試</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#開啟專案網址"> <span class="nav-number">2.1.9</span> <span class="nav-text">開啟專案網址。</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#phpmyadmin-http1270018081"> <span class="nav-number">2.1.10</span> <span class="nav-text">phpMyAdmin http://127.0.0.1:8081/</span> </a> </li> </ol> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#參考資料"> <span class="nav-number">3</span> <span class="nav-text">參考資料</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wei Chang</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+<script>
+	document.addEventListener("copy", function (evt) {
+		let text = document.getSelection().toString();
+		if (text.length >= 100) {
+			text = text + "\n\n" + "=========================================\n" + "你複製整段要幹嘛==?";
+		}
+        console.log(text)
+		let clipdata = evt.clipboardData || window.clipboardData;
+		clipdata.setData("text", text);
+		evt.preventDefault();
+	});
+</script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+
+ 
+<script src="/assets/js/Valine.min.js"></script>
+<script>
+	var langName = "tw",
+		langMode = {
+			nick: "NickName(必填)",
+			mail: "E-Mail(必填)",
+			link: "Website(http://)",
+			nickFail: "NickName cannot be less than 3 bytes.",
+			mailFail: "Please confirm your email address.",
+			sofa: "No comment yet.",
+			submit: "Submit",
+			reply: "Reply",
+			cancelReply: "Cancel reply",
+			comments: "Comments",
+			cancel: "Cancel",
+			confirm: "Confirm",
+			continue: "Continue",
+			more: "Load More...",
+			preview: "Preview",
+			emoji: "Emoji",
+			expand: "See more....",
+			seconds: "seconds ago",
+			minutes: "minutes ago",
+			hours: "hours ago",
+			days: "days ago",
+			now: "just now",
+			uploading: "Uploading ...",
+			uploadDone: "Upload completed!",
+			busy: "Submit is busy, please wait...",
+			"code-98": "Valine initialization failed, please check your version of av-min.js.",
+			"code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+			"code-100": "Valine initialization failed, Please check your appId and appKey.",
+			"code-140": "The total number of API calls today has exceeded the development version limit.",
+			"code-401": "Unauthorized operation, Please check your appId and appKey.",
+			"code-403": "Access denied by API domain white list, Please check your security domain.",
+		};
+
+	new Valine({
+		el: "#comments",
+		app_id: "JKnSyYYosilnYSK5qqBw9Ewd-MdYXbMMI", //这里变量的取值在网站配置文件里_config.yml
+		app_key: "nsxgeLYfEW1x8CBRdAzBbIsU", //这里变量的取值在网站配置文件里_config.yml
+		placeholder: "提供您的寶貴意見。", //这里变量的取值在网站配置文件里_config.yml
+		serverURLs: "https://jknsyyyo.api.lncldglobal.com",
+		requiredFields: ["nick", "mail"],
+		lang: langName,
+		langMode: langMode,
+		verify: true,
+        avatar: 'retro',
+	});
+</script>
+ 
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
