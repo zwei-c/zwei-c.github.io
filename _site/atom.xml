@@ -1,4 +1,508 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-20T10:57:49+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WeiChang’s diary</title><subtitle>something</subtitle><author><name>Wei Chang</name></author><entry><title type="html">Windows部署Laravel Sail</title><link href="http://localhost:4000/server/2022/07/18/006-laravelsail/" rel="alternate" type="text/html" title="Windows部署Laravel Sail" /><published>2022-07-18T00:00:00+08:00</published><updated>2022-07-18T00:00:00+08:00</updated><id>http://localhost:4000/server/2022/07/18/006-laravelsail</id><content type="html" xml:base="http://localhost:4000/server/2022/07/18/006-laravelsail/">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-20T21:09:34+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WeiChang’s diary</title><subtitle>something</subtitle><author><name>Wei Chang</name></author><entry><title type="html">CMAR: Accurate and Efficient Classification Based on Multiple Class-Association Rules</title><link href="http://localhost:4000/stady/2022/07/20/007-CMAR/" rel="alternate" type="text/html" title="CMAR: Accurate and Efficient Classification Based on Multiple Class-Association Rules" /><published>2022-07-20T00:00:00+08:00</published><updated>2022-07-20T00:00:00+08:00</updated><id>http://localhost:4000/stady/2022/07/20/007-CMAR</id><content type="html" xml:base="http://localhost:4000/stady/2022/07/20/007-CMAR/">&lt;h1 id=&quot;作者&quot;&gt;作者&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Wenmin Li&lt;/li&gt;
+  &lt;li&gt;Jiawei Han&lt;/li&gt;
+  &lt;li&gt;Jian Pei
+    &lt;h1 id=&quot;摘要&quot;&gt;摘要&lt;/h1&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;傳統的關聯規則分類(CBA)在處理非結構化資料具有比較高的分類準確度及靈活性。但是在處理大型的資料庫時有問題，且因為基於&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Confidence&lt;/code&gt;來挑選分類規則導致出現過耦合的狀況。&lt;/p&gt;
+
+&lt;p&gt;本篇研究提出一種新的關聯規則分類的方法&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMAR&lt;/code&gt;其挖掘規則的方法採用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FP-Growth&lt;/code&gt;，並採用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Support&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Confidence&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;相關度&lt;/code&gt;修剪規則，並進行加權分析建構分類器。&lt;/p&gt;
+
+&lt;p&gt;實驗結果表示&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMAR&lt;/code&gt;與其他分類演算法&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CBA&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C4.5&lt;/code&gt;相比有更好的效率也有更好的分類準確度。&lt;/p&gt;
+
+&lt;h1 id=&quot;方法&quot;&gt;方法&lt;/h1&gt;
+
+&lt;h2 id=&quot;生成fp-tree&quot;&gt;生成FP-tree&lt;/h2&gt;
+&lt;p&gt;假設有一組資料
+&lt;img src=&quot;/assets/images/007/1.png&quot; alt=&quot;1&quot; /&gt;
+循著FP-Growth的作法先定義&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Support threshold&lt;/code&gt;為&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2&lt;/code&gt;且本研究因為要將類別標籤也放入Tree中，所以有定義一&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;confidence threshold&lt;/code&gt;為50%&lt;/p&gt;
+
+&lt;div class=&quot;alert&quot;&gt;
+這邊指的Support是表示item在data set中出現的次數。
+且在生成樹的時候暫時不會用到confidence。
+&lt;/div&gt;
+
+&lt;p&gt;依照&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Support threshold&lt;/code&gt;生成&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;header table&lt;/code&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;count&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a_1$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$b_2$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$c_1$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$d_3$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;根據&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;header table&lt;/code&gt;去除不符合&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Support threshold&lt;/code&gt;的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;item&lt;/code&gt;生成的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;item set&lt;/code&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;id&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;class&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a_1, c_1$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a_1, b_2, c_1$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$d_3$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a_1, b_2, d_3$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;C&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a_1, b_2, c_1, d_3$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;C&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;最後生成出來的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FP-tree&lt;/code&gt;
+&lt;img src=&quot;/assets/images/007/2.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;從fp-tree提取規則&quot;&gt;從FP-tree提取規則&lt;/h2&gt;
+
+&lt;div class=&quot;alert&quot;&gt;
+這裡support表示這筆item包含該屬性值，confidence表示有包含這個屬性值的item且類別與規則相符的次數/有包含這個屬性值的item的總數X100%。
+&lt;/div&gt;
+
+&lt;p&gt;依照生成的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FP-tree&lt;/code&gt;來找&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pattern&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;先從 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d&lt;/code&gt;節點來看(以下為了簡化將各個item去掉下標):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/007/3.png&quot; alt=&quot;3&quot; /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;count&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$b$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$d$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;生成的規則：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$abd \to C, sup=2,conf=100\%$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d&lt;/code&gt;節點完成之後要把原本&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d&lt;/code&gt;節點的類別標籤合併到父節點上，結果如圖:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/007/4.png&quot; alt=&quot;4&quot; /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;count&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$b$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$c$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;生成的規則：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$ac \to A, sup=1,conf=33\%$&lt;/li&gt;
+  &lt;li&gt;$abc \to B, sup=1,conf=50\%$&lt;/li&gt;
+  &lt;li&gt;$abc \to C, sup=1,conf=50\%$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;依此類推 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt;節點&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/007/5.png&quot; alt=&quot;5&quot; /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;count&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$b$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;生成的規則：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$ab \to B, sup=1,conf=33\%$&lt;/li&gt;
+  &lt;li&gt;$ab \to C, sup=2,conf=66\%$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/007/6.png&quot; alt=&quot;6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;生成的規則：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$a \to A, sup=1,conf=25\%$&lt;/li&gt;
+  &lt;li&gt;$a \to B, sup=1,conf=25\%$&lt;/li&gt;
+  &lt;li&gt;$a \to C, sup=2,conf=50\%$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;最後由這棵樹生成的規則為下表：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;ID&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Rule&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Support&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Confidece&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$abd \to C$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;100%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$ab \to C$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;66%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a \to C$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;50%&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;rule的排序&quot;&gt;Rule的排序&lt;/h2&gt;
+
+&lt;p&gt;有兩個規則$R_1$、$R_2$，如果:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;$conf(R_1)&amp;gt;conf(R_2)$&lt;/li&gt;
+  &lt;li&gt;$conf(R_1)=conf(R_2)\&amp;amp;sup(R_1)&amp;gt;sup(R_2)$&lt;/li&gt;
+  &lt;li&gt;$conf(R_1)=conf(R_2)\&amp;amp;sup(R_1)=sup(R_2)$ 但$R_1$的屬性值比$R_2$少&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;這樣就可以說 $R_1$&lt;strong&gt;is having higher rank than&lt;/strong&gt;$R_2$&lt;/p&gt;
+
+&lt;p&gt;另外可以說如果一個規則$R_1:P\to c$是$R_2:P^ˊ\to c^ˊ$的子集合，就可以說$R_1$是$R_2$的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;general rule&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;pruning-rule&quot;&gt;Pruning Rule&lt;/h2&gt;
+
+&lt;p&gt;透過剛剛的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;general rule&lt;/code&gt;我們在由規則生成CR-tree的時候進行第一步的Pruning。&lt;/p&gt;
+
+&lt;h3 id=&quot;general-rule&quot;&gt;general rule&lt;/h3&gt;
+
+&lt;p&gt;如果有兩個規則$R_1$、$R_2$，若$R_1$是$R_2$的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;general rule&lt;/code&gt;且$R_1$的rank比$R_2$高就要將$R_2$ pruning掉。這部分是在建構CR-tree時完成。&lt;/p&gt;
+
+&lt;h3 id=&quot;選擇正相關的規則&quot;&gt;選擇正相關的規則&lt;/h3&gt;
+
+&lt;p&gt;假設有一條規則: (support = 30)
+&lt;img src=&quot;/assets/images/007/7.png&quot; alt=&quot;7&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;實際表格：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/007/8.png&quot; alt=&quot;8&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;期望表格:&lt;/p&gt;
+
+&lt;p&gt;$total_no$佔比$=\frac{30}{500} =\frac{3}{50}$&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;$R_1$&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;approved&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;rejected&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;total&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$job=yes$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$450 \times \frac{47}{50}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$50 \times \frac{47}{50}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$470$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$job=no$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$450 \times \frac{3}{50}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$50 \times \frac{3}{50}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$30$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;會等於:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/007/9.png&quot; alt=&quot;9&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;套用公式:&lt;/p&gt;
+
+\[job=no \to class=rejected: X^2=\frac{(438-423)^2}{423}+\frac{(47-32)^2}{47}+\frac{(27-12)^2}{27}+\frac{(18-3)^2}{3}\approx88.4\]
+
+&lt;p&gt;若$X^2$沒通過設定的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;significance level threshold&lt;/code&gt;該規則就該pruning掉。&lt;/p&gt;
+
+&lt;h3 id=&quot;selecting-rules-based-on-database-coverage&quot;&gt;Selecting rules based on database coverage&lt;/h3&gt;
+
+&lt;p&gt;計算每個item被rule覆蓋且正確分類的次數:
+規則:
+|ID|Rule|Support|Confidece|
+|:-:|:-:|:-:|:-:|
+|1|$abd \to C$|2|100%|
+|2|$ab \to C$|2|66%|
+|3|$a \to C$|2|50%|&lt;/p&gt;
+
+&lt;p&gt;item set $\to R_1$&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;id&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;class&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;count&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a, c$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a, b, c$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$d$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a, b, d$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;C&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a, b, c, d$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;C&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;item set $\to R_2$&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;id&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;class&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;count&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a, c$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a, b, c$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$d$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a, b, d$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;C&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a, b, c, d$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;C&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;item set $\to R_3$&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;id&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;class&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;count&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a, c$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a, b, c$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$d$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a, b, d$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;C&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$a, b, c, d$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;C&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;這邊三條規則都有被select到。最終select到的規則就是我們拿來建構分類器的規則。&lt;/p&gt;
+
+&lt;h2 id=&quot;分類&quot;&gt;分類&lt;/h2&gt;
+
+&lt;p&gt;分類結果分成三類&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;沒有matching rules&lt;/li&gt;
+  &lt;li&gt;有一到多條matching rules，但只有對應到一個class。&lt;/li&gt;
+  &lt;li&gt;有多條matching rules，有多個class，需要對選到的規則計算累計卡分值決定分為哪一類&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/007/15.png&quot; alt=&quot;15&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;計算 &lt;img src=&quot;/assets/images/007/10.png&quot; alt=&quot;10&quot; /&gt; 及 &lt;img src=&quot;/assets/images/007/11.png&quot; alt=&quot;11&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;得&lt;/p&gt;
+
+&lt;p&gt;$R_1:job=no\to rejected$的$max^2\approx292.490226288$&lt;/p&gt;
+
+&lt;p&gt;$R_1:job=no\to rejected$的$X^2\approx88.4$&lt;/p&gt;
+
+&lt;p&gt;$R_1:job=no\to rejected$的$weightedX^2\approx0.3022$&lt;/p&gt;
+
+&lt;p&gt;$R_2:education=university\to approved$的$max^2\approx495.84$&lt;/p&gt;
+
+&lt;p&gt;$R_2:education=university\to approved$的$X^2\approx33.4256$&lt;/p&gt;
+
+&lt;p&gt;$R_2:education=university\to approved$的$weightedX^2\approx0.06741$&lt;/p&gt;
+
+&lt;p&gt;如果這邊有一個item符合這兩個&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rule&lt;/code&gt;的話這邊就要選擇$weightedX^2$較高的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;R_1&lt;/code&gt;來分類。&lt;/p&gt;
+
+&lt;h1 id=&quot;結論&quot;&gt;結論&lt;/h1&gt;
+&lt;p&gt;與各方法比較的準確度:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/007/12.png&quot; alt=&quot;12&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;與各方法比較的記憶體使用量:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/007/13.png&quot; alt=&quot;13&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;與各方法比較的運行時間:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/007/14.png&quot; alt=&quot;14&quot; /&gt;&lt;/p&gt;</content><author><name>Wei Chang</name></author><category term="stady" /><category term="CBA" /><category term="Association rule" /><category term="data mining" /><category term="FP-growth" /><summary type="html">作者 Wenmin Li Jiawei Han Jian Pei 摘要 傳統的關聯規則分類(CBA)在處理非結構化資料具有比較高的分類準確度及靈活性。但是在處理大型的資料庫時有問題，且因為基於Confidence來挑選分類規則導致出現過耦合的狀況。 本篇研究提出一種新的關聯規則分類的方法CMAR其挖掘規則的方法採用FP-Growth，並採用Support、Confidence、相關度修剪規則，並進行加權分析建構分類器。 實驗結果表示CMAR與其他分類演算法CBA、C4.5相比有更好的效率也有更好的分類準確度。 方法 生成FP-tree 假設有一組資料 循著FP-Growth的作法先定義Support threshold為2且本研究因為要將類別標籤也放入Tree中，所以有定義一confidence threshold為50% 這邊指的Support是表示item在data set中出現的次數。 且在生成樹的時候暫時不會用到confidence。 依照Support threshold生成header table: item count $a_1$ 4 $b_2$ 3 $c_1$ 3 $d_3$ 3 根據header table去除不符合Support threshold的item生成的item set: id item class 1 $a_1, c_1$ A 2 $a_1, b_2, c_1$ B 3 $d_3$ A 4 $a_1, b_2, d_3$ C 5 $a_1, b_2, c_1, d_3$ C 最後生成出來的FP-tree 從FP-tree提取規則 這裡support表示這筆item包含該屬性值，confidence表示有包含這個屬性值的item且類別與規則相符的次數/有包含這個屬性值的item的總數X100%。 依照生成的FP-tree來找pattern 先從 d節點來看(以下為了簡化將各個item去掉下標): item count $a$ 2 $b$ 2 $d$ 2 生成的規則： $abd \to C, sup=2,conf=100\%$ d節點完成之後要把原本d節點的類別標籤合併到父節點上，結果如圖: item count $a$ 3 $b$ 2 $c$ 3 生成的規則： $ac \to A, sup=1,conf=33\%$ $abc \to B, sup=1,conf=50\%$ $abc \to C, sup=1,conf=50\%$ 依此類推 b、a節點 item count $a$ 3 $b$ 3 生成的規則： $ab \to B, sup=1,conf=33\%$ $ab \to C, sup=2,conf=66\%$ 生成的規則： $a \to A, sup=1,conf=25\%$ $a \to B, sup=1,conf=25\%$ $a \to C, sup=2,conf=50\%$ 最後由這棵樹生成的規則為下表： ID Rule Support Confidece 1 $abd \to C$ 2 100% 2 $ab \to C$ 2 66% 3 $a \to C$ 2 50% Rule的排序 有兩個規則$R_1$、$R_2$，如果: $conf(R_1)&amp;gt;conf(R_2)$ $conf(R_1)=conf(R_2)\&amp;amp;sup(R_1)&amp;gt;sup(R_2)$ $conf(R_1)=conf(R_2)\&amp;amp;sup(R_1)=sup(R_2)$ 但$R_1$的屬性值比$R_2$少 這樣就可以說 $R_1$is having higher rank than$R_2$ 另外可以說如果一個規則$R_1:P\to c$是$R_2:P^ˊ\to c^ˊ$的子集合，就可以說$R_1$是$R_2$的general rule。 Pruning Rule 透過剛剛的general rule我們在由規則生成CR-tree的時候進行第一步的Pruning。 general rule 如果有兩個規則$R_1$、$R_2$，若$R_1$是$R_2$的general rule且$R_1$的rank比$R_2$高就要將$R_2$ pruning掉。這部分是在建構CR-tree時完成。 選擇正相關的規則 假設有一條規則: (support = 30) 實際表格： 期望表格: $total_no$佔比$=\frac{30}{500} =\frac{3}{50}$ $R_1$ approved rejected total $job=yes$ $450 \times \frac{47}{50}$ $50 \times \frac{47}{50}$ $470$ $job=no$ $450 \times \frac{3}{50}$ $50 \times \frac{3}{50}$ $30$ 會等於: 套用公式: \[job=no \to class=rejected: X^2=\frac{(438-423)^2}{423}+\frac{(47-32)^2}{47}+\frac{(27-12)^2}{27}+\frac{(18-3)^2}{3}\approx88.4\] 若$X^2$沒通過設定的significance level threshold該規則就該pruning掉。 Selecting rules based on database coverage 計算每個item被rule覆蓋且正確分類的次數: 規則: |ID|Rule|Support|Confidece| |:-:|:-:|:-:|:-:| |1|$abd \to C$|2|100%| |2|$ab \to C$|2|66%| |3|$a \to C$|2|50%| item set $\to R_1$ id item class count 1 $a, c$ A 0 2 $a, b, c$ B 0 3 $d$ A 0 4 $a, b, d$ C 1 5 $a, b, c, d$ C 1 item set $\to R_2$ id item class count 1 $a, c$ A 0 2 $a, b, c$ B 1 3 $d$ A 0 4 $a, b, d$ C 2 5 $a, b, c, d$ C 2 item set $\to R_3$ id item class count 1 $a, c$ A 1 2 $a, b, c$ B 2 3 $d$ A 0 4 $a, b, d$ C 3 5 $a, b, c, d$ C 3 這邊三條規則都有被select到。最終select到的規則就是我們拿來建構分類器的規則。 分類 分類結果分成三類 沒有matching rules 有一到多條matching rules，但只有對應到一個class。 有多條matching rules，有多個class，需要對選到的規則計算累計卡分值決定分為哪一類 計算 及 得 $R_1:job=no\to rejected$的$max^2\approx292.490226288$ $R_1:job=no\to rejected$的$X^2\approx88.4$ $R_1:job=no\to rejected$的$weightedX^2\approx0.3022$ $R_2:education=university\to approved$的$max^2\approx495.84$ $R_2:education=university\to approved$的$X^2\approx33.4256$ $R_2:education=university\to approved$的$weightedX^2\approx0.06741$ 如果這邊有一個item符合這兩個rule的話這邊就要選擇$weightedX^2$較高的R_1來分類。 結論 與各方法比較的準確度: 與各方法比較的記憶體使用量: 與各方法比較的運行時間:</summary></entry><entry><title type="html">Windows部署Laravel Sail</title><link href="http://localhost:4000/server/2022/07/18/006-laravelsail/" rel="alternate" type="text/html" title="Windows部署Laravel Sail" /><published>2022-07-18T00:00:00+08:00</published><updated>2022-07-18T00:00:00+08:00</updated><id>http://localhost:4000/server/2022/07/18/006-laravelsail</id><content type="html" xml:base="http://localhost:4000/server/2022/07/18/006-laravelsail/">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
 
 &lt;p&gt;  目前在研究各種架設Laravel的方法，經歷了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Homestead&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;laradock&lt;/code&gt;最終還是走到了一開始最想使用的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Sail&lt;/code&gt;。實際上使用起來跟感受到與&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;laradock&lt;/code&gt;使用有明顯差別，原因是在於&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;laradock&lt;/code&gt;使用的專案資料夾位於windows系統，而&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Laravel Sail&lt;/code&gt;是直接存放於WSL系統內，以筆者為例，開新的laravel專案在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;laradock&lt;/code&gt;開啟&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/&lt;/code&gt;歡迎頁面需要load 1秒的時間而在Sail中大概就只要幾十毫秒，以體感差非常多。剛好在laradock上的案件量不多趁新鮮趕緊換成&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Laravel Sail&lt;/code&gt;來使用，以下將帶來在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Windows 11&lt;/code&gt; 上部屬&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Laravel Sail&lt;/code&gt;的過程。&lt;/p&gt;
 &lt;div class=&quot;alert&quot;&gt;
@@ -366,7 +870,7 @@ sail php script.php
   &lt;li&gt;&lt;a href=&quot;https://docfunc.com/posts/47/%E7%94%A8-laravel-sail-%E4%BE%86%E5%BB%BA%E7%BD%AE-laravel-%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83-post&quot;&gt;用 Laravel Sail 來建置 Laravel 開發環境&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://laravel.com/docs/9.x/sail&quot;&gt;Laravel SAil&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://gist.github.com/kiddtang/adb6385d8faa86d8ee2e2a45ed32b5bd&quot;&gt;proxy-manager&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Wei Chang</name></author><category term="Server" /><category term="Laravel" /><category term="Docker" /><category term="Sail" /><category term="WSL2" /><summary type="html">前言   目前在研究各種架設Laravel的方法，經歷了Homestead、laradock最終還是走到了一開始最想使用的Sail。實際上使用起來跟感受到與laradock使用有明顯差別，原因是在於laradock使用的專案資料夾位於windows系統，而Laravel Sail是直接存放於WSL系統內，以筆者為例，開新的laravel專案在laradock開啟/歡迎頁面需要load 1秒的時間而在Sail中大概就只要幾十毫秒，以體感差非常多。剛好在laradock上的案件量不多趁新鮮趕緊換成Laravel Sail來使用，以下將帶來在Windows 11 上部屬Laravel Sail的過程。 關於laradock在windows上的檔案IO其實是有解的，但我覺得有點麻煩就沒用了。</summary></entry><entry><title type="html">Windows部署Laravel Sail</title><link href="http://localhost:4000/stady/2022/07/18/007-CMAR/" rel="alternate" type="text/html" title="Windows部署Laravel Sail" /><published>2022-07-18T00:00:00+08:00</published><updated>2022-07-18T00:00:00+08:00</updated><id>http://localhost:4000/stady/2022/07/18/007-CMAR</id><content type="html" xml:base="http://localhost:4000/stady/2022/07/18/007-CMAR/"></content><author><name>Wei Chang</name></author><category term="stady" /><category term="Laravel" /><category term="Docker" /><category term="Sail" /><category term="WSL2" /><summary type="html"></summary></entry><entry><title type="html">Windows部署Laradock</title><link href="http://localhost:4000/server/2022/07/07/005-laradock/" rel="alternate" type="text/html" title="Windows部署Laradock" /><published>2022-07-07T00:00:00+08:00</published><updated>2022-07-07T00:00:00+08:00</updated><id>http://localhost:4000/server/2022/07/07/005-laradock</id><content type="html" xml:base="http://localhost:4000/server/2022/07/07/005-laradock/">&lt;hr /&gt;
+&lt;/ol&gt;</content><author><name>Wei Chang</name></author><category term="Server" /><category term="Laravel" /><category term="Docker" /><category term="Sail" /><category term="WSL2" /><summary type="html">前言   目前在研究各種架設Laravel的方法，經歷了Homestead、laradock最終還是走到了一開始最想使用的Sail。實際上使用起來跟感受到與laradock使用有明顯差別，原因是在於laradock使用的專案資料夾位於windows系統，而Laravel Sail是直接存放於WSL系統內，以筆者為例，開新的laravel專案在laradock開啟/歡迎頁面需要load 1秒的時間而在Sail中大概就只要幾十毫秒，以體感差非常多。剛好在laradock上的案件量不多趁新鮮趕緊換成Laravel Sail來使用，以下將帶來在Windows 11 上部屬Laravel Sail的過程。 關於laradock在windows上的檔案IO其實是有解的，但我覺得有點麻煩就沒用了。</summary></entry><entry><title type="html">Windows部署Laradock</title><link href="http://localhost:4000/server/2022/07/07/005-laradock/" rel="alternate" type="text/html" title="Windows部署Laradock" /><published>2022-07-07T00:00:00+08:00</published><updated>2022-07-07T00:00:00+08:00</updated><id>http://localhost:4000/server/2022/07/07/005-laradock</id><content type="html" xml:base="http://localhost:4000/server/2022/07/07/005-laradock/">&lt;hr /&gt;
 
 &lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
 &lt;p&gt;以往在Windows系統上建立 PHP 相關專案大多都使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;XAMPP&lt;/code&gt; 等集成軟體，或是在 Server 主機上安裝 LAMP/LNMP，不相同的平台建置各有各自的作法，在開發不同專案時如果有切換 PHP 版本的需求，跟依賴與Virtualbox導致I/O瓶頸的Vagrant相比使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Laradock&lt;/code&gt; 除了I/O速度的問題外套件的未來維護也更勝一籌，所以以下我將記錄我在Windows10上面架設laradock的過程。&lt;/p&gt;
