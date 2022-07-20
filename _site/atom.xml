@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-20T10:42:55+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WeiChang’s diary</title><subtitle>something</subtitle><author><name>Wei Chang</name></author><entry><title type="html">Windows部署Laravel Sail</title><link href="http://localhost:4000/stady/2022/07/18/007-CMAR/" rel="alternate" type="text/html" title="Windows部署Laravel Sail" /><published>2022-07-18T00:00:00+08:00</published><updated>2022-07-18T00:00:00+08:00</updated><id>http://localhost:4000/stady/2022/07/18/007-CMAR</id><content type="html" xml:base="http://localhost:4000/stady/2022/07/18/007-CMAR/"></content><author><name>Wei Chang</name></author><category term="stady" /><category term="Laravel" /><category term="Docker" /><category term="Sail" /><category term="WSL2" /><summary type="html"></summary></entry><entry><title type="html">Windows部署Laravel Sail</title><link href="http://localhost:4000/server/2022/07/18/006-laravelsail/" rel="alternate" type="text/html" title="Windows部署Laravel Sail" /><published>2022-07-18T00:00:00+08:00</published><updated>2022-07-18T00:00:00+08:00</updated><id>http://localhost:4000/server/2022/07/18/006-laravelsail</id><content type="html" xml:base="http://localhost:4000/server/2022/07/18/006-laravelsail/">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-20T10:54:38+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WeiChang’s diary</title><subtitle>something</subtitle><author><name>Wei Chang</name></author><entry><title type="html">Windows部署Laravel Sail</title><link href="http://localhost:4000/stady/2022/07/18/007-CMAR/" rel="alternate" type="text/html" title="Windows部署Laravel Sail" /><published>2022-07-18T00:00:00+08:00</published><updated>2022-07-18T00:00:00+08:00</updated><id>http://localhost:4000/stady/2022/07/18/007-CMAR</id><content type="html" xml:base="http://localhost:4000/stady/2022/07/18/007-CMAR/"></content><author><name>Wei Chang</name></author><category term="stady" /><category term="Laravel" /><category term="Docker" /><category term="Sail" /><category term="WSL2" /><summary type="html"></summary></entry><entry><title type="html">Windows部署Laravel Sail</title><link href="http://localhost:4000/server/2022/07/18/006-laravelsail/" rel="alternate" type="text/html" title="Windows部署Laravel Sail" /><published>2022-07-18T00:00:00+08:00</published><updated>2022-07-18T00:00:00+08:00</updated><id>http://localhost:4000/server/2022/07/18/006-laravelsail</id><content type="html" xml:base="http://localhost:4000/server/2022/07/18/006-laravelsail/">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
 
 &lt;p&gt;  目前在研究各種架設Laravel的方法，經歷了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Homestead&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;laradock&lt;/code&gt;最終還是走到了一開始最想使用的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Sail&lt;/code&gt;。實際上使用起來跟感受到與&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;laradock&lt;/code&gt;使用有明顯差別，原因是在於&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;laradock&lt;/code&gt;使用的專案資料夾位於windows系統，而&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Laravel Sail&lt;/code&gt;是直接存放於WSL系統內，以筆者為例，開新的laravel專案在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;laradock&lt;/code&gt;開啟&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/&lt;/code&gt;歡迎頁面需要load 1秒的時間而在Sail中大概就只要幾十毫秒，以體感差非常多。剛好在laradock上的案件量不多趁新鮮趕緊換成&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Laravel Sail&lt;/code&gt;來使用，以下將帶來在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Windows 11&lt;/code&gt; 上部屬&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Laravel Sail&lt;/code&gt;的過程。&lt;/p&gt;
 &lt;div class=&quot;alert&quot;&gt;
 關於laradock在windows上的檔案IO其實是有解的，但我覺得有點麻煩就沒用了。
 &lt;/div&gt;
 
+&lt;!-- more --&gt;
 &lt;h1 id=&quot;部屬流程&quot;&gt;部屬流程&lt;/h1&gt;
 &lt;p&gt;  Sail還是基於Docker的做法，所以依然要安裝Docker，在windows上安裝Docker可以看我&lt;a href=&quot;https://zwei-c.github.io/server/2022/07/07/005-laradock/&quot;&gt;上一篇文章&lt;/a&gt;有介紹。&lt;/p&gt;
 
@@ -190,7 +191,182 @@ FORWARD_MAILHOG_DASHBOARD_PORT=48025
 
 &lt;p&gt;設定方法跟上面一樣。&lt;/p&gt;
 
-&lt;h2 id=&quot;我的-docker-composeyml&quot;&gt;我的 docker-compose.yml&lt;/h2&gt;</content><author><name>Wei Chang</name></author><category term="Server" /><category term="Laravel" /><category term="Docker" /><category term="Sail" /><category term="WSL2" /><summary type="html">前言   目前在研究各種架設Laravel的方法，經歷了Homestead、laradock最終還是走到了一開始最想使用的Sail。實際上使用起來跟感受到與laradock使用有明顯差別，原因是在於laradock使用的專案資料夾位於windows系統，而Laravel Sail是直接存放於WSL系統內，以筆者為例，開新的laravel專案在laradock開啟/歡迎頁面需要load 1秒的時間而在Sail中大概就只要幾十毫秒，以體感差非常多。剛好在laradock上的案件量不多趁新鮮趕緊換成Laravel Sail來使用，以下將帶來在Windows 11 上部屬Laravel Sail的過程。 關於laradock在windows上的檔案IO其實是有解的，但我覺得有點麻煩就沒用了。 部屬流程   Sail還是基於Docker的做法，所以依然要安裝Docker，在windows上安裝Docker可以看我上一篇文章有介紹。 安裝Ubuntu   打開Microsoft Store搜尋Ubuntu我這邊安裝的是20.4.4版 安裝好後要確認WSL版本是不是2，Windows11的話預設就是WSL2了，好了之後要去Dokcer Desktop設定Resources&amp;gt;WSL intergration選取安裝的Linux系統。 好了之後開啟Windows終端機(沒有的話一樣去MSstore裝一裝就好了)。會自動新增剛剛安裝的ubuntu於你的新增標籤內。 開啟Ubuntu後因為如果是舊專案會需要用到composer所以要先安裝PHP，依自己的需求安裝PHP版本及擴展。 #更新apt sudo apt update &amp;amp;&amp;amp; sudo apt install php #添加安裝包 sudo apt install software-properties-common sudo add-apt-repository ppa:ondrej/php #安裝php 8.1 sudo apt install php8.1 #安裝php拓展 sudo apt install php8.1-gd php8.1-xml php8.1-soap php8.1-mbstring php8.1-mysql 如果有切換php版本的需求可以使用 sudo update-alternatives --config php 再來安裝composer #下載composer安裝檔 wget -O composer-setup.php https://getcomposer.org/installer #安裝到/usr/local/bin目錄下 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer #查看是否安裝成功 composer -v 安裝Nginx-proxy-manager   為了方便設定自己想要的域名，首先進入WSL終端機下，到家目錄新建一個proxy-manager資料夾。 cd ~ &amp;amp;&amp;amp; mkdir proxy-manager 進入proxy-manager文件夾並創建docker-compose.yml cd proxy-manager &amp;amp;&amp;amp; vim docker-compose.yml 於docker-composer.yml文件貼上 version: &quot;3&quot; services: app: image: &apos;jc21/nginx-proxy-manager:latest&apos; restart: always ports: # Public HTTP Port: - &apos;80:80&apos; # Public HTTPS Port: - &apos;443:443&apos; # Admin Web Port: - &apos;81:81&apos; environment: # These are the settings to access your db DB_SQLITE_FILE: &quot;/data/database.sqlite&quot; # Uncomment this if IPv6 is not enabled on your host DISABLE_IPV6: &apos;true&apos; volumes: - ./data:/data - ./letsencrypt:/etc/letsencrypt 然後啟動container docker-composer up -d 好了之後去瀏覽器進入localhost:81就可以進到管理員頁面 Email address: admin@example.com Password: changeme 就可以設定你的帳號。 設定完成後: 設定Laravel Sail   分成兩個部分：在舊的專案上使用Sail、新增新的專案使用Sail 這邊先講如果在舊專案上使用Sail。 首先先進入Ubuntu然後在你的專案底下，使用 composer 安裝 Laravel Sail。 composer require laravel/sail --dev 接著使用 artisan 指令產出 docker-compose.yml。 php artisan sail:install 可以選擇想要使用的服務。 Which services would you like to install? [mysql]: [0] mysql [1] pgsql [2] mariadb [3] redis [4] memcached [5] meilisearch [6] minio [7] mailhog [8] selenium &amp;gt; 0,3,7 Sail scaffolding installed successfully. 之後就可以使用 docker 來建置開發環境了。 ./vendor/bin/sail up 如果不想打那麼多字的話可以在 .bashrc 或是 .zshrc 中設定 alias（別名）。 alias sail=&apos;bash vendor/bin/sail&apos; 這樣啟動開發環境只需要輸入 sail 就好，啟動之後如果想終止，可以使用 Ctrl + C 終止容器。 sail up 如果想要在背景執行，可以加上 -d 選項，即 Docker 原始提供的參數 -d, --detach。 sail up -d 終止所有 Laravel Sail 所有服務容器。 sail stop 想要終止在背景執行的 Laravel Sail 並刪除所有服務容器的話。 sail down 設置域名 編輯你專案的.env 新增 APP_PORT=48080 FORWARD_DB_PORT=43306 FORWARD_REDIS_PORT=46379 FORWARD_MEILISEARCH_PORT=47700 FORWARD_MAILHOG_PORT=41025 FORWARD_MAILHOG_DASHBOARD_PORT=48025 之後到你本機修改host新增域名 127.0.0.1 project.tset 之後瀏覽器開啟localhost:81 點選Hosts -&amp;gt; Proxy Hosts -&amp;gt; Add Proxy Hosts 輸入你定義的域名，並在Forward Hostname/IP填入host.docker.internal，port填入48080後save。 之後直接訪問project.tset就可以看到你的專案了。 之後新增新的專案除了.env裡的port要改，docker-compose.yml 裡面的vite port也要改(如果laravel版本&amp;gt;9)。 新增專案 curl -s https://laravel.build/project1 | bash 設定方法跟上面一樣。 我的 docker-compose.yml</summary></entry><entry><title type="html">Windows部署Laradock</title><link href="http://localhost:4000/server/2022/07/07/005-laradock/" rel="alternate" type="text/html" title="Windows部署Laradock" /><published>2022-07-07T00:00:00+08:00</published><updated>2022-07-07T00:00:00+08:00</updated><id>http://localhost:4000/server/2022/07/07/005-laradock</id><content type="html" xml:base="http://localhost:4000/server/2022/07/07/005-laradock/">&lt;hr /&gt;
+&lt;h2 id=&quot;我的-docker-composeyml&quot;&gt;我的 docker-compose.yml&lt;/h2&gt;
+&lt;p&gt;加裝了phpmyadmin&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# For more information: https://laravel.com/docs/sail
+version: &apos;3&apos;
+services:
+    laravel.test:
+        build:
+            context: ./vendor/laravel/sail/runtimes/8.1
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: &apos;${WWWGROUP}&apos;
+        image: sail-8.1/app
+        extra_hosts:
+            - &apos;host.docker.internal:host-gateway&apos;
+        ports:
+            - &apos;${APP_PORT:-80}:80&apos;
+            - &apos;${VITE_PORT:-5173}:${VITE_PORT:-5173}&apos;
+        environment:
+            WWWUSER: &apos;${WWWUSER}&apos;
+            LARAVEL_SAIL: 1
+            XDEBUG_MODE: &apos;${SAIL_XDEBUG_MODE:-off}&apos;
+            XDEBUG_CONFIG: &apos;${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}&apos;
+        volumes:
+            - &apos;.:/var/www/html&apos;
+        networks:
+            - sail
+        depends_on:
+            - mysql
+            - redis
+            - meilisearch
+            - selenium
+    mysql:
+        image: &apos;mysql/mysql-server:8.0&apos;
+        ports:
+            - &apos;${FORWARD_DB_PORT:-3306}:3306&apos;
+        environment:
+            MYSQL_ROOT_PASSWORD: &apos;${DB_PASSWORD}&apos;
+            MYSQL_ROOT_HOST: &quot;%&quot;
+            MYSQL_DATABASE: &apos;${DB_DATABASE}&apos;
+            MYSQL_USER: &apos;${DB_USERNAME}&apos;
+            MYSQL_PASSWORD: &apos;${DB_PASSWORD}&apos;
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        volumes:
+            - &apos;sail-mysql:/var/lib/mysql&apos;
+            - &apos;./vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh&apos;
+        networks:
+            - sail
+        healthcheck:
+            test: [&quot;CMD&quot;, &quot;mysqladmin&quot;, &quot;ping&quot;, &quot;-p${DB_PASSWORD}&quot;]
+            retries: 3
+            timeout: 5s
+    redis:
+        image: &apos;redis:alpine&apos;
+        ports:
+            - &apos;${FORWARD_REDIS_PORT:-6379}:6379&apos;
+        volumes:
+            - &apos;sail-redis:/data&apos;
+        networks:
+            - sail
+        healthcheck:
+            test: [&quot;CMD&quot;, &quot;redis-cli&quot;, &quot;ping&quot;]
+            retries: 3
+            timeout: 5s
+    meilisearch:
+        image: &apos;getmeili/meilisearch:latest&apos;
+        ports:
+            - &apos;${FORWARD_MEILISEARCH_PORT:-7700}:7700&apos;
+        volumes:
+            - &apos;sail-meilisearch:/meili_data&apos;
+        networks:
+            - sail
+        healthcheck:
+            test: [&quot;CMD&quot;, &quot;wget&quot;, &quot;--no-verbose&quot;, &quot;--spider&quot;,  &quot;http://localhost:7700/health&quot;]
+            retries: 3
+            timeout: 5s
+    mailhog:
+        image: &apos;mailhog/mailhog:latest&apos;
+        ports:
+            - &apos;${FORWARD_MAILHOG_PORT:-1025}:1025&apos;
+            - &apos;${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025&apos;
+        networks:
+            - sail
+    selenium:
+        image: &apos;selenium/standalone-chrome&apos;
+        volumes:
+            - &apos;/dev/shm:/dev/shm&apos;
+        networks:
+            - sail
+    phpmyadmin:
+        image: &apos;phpmyadmin:latest&apos;
+        ports:
+          - 8080:80
+        environment:
+          MYSQL_ROOT_PASSWORD: &apos;${DB_PASSWORD}&apos;
+          PMA_HOST: mysql
+          PMA_USER: &apos;${DB_USERNAME}&apos;
+          PMA_PASSWORD: &apos;${DB_PASSWORD}&apos;
+        links:
+          - &quot;mysql:db&quot;
+        depends_on:
+          - mysql
+        networks:
+          - sail
+networks:
+    sail:
+        driver: bridge
+volumes:
+    sail-mysql:
+        driver: local
+    sail-redis:
+        driver: local
+    sail-meilisearch:
+        driver: local
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;可以直接照用，&lt;/p&gt;
+
+&lt;p&gt;如果想要對建立的容器進行調整的話，可以將 sail 的 docker-compose.yml 產出來。&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;php artisan sail:publish
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;此時專案底下就會多一個 docker 資料夾，底下會放置建置容器用的 Dockerfile 還有 php.ini 等設定檔案。&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ tree docker
+docker
+├── 7.4
+│   ├── Dockerfile
+│   ├── php.ini
+│   ├── start-container
+│   └── supervisord.conf
+├── 8.0
+│   ├── Dockerfile
+│   ├── php.ini
+│   ├── start-container
+│   └── supervisord.conf
+└── 8.1
+    ├── Dockerfile
+    ├── php.ini
+    ├── start-container
+    └── supervisord.conf
+3 directories, 12 files
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;docker-compse.yml 中的 context 也會更動，從 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./vendor/laravel/sail/runtimes/8.1&lt;/code&gt; 會從改成 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./docker/81&lt;/code&gt;。&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;build:
+    context: ./docker/8.1
+    dockerfile: Dockerfile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;更動後，需要重新建立容器，這裡可以使用 build 的指令。&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sail build --no-cache
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;用sailx來開發&quot;&gt;用Sailx來開發&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#原先使用
+
+php artisan migrate
+
+#改成
+
+sail artisan migrate
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;除此之外還有整合 php 指令。&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sail php --version
+sail php script.php
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;其他東西邏輯差不多，可以參考官網的Sail文檔。&lt;/p&gt;
+
+&lt;h1 id=&quot;參考資料&quot;&gt;參考資料&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docfunc.com/posts/47/%E7%94%A8-laravel-sail-%E4%BE%86%E5%BB%BA%E7%BD%AE-laravel-%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83-post&quot;&gt;用 Laravel Sail 來建置 Laravel 開發環境&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://laravel.com/docs/9.x/sail&quot;&gt;Laravel SAil&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gist.github.com/kiddtang/adb6385d8faa86d8ee2e2a45ed32b5bd&quot;&gt;proxy-manager&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Wei Chang</name></author><category term="Server" /><category term="Laravel" /><category term="Docker" /><category term="Sail" /><category term="WSL2" /><summary type="html">前言   目前在研究各種架設Laravel的方法，經歷了Homestead、laradock最終還是走到了一開始最想使用的Sail。實際上使用起來跟感受到與laradock使用有明顯差別，原因是在於laradock使用的專案資料夾位於windows系統，而Laravel Sail是直接存放於WSL系統內，以筆者為例，開新的laravel專案在laradock開啟/歡迎頁面需要load 1秒的時間而在Sail中大概就只要幾十毫秒，以體感差非常多。剛好在laradock上的案件量不多趁新鮮趕緊換成Laravel Sail來使用，以下將帶來在Windows 11 上部屬Laravel Sail的過程。 關於laradock在windows上的檔案IO其實是有解的，但我覺得有點麻煩就沒用了。</summary></entry><entry><title type="html">Windows部署Laradock</title><link href="http://localhost:4000/server/2022/07/07/005-laradock/" rel="alternate" type="text/html" title="Windows部署Laradock" /><published>2022-07-07T00:00:00+08:00</published><updated>2022-07-07T00:00:00+08:00</updated><id>http://localhost:4000/server/2022/07/07/005-laradock</id><content type="html" xml:base="http://localhost:4000/server/2022/07/07/005-laradock/">&lt;hr /&gt;
 
 &lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
 &lt;p&gt;以往在Windows系統上建立 PHP 相關專案大多都使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;XAMPP&lt;/code&gt; 等集成軟體，或是在 Server 主機上安裝 LAMP/LNMP，不相同的平台建置各有各自的作法，在開發不同專案時如果有切換 PHP 版本的需求，跟依賴與Virtualbox導致I/O瓶頸的Vagrant相比使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Laradock&lt;/code&gt; 除了I/O速度的問題外套件的未來維護也更勝一籌，所以以下我將記錄我在Windows10上面架設laradock的過程。&lt;/p&gt;
