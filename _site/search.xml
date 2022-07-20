@@ -2,6 +2,52 @@
 <search>
   
     <entry>
+      <title><![CDATA[Windows部署Laravel Sail]]></title>
+      <url>/stady/2022/07/18/007-CMAR/</url>
+      <content type="text"><![CDATA[]]></content>
+      <categories>
+        
+          <category> stady </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> Laravel </tag>
+        
+          <tag> Docker </tag>
+        
+          <tag> Sail </tag>
+        
+          <tag> WSL2 </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Windows部署Laravel Sail]]></title>
+      <url>/server/2022/07/18/006-laravelsail/</url>
+      <content type="text"><![CDATA[前言  目前在研究各種架設Laravel的方法，經歷了Homestead、laradock最終還是走到了一開始最想使用的Sail。實際上使用起來跟感受到與laradock使用有明顯差別，原因是在於laradock使用的專案資料夾位於windows系統，而Laravel Sail是直接存放於WSL系統內，以筆者為例，開新的laravel專案在laradock開啟/歡迎頁面需要load 1秒的時間而在Sail中大概就只要幾十毫秒，以體感差非常多。剛好在laradock上的案件量不多趁新鮮趕緊換成Laravel Sail來使用，以下將帶來在Windows 11 上部屬Laravel Sail的過程。關於laradock在windows上的檔案IO其實是有解的，但我覺得有點麻煩就沒用了。部屬流程  Sail還是基於Docker的做法，所以依然要安裝Docker，在windows上安裝Docker可以看我上一篇文章有介紹。安裝Ubuntu  打開Microsoft Store搜尋Ubuntu我這邊安裝的是20.4.4版安裝好後要確認WSL版本是不是2，Windows11的話預設就是WSL2了，好了之後要去Dokcer Desktop設定Resources&gt;WSL intergration選取安裝的Linux系統。好了之後開啟Windows終端機(沒有的話一樣去MSstore裝一裝就好了)。會自動新增剛剛安裝的ubuntu於你的新增標籤內。開啟Ubuntu後因為如果是舊專案會需要用到composer所以要先安裝PHP，依自己的需求安裝PHP版本及擴展。#更新aptsudo apt update &amp;&amp; sudo apt install php#添加安裝包sudo apt install software-properties-commonsudo add-apt-repository ppa:ondrej/php#安裝php 8.1sudo apt install php8.1#安裝php拓展sudo apt install php8.1-gd php8.1-xml php8.1-soap php8.1-mbstring php8.1-mysql如果有切換php版本的需求可以使用sudo update-alternatives --config php 再來安裝composer#下載composer安裝檔wget -O composer-setup.php https://getcomposer.org/installer#安裝到/usr/local/bin目錄下sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer#查看是否安裝成功composer -v安裝Nginx-proxy-manager  為了方便設定自己想要的域名，首先進入WSL終端機下，到家目錄新建一個proxy-manager資料夾。cd ~ &amp;&amp; mkdir proxy-manager進入proxy-manager文件夾並創建docker-compose.ymlcd proxy-manager &amp;&amp; vim docker-compose.yml於docker-composer.yml文件貼上version: "3"services:  app:    image: 'jc21/nginx-proxy-manager:latest'    restart: always    ports:      # Public HTTP Port:      - '80:80'      # Public HTTPS Port:      - '443:443'      # Admin Web Port:      - '81:81'    environment:      # These are the settings to access your db      DB_SQLITE_FILE: "/data/database.sqlite"      # Uncomment this if IPv6 is not enabled on your host      DISABLE_IPV6: 'true'    volumes:      - ./data:/data      - ./letsencrypt:/etc/letsencrypt然後啟動containerdocker-composer up -d好了之後去瀏覽器進入localhost:81就可以進到管理員頁面Email address: admin@example.comPassword: changeme就可以設定你的帳號。設定完成後: 設定Laravel Sail  分成兩個部分：在舊的專案上使用Sail、新增新的專案使用Sail這邊先講如果在舊專案上使用Sail。首先先進入Ubuntu然後在你的專案底下，使用 composer 安裝 Laravel Sail。composer require laravel/sail --dev接著使用 artisan 指令產出 docker-compose.yml。php artisan sail:install可以選擇想要使用的服務。 Which services would you like to install? [mysql]:  [0] mysql  [1] pgsql  [2] mariadb  [3] redis  [4] memcached  [5] meilisearch  [6] minio  [7] mailhog  [8] selenium &gt; 0,3,7Sail scaffolding installed successfully.之後就可以使用 docker 來建置開發環境了。./vendor/bin/sail up如果不想打那麼多字的話可以在 .bashrc 或是 .zshrc 中設定 alias（別名）。alias sail='bash vendor/bin/sail'這樣啟動開發環境只需要輸入 sail 就好，啟動之後如果想終止，可以使用 Ctrl + C 終止容器。sail up如果想要在背景執行，可以加上 -d 選項，即 Docker 原始提供的參數 -d, --detach。sail up -d終止所有 Laravel Sail 所有服務容器。sail stop想要終止在背景執行的 Laravel Sail 並刪除所有服務容器的話。sail down設置域名編輯你專案的.env新增APP_PORT=48080FORWARD_DB_PORT=43306FORWARD_REDIS_PORT=46379FORWARD_MEILISEARCH_PORT=47700FORWARD_MAILHOG_PORT=41025FORWARD_MAILHOG_DASHBOARD_PORT=48025之後到你本機修改host新增域名127.0.0.1 project.tset之後瀏覽器開啟localhost:81點選Hosts -&gt; Proxy Hosts -&gt; Add Proxy Hosts輸入你定義的域名，並在Forward Hostname/IP填入host.docker.internal，port填入48080後save。之後直接訪問project.tset就可以看到你的專案了。之後新增新的專案除了.env裡的port要改，docker-compose.yml 裡面的vite port也要改(如果laravel版本&gt;9)。新增專案curl -s https://laravel.build/project1 | bash設定方法跟上面一樣。我的 docker-compose.yml]]></content>
+      <categories>
+        
+          <category> Server </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> Laravel </tag>
+        
+          <tag> Docker </tag>
+        
+          <tag> Sail </tag>
+        
+          <tag> WSL2 </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
       <title><![CDATA[Windows部署Laradock]]></title>
       <url>/server/2022/07/07/005-laradock/</url>
       <content type="text"><![CDATA[前言以往在Windows系統上建立 PHP 相關專案大多都使用 XAMPP 等集成軟體，或是在 Server 主機上安裝 LAMP/LNMP，不相同的平台建置各有各自的作法，在開發不同專案時如果有切換 PHP 版本的需求，跟依賴與Virtualbox導致I/O瓶頸的Vagrant相比使用 Laradock 除了I/O速度的問題外套件的未來維護也更勝一籌，所以以下我將記錄我在Windows10上面架設laradock的過程。LaradockLaradock 是基於 Docker 的一個快速建立 Laravel/PHP 的開發環境工具，Docker 則是在各作業系統上先做出一個共通的平台，將應用程式獨立於Container 當中，省去搭建作業系統的成本。Dokcer Desktop 在Windows中依賴WSL什麼是 WSL？WSL 2 是「Windows 子系統 Linux 版」架構的新版本，可讓 Windows 子系統 Linux 版在 Windows 上執行 ELF64 Linux 二進位檔。 其主要目標是增加檔案系統效能，以及新增完整的系統呼叫相容性。與Virtualbox虛擬機相比有更接近系統底層的效能及相容性。安裝步驟系統需求  CPU為64位元  有4G以上的RAM  BIOS的虛擬化技術已啟用Windows 環境官方說明：https://docs.docker.com/desktop/windows/wsl/用管理員身分執行 Windows 終端機 、 cmd 、 powershell，執行以下命令啟用 Windows 子系統 Linux 版dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart啟用虛擬機器功能dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart  Docker先下載Windows版本的Docker Desktop Installer下載 Linux 核心更新套件並安裝WSL2 Linux 核心更新套件 (適用於 x64 電腦)完成後重新開機後Docker已可正常運作設定Laradock建立一個資料夾存放laradockgit clone https://github.com/laradock/laradock.git laradock並新增 www 於同層資料夾。 並在www資料夾新增 case-1 、 case-2 兩個資料夾。結構如下├─Laradock└─www    ├─case-1    └─case-2進入Laradock資料夾 並且複製已經準備好的範例檔 env.examplecd laradockcp .env.example .env打開.env文件進行編輯APP_CODE_PATH_HOST=../wwwAPP_CODE_PATH_CONTAINER=/var/www上面主要是修改專案存放路徑，其他如PHP、MYSQL、PPMA、Nginx等設定可以依自己的需求在.env修改。設定Nginx到 /laradock/nginx/sites資料夾複製laravel.conf.example為primary.conf，接下來編輯primary.conf。# 原本的root /var/www/laravel/public# 修改為(因為www 要放各項專案，且laravel任何request導入進來都需要走public目錄)root /var/www/case-1/public# 原本的server_name laravel.test;# 修改為 待會會建立兩個Laravel傳案做示範這邊以project1.test當作第一個傳案server_name project1.test;# server_name : 網域# root ：對應的檔案路徑# 所以這兩個網域只要後面的port號打對一樣都能進入相對應的檔案路徑 再來新增case-2的config，為節省時間，全部的內容如下。#server {#    listen 80;#    server_name laravel.com.co;#    return 301 https://laravel.com.co$request_uri;#}server {    listen 80;    listen [::]:80;    # For https    # listen 443 ssl;    # listen [::]:443 ssl ipv6only=on;    # ssl_certificate /etc/nginx/ssl/default.crt;    # ssl_certificate_key /etc/nginx/ssl/default.key;    server_name case-1.test;    root /var/www/case-1/public;    index index.php index.html index.htm;    location / {         try_files $uri $uri/ /index.php$is_args$args;    }    location ~ \\.php$ {        try_files $uri /index.php =404;        fastcgi_pass php-upstream;        fastcgi_index index.php;        fastcgi_buffers 16 16k;        fastcgi_buffer_size 32k;        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;        #fixes timeouts        fastcgi_read_timeout 600;        include fastcgi_params;    }    location ~ /\\.ht {        deny all;    }    location /.well-known/acme-challenge/ {        root /var/www/letsencrypt/;        log_not_found off;    }    error_log /var/log/nginx/laravel_error.log;    access_log /var/log/nginx/laravel_access.log;}server {    listen 80;    listen [::]:80;    # For https    # listen 443 ssl;    # listen [::]:443 ssl ipv6only=on;    # ssl_certificate /etc/nginx/ssl/default.crt;    # ssl_certificate_key /etc/nginx/ssl/default.key;    server_name case-2.test;    root /var/www/case-2/public;    index index.php index.html index.htm;    location / {         try_files $uri $uri/ /index.php$is_args$args;    }    location ~ \\.php$ {        try_files $uri /index.php =404;        fastcgi_pass php-upstream;        fastcgi_index index.php;        fastcgi_buffers 16 16k;        fastcgi_buffer_size 32k;        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;        #fixes timeouts        fastcgi_read_timeout 600;        include fastcgi_params;    }    location ~ /\\.ht {        deny all;    }    location /.well-known/acme-challenge/ {        root /var/www/letsencrypt/;        log_not_found off;    }    error_log /var/log/nginx/laravel_error.log;    access_log /var/log/nginx/laravel_access.log;}Build Docker Image to Containerdocker-compose up -d nginx mysql phpmyadmin開啟工作區域的bash#****進入Container 內建立專案，可呼叫artisan、composer 相關指令**** docker-compose exec workspace bash# 實際上在www資料夾位置，此時先使用Composer 安裝Laravel(項目各自為case-1、case-2)composer create-project laravel/laravel --prefer-dist case-1composer create-project laravel/laravel --prefer-dist case-2#離開 Containerexit選擇任一case專案的.env做測試連線mysql先去phpMyAdmin新建一個case-1的資料庫。接著複製.env.example為.env並修改以下內容。# 因為實際執行時是在docker容器內，容器內的mysql的port目前是3306# 外面連線時是依據剛剛MYSQL_PORT的設定DB_CONNECTION=mysqlDB_HOST=mysqlDB_PORT=3306DB_DATABASE=case-1DB_USERNAME=root進行migrate測試是否有連上資料庫。####當前目錄 : /laradockdocker-compose exec workspace bashcd case-1php artisan migrate如果正常應該可以看到手動設定網址與 IP 對應的 hosts 做測試在C:\Windows\System32\drivers\etc開啟host檔案並新增127.0.0.1 case-1.test127.0.0.1 case-2.test開啟專案網址。直接在瀏覽器的網址列輸入127.0.0.1 case-1.test127.0.0.1 case-2.test可以看到laravel的歡迎畫面就代表設定成功了。phpMyAdmin http://127.0.0.1:8081/root 預設值   帳號: root密碼: rootuser 預設值帳號: PMA_USER=default密碼: PMA_PASSWORD=secret參考資料  一步步教您使用 Laradock 快速打造Laravel/PHP 環境  laradock  laradock 笔记]]></content>

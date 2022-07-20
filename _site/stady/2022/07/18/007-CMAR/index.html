@@ -85,7 +85,7 @@
 <link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Laravel,Vagrant," />
+  <meta name="keywords" content="Laravel,Docker,Sail,WSL2," />
 
 
 
@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="前言 以前寫的PHP專案都是用CodeIgniter當框架來開發，但最近公司要轉用Laravel來當之後的開發框架，因為之前虛擬環境都是用Vagrant來架設，估狗windows 開發 laravel裡面找到lavavel.tw裡面就有答案了。殊不知年輕人就是年輕人想得太少了…原來lavavel.tw這個官方文檔對應的laravel版本是5.3。看了一下公司專案的版本…8.x!會這樣講，是因為我又是裝完之後才發現的，因為要Build好開發環境才能看專案阿XD都怪我沒仔細看專案內容QQ，但裝了都裝了，我還是要記錄一下Laravel Homestead的架設過程。">
-<meta name="keywords" content="Laravel, Vagrant">
+<meta name="description" content="">
+<meta name="keywords" content="Laravel, Docker, Sail, WSL2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows部署Laravel Homestead">
-<meta property="og:url" content="http://localhost:4000/server/2022/07/07/004-lavarel-homestead/">
+<meta property="og:title" content="Windows部署Laravel Sail">
+<meta property="og:url" content="http://localhost:4000/stady/2022/07/18/007-CMAR/">
 <meta property="og:site_name" content="WeiChang&apos;s diary">
-<meta property="og:description" content="前言 以前寫的PHP專案都是用CodeIgniter當框架來開發，但最近公司要轉用Laravel來當之後的開發框架，因為之前虛擬環境都是用Vagrant來架設，估狗windows 開發 laravel裡面找到lavavel.tw裡面就有答案了。殊不知年輕人就是年輕人想得太少了…原來lavavel.tw這個官方文檔對應的laravel版本是5.3。看了一下公司專案的版本…8.x!會這樣講，是因為我又是裝完之後才發現的，因為要Build好開發環境才能看專案阿XD都怪我沒仔細看專案內容QQ，但裝了都裝了，我還是要記錄一下Laravel Homestead的架設過程。">
+<meta property="og:description" content="">
 <meta property="og:locale" content="zh-tw">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows部署Laravel Homestead">
-<meta name="twitter:description" content="前言 以前寫的PHP專案都是用CodeIgniter當框架來開發，但最近公司要轉用Laravel來當之後的開發框架，因為之前虛擬環境都是用Vagrant來架設，估狗windows 開發 laravel裡面找到lavavel.tw裡面就有答案了。殊不知年輕人就是年輕人想得太少了…原來lavavel.tw這個官方文檔對應的laravel版本是5.3。看了一下公司專案的版本…8.x!會這樣講，是因為我又是裝完之後才發現的，因為要Build好開發環境才能看專案阿XD都怪我沒仔細看專案內容QQ，但裝了都裝了，我還是要記錄一下Laravel Homestead的架設過程。">
+<meta name="twitter:title" content="Windows部署Laravel Sail">
+<meta name="twitter:description" content="">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -154,7 +154,7 @@
 
 
 
-  <title>Windows部署Laravel Homestead | WeiChang's diary</title>
+  <title>Windows部署Laravel Sail | WeiChang's diary</title>
   
 
 
@@ -337,7 +337,7 @@
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/server/2022/07/07/004-lavarel-homestead/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/stady/2022/07/18/007-CMAR/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wei Chang">
@@ -357,7 +357,7 @@
           <h2 class="post-title" itemprop="name headline">
           
           
-            Windows部署Laravel Homestead
+            Windows部署Laravel Sail
           
         </h2>
         
@@ -371,8 +371,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-07-07T00:00:00+08:00">
-                2022-07-07
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-07-18T00:00:00+08:00">
+                2022-07-18
               </time>
             
 
@@ -395,8 +395,8 @@
               
                 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/Server" itemprop="url" rel="index">
-                    <span itemprop="name">Server</span>
+                  <a href="/category/#/stady" itemprop="url" rel="index">
+                    <span itemprop="name">stady</span>
                   </a>
                 </span>
 
@@ -450,96 +450,7 @@
 
 
 
-  <hr />
-
-<h1 id="前言">前言</h1>
-
-<p>以前寫的PHP專案都是用<code class="language-plaintext highlighter-rouge">CodeIgniter</code>當框架來開發，但最近公司要轉用<code class="language-plaintext highlighter-rouge">Laravel</code>來當之後的開發框架，因為之前虛擬環境都是用<code class="language-plaintext highlighter-rouge">Vagrant</code>來架設，估狗<em>windows 開發 laravel</em>裡面找到<a href="https://laravel.tw/">lavavel.tw</a>裡面就有答案了。殊不知年輕人就是年輕人想得太少了…原來<code class="language-plaintext highlighter-rouge">lavavel.tw</code>這個官方文檔對應的<code class="language-plaintext highlighter-rouge">laravel</code>版本是<code class="language-plaintext highlighter-rouge">5.3</code>。看了一下公司專案的版本…<code class="language-plaintext highlighter-rouge">8.x</code>!會這樣講，是因為我又是裝完之後才發現的，<del>因為要Build好開發環境才能看專案阿XD</del>都怪我沒仔細看專案內容QQ，但裝了都裝了，我還是要記錄一下<code class="language-plaintext highlighter-rouge">Laravel Homestead</code>的架設過程。
-<!-- more --></p>
-<h1 id="vagrant">Vagrant</h1>
-
-<p><code class="language-plaintext highlighter-rouge">Vagrant</code>是一個用<code class="language-plaintext highlighter-rouge">Vagrantfile</code>來設定的虛擬環境軟體，要使用你要先安裝：</p>
-<ul>
-  <li><a href="https://www.vagrantup.com/">Vagrant</a></li>
-  <li><a href="https://www.virtualbox.org/">VirtualBox</a></li>
-</ul>
-<div class="alert">
-Vagrant跟VirtualBox的版本有對應關係，需要各自安裝對的版本才能正常運行！
-</div>
-
-<p>具體上的教學網路有很多且不是本文重點，我就不贅述了。</p>
-
-<h1 id="laravel-homestead">Laravel Homestead</h1>
-
-<blockquote>
-  <p>Laravel Homestead 是一個官方預載的 Vagrant box，提供一個美好的開發環境，不需要在本機電腦安裝 PHP、HHVM、網頁伺服器或任何伺服器軟體。不用擔心搞亂你的系統！Vagrant box 可以搞定一切。如果有什麼地方搞爛掉了，還可以在幾分鐘內快速地砍掉並重建虛擬機器！</p>
-</blockquote>
-
-<h2 id="安裝-homestead-vagrant-box">安裝 Homestead Vagrant Box</h2>
-
-<p>當 VirtualBox / VMware 以及 Vagrant 安裝完成後，可以在終端機執行下列指令將 <code class="language-plaintext highlighter-rouge">laravel/homestead</code> 這個 box 安裝進你的 Vagrant 程式中。下載 box 會花一點時間，時間長短將依據你的網路速度決定：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>vagrant box add laravel/homestead
-</code></pre></td></tr></tbody></table></div></div>
-
-<h2 id="安裝-homestead">安裝 Homestead</h2>
-
-<p>可以簡單地透過複製(clone)儲存庫的方式來安裝 Homestead。建議可將儲存庫複製至你的「home」目錄中的 Homestead 資料夾，如此一來 Homestead box 將能提供主機服務給你所有的 Laravel 專案：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>git clone https://github.com/laravel/homestead.git Homestead
-</code></pre></td></tr></tbody></table></div></div>
-
-<p>複製完 Homestead 儲存庫，即可在 Homestead 目錄中執行 <code class="language-plaintext highlighter-rouge">bash init.sh</code> 指令來建立 <code class="language-plaintext highlighter-rouge">Homestead.yaml</code> 設定檔。 <code class="language-plaintext highlighter-rouge">Homestead.yaml</code> 檔案將會被放置在<code class="language-plaintext highlighter-rouge">homestead</code>目錄中：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>./init.bat
-</code></pre></td></tr></tbody></table></div></div>
-<h2 id="設定-homestead">設定 Homestead</h2>
-
-<h3 id="設定提供者">設定提供者</h3>
-<p>在 <code class="language-plaintext highlighter-rouge">/homestead/Homestead.yaml</code> 檔案中的 <code class="language-plaintext highlighter-rouge">provider</code> 是用來設定想要使用哪一個 Vagrant 提供者，像是：<code class="language-plaintext highlighter-rouge">virtualbox</code>、<code class="language-plaintext highlighter-rouge">vmware_fusion</code>、<code class="language-plaintext highlighter-rouge">vmware_workstation</code> 或 <code class="language-plaintext highlighter-rouge">parallels</code>。這邊我們要填寫:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>provider: virtualbox
-</code></pre></td></tr></tbody></table></div></div>
-
-<h3 id="設定共享目錄">設定共享目錄</h3>
-
-<p>在 <code class="language-plaintext highlighter-rouge">Homestead.yaml</code> 檔案的 <code class="language-plaintext highlighter-rouge">folders</code> 屬性裡列出所有想與 Homestead 環境共享的目錄。這些目錄中的檔案若有更動，它們將會同步更動在你的本機電腦與 Homestead 環境。可以將多個共享目錄都設定於此：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code>folders:
-    - map: C:\Code
-      to: /home/vagrant/Code
-</code></pre></td></tr></tbody></table></div></div>
-
-<h3 id="設定-nginx-網站">設定 Nginx 網站</h3>
-<p><code class="language-plaintext highlighter-rouge">sites</code> 屬性幫助你可以輕易的指定「網域」對應至 homestead 環境中的目錄。在 <code class="language-plaintext highlighter-rouge">Homestead.yaml</code> 檔案中已包含一個網站設定範例。同樣的，你可以增加數個網站到 Homestead 環境中。Homestead 可以為每個你正在開發中的 Laravel 專案提供方便的虛擬化環境：</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code>sites:
-    - map: homestead.app
-      to: /home/vagrant/Code/Laravel/public
-</code></pre></td></tr></tbody></table></div></div>
-<p>在配置 Homestead box 之後，若有更改 sites 屬性，你應該重新執行配置指令 <code class="language-plaintext highlighter-rouge">vagrant reload --provision</code> 來更新虛擬機裡的 Nginx 設定。</p>
-
-<h3 id="hosts-檔案">Hosts 檔案</h3>
-
-<p>你必須為 Nginx 網站在你機器中的 <code class="language-plaintext highlighter-rouge">hosts</code> 檔案增加「網域」。<code class="language-plaintext highlighter-rouge">hosts</code> 檔案會將你對 Homestead 網站的請求重導至 Homestead 機器。在 Mac 或 Linux 上，在 Windows 上，則存放於 <code class="language-plaintext highlighter-rouge">C:\Windows\System32\drivers\etc\hosts</code>。你增加至該檔案的內容看起來會像這樣：</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>192.168.10.10  homestead.app
-</code></pre></td></tr></tbody></table></div></div>
-<p>務必確認 IP 位置與你的 <code class="language-plaintext highlighter-rouge">Homestead.yaml</code> 檔案中設定相同。一旦將網域設定在 hosts 檔案之後，你就可以透過網頁瀏覽器造訪網站！</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>http://homestead.app
-</code></pre></td></tr></tbody></table></div></div>
-
-<h2 id="啟動-vagrant-box">啟動 Vagrant Box</h2>
-
-<p>當你編輯完 <code class="language-plaintext highlighter-rouge">Homestead.yaml</code>後，開啟終端機，進入 Homestead 目錄，並執行 <code class="language-plaintext highlighter-rouge">vagrant up</code> 指令。Vagrant 就會自將虛擬主機啟動並自動設定共享目錄和 Nginx 網站。</p>
-
-<p>如果要移除虛擬機器，可以使用 <code class="language-plaintext highlighter-rouge">vagrant destroy --force</code> 指令。</p>
-
-<h2 id="透過-ssh-連接">透過 SSH 連接</h2>
-
-<p>你可以在終端機裡進入你的 Homestead 目錄，並執行 <code class="language-plaintext highlighter-rouge">vagrant ssh</code> 指令藉此以 SSH 連上你的虛擬主機。</p>
-
-<h1 id="參考資料">參考資料</h1>
-
-<p><a href="https://laravel.tw/docs/5.3/homestead">laravel.tw/docs/5.3/homestead</a></p>
+  
 
 
       
@@ -570,7 +481,7 @@ Vagrant跟VirtualBox的版本有對應關係，需要各自安裝對的版本才
     </li>
     <li class="post-copyright-link">
       <strong>本文連結：</strong>
-      <a href="http://localhost:4000/server/2022/07/07/004-lavarel-homestead/" title="Windows部署Laravel Homestead">http://localhost:4000/server/2022/07/07/004-lavarel-homestead/</a>
+      <a href="http://localhost:4000/stady/2022/07/18/007-CMAR/" title="Windows部署Laravel Sail">http://localhost:4000/stady/2022/07/18/007-CMAR/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版權聲明： </strong>
@@ -591,7 +502,13 @@ Vagrant跟VirtualBox的版本有對應關係，需要各自安裝對的版本才
             <a href="/tag/#/Laravel" rel="tag"># Laravel</a>
           
             
-            <a href="/tag/#/Vagrant" rel="tag"># Vagrant</a>
+            <a href="/tag/#/Docker" rel="tag"># Docker</a>
+          
+            
+            <a href="/tag/#/Sail" rel="tag"># Sail</a>
+          
+            
+            <a href="/tag/#/WSL2" rel="tag"># WSL2</a>
           
         </div>
       
@@ -607,18 +524,14 @@ Vagrant跟VirtualBox的版本有對應關係，需要各自安裝對的版本才
         <div class="post-nav" id="post-nav-id">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/server/2022/07/07/005-laradock/" rel="next" title="Windows部署Laradock">
-                <i class="fa fa-chevron-left"></i> Windows部署Laradock
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/%E5%89%8D%E7%AB%AF/2022/07/07/003-page/" rel="prev" title="文章預覽顯示設定">
-                文章預覽顯示設定 <i class="fa fa-chevron-right"></i>
+              <a href="/server/2022/07/18/006-laravelsail/" rel="prev" title="Windows部署Laravel Sail">
+                Windows部署Laravel Sail <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -677,17 +590,8 @@ Vagrant跟VirtualBox的版本有對應關係，需要各自安裝對的版本才
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目錄
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            本站概覽
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/assets/dog.png"
@@ -756,34 +660,6 @@ Vagrant跟VirtualBox的版本有對應關係，需要各自安裝對的版本才
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-
-
-
-
-
-
-
-            
-              <div class="post-toc-content">
-    <ol class=nav>
-      <li class="nav-item nav-level-1"> <a class="nav-link" href="#前言"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#vagrant"> <span class="nav-number">2</span> <span class="nav-text">Vagrant</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#laravel-homestead"> <span class="nav-number">3</span> <span class="nav-text">Laravel Homestead</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#安裝-homestead-vagrant-box"> <span class="nav-number">3.1</span> <span class="nav-text">安裝 Homestead Vagrant Box</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#安裝-homestead"> <span class="nav-number">3.2</span> <span class="nav-text">安裝 Homestead</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#設定-homestead"> <span class="nav-number">3.3</span> <span class="nav-text">設定 Homestead</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#設定提供者"> <span class="nav-number">3.3.1</span> <span class="nav-text">設定提供者</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#設定共享目錄"> <span class="nav-number">3.3.2</span> <span class="nav-text">設定共享目錄</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#設定-nginx-網站"> <span class="nav-number">3.3.3</span> <span class="nav-text">設定 Nginx 網站</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#hosts-檔案"> <span class="nav-number">3.3.4</span> <span class="nav-text">Hosts 檔案</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#啟動-vagrant-box"> <span class="nav-number">3.4</span> <span class="nav-text">啟動 Vagrant Box</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#透過-ssh-連接"> <span class="nav-number">3.5</span> <span class="nav-text">透過 SSH 連接</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#參考資料"> <span class="nav-number">4</span> <span class="nav-text">參考資料</span> </a> </li>
-    </ol>
-  </div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
