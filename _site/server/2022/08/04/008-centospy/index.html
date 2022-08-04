@@ -85,7 +85,7 @@
 <link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="CBA,Association rule,data mining,FP-growth," />
+  <meta name="keywords" content="Centos,Python," />
 
 
 
@@ -111,33 +111,17 @@
 
 
 
-<meta name="description" content="作者 Wenmin Li Jiawei Han Jian Pei 摘要 傳統的關聯規則分類(CBA)在處理非結構化資料具有比較高的分類準確度及靈活性。但是在處理大型的資料庫時有問題，且因為基於Confidence來挑選分類規則導致出現過耦合的狀況。 本篇研究提出一種新的關聯規則分類的方法CMAR其挖掘規則的方法採用FP-Growth，並採用Support、Confidence、相關度修剪規則，並進行加權分析建構分類器。 實驗結果表示CMAR與其他分類演算法CBA、C4.5相比有更好的效率也有更好的分類準確度。">
-<meta name="keywords" content="CBA, Association rule, data mining, FP-growth">
+<meta name="description" content="前言 紀錄一下怎麼在Centos7安裝新版的Python3並將python命令取代原本預安裝Python2.7。">
+<meta name="keywords" content="Centos, Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CMAR: Accurate and Efficient Classification Based on Multiple Class-Association Rules">
-<meta property="og:url" content="http://localhost:4000/stady/2022/07/20/007-CMAR/">
+<meta property="og:title" content="在CentOS7安裝新版Python">
+<meta property="og:url" content="http://localhost:4000/server/2022/08/04/008-centospy/">
 <meta property="og:site_name" content="WeiChang&apos;s diary">
-<meta property="og:description" content="作者 Wenmin Li Jiawei Han Jian Pei 摘要 傳統的關聯規則分類(CBA)在處理非結構化資料具有比較高的分類準確度及靈活性。但是在處理大型的資料庫時有問題，且因為基於Confidence來挑選分類規則導致出現過耦合的狀況。 本篇研究提出一種新的關聯規則分類的方法CMAR其挖掘規則的方法採用FP-Growth，並採用Support、Confidence、相關度修剪規則，並進行加權分析建構分類器。 實驗結果表示CMAR與其他分類演算法CBA、C4.5相比有更好的效率也有更好的分類準確度。">
+<meta property="og:description" content="前言 紀錄一下怎麼在Centos7安裝新版的Python3並將python命令取代原本預安裝Python2.7。">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="/assets/images/007/1.png">
-<meta property="og:image" content="/assets/images/007/2.png">
-<meta property="og:image" content="/assets/images/007/3.png">
-<meta property="og:image" content="/assets/images/007/4.png">
-<meta property="og:image" content="/assets/images/007/5.png">
-<meta property="og:image" content="/assets/images/007/6.png">
-<meta property="og:image" content="/assets/images/007/7.png">
-<meta property="og:image" content="/assets/images/007/8.png">
-<meta property="og:image" content="/assets/images/007/9.png">
-<meta property="og:image" content="/assets/images/007/15.png">
-<meta property="og:image" content="/assets/images/007/10.png">
-<meta property="og:image" content="/assets/images/007/11.png">
-<meta property="og:image" content="/assets/images/007/12.png">
-<meta property="og:image" content="/assets/images/007/13.png">
-<meta property="og:image" content="/assets/images/007/14.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CMAR: Accurate and Efficient Classification Based on Multiple Class-Association Rules">
-<meta name="twitter:description" content="作者 Wenmin Li Jiawei Han Jian Pei 摘要 傳統的關聯規則分類(CBA)在處理非結構化資料具有比較高的分類準確度及靈活性。但是在處理大型的資料庫時有問題，且因為基於Confidence來挑選分類規則導致出現過耦合的狀況。 本篇研究提出一種新的關聯規則分類的方法CMAR其挖掘規則的方法採用FP-Growth，並採用Support、Confidence、相關度修剪規則，並進行加權分析建構分類器。 實驗結果表示CMAR與其他分類演算法CBA、C4.5相比有更好的效率也有更好的分類準確度。">
-<meta name="twitter:image" content="/assets/images/007/1.png">
+<meta name="twitter:title" content="在CentOS7安裝新版Python">
+<meta name="twitter:description" content="前言 紀錄一下怎麼在Centos7安裝新版的Python3並將python命令取代原本預安裝Python2.7。">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -170,7 +154,7 @@
 
 
 
-  <title>CMAR: Accurate and Efficient Classification Based on Multiple Class-Association Rules | WeiChang's diary</title>
+  <title>在CentOS7安裝新版Python | WeiChang's diary</title>
   
 
 
@@ -353,7 +337,7 @@
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/stady/2022/07/20/007-CMAR/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/server/2022/08/04/008-centospy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wei Chang">
@@ -373,7 +357,7 @@
           <h2 class="post-title" itemprop="name headline">
           
           
-            CMAR: Accurate and Efficient Classification Based on Multiple Class-Association Rules
+            在CentOS7安裝新版Python
           
         </h2>
         
@@ -387,8 +371,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-07-20T00:00:00+08:00">
-                2022-07-20
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-08-04T00:00:00+08:00">
+                2022-08-04
               </time>
             
 
@@ -411,8 +395,8 @@
               
                 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/stady" itemprop="url" rel="index">
-                    <span itemprop="name">stady</span>
+                  <a href="/category/#/Server" itemprop="url" rel="index">
+                    <span itemprop="name">Server</span>
                   </a>
                 </span>
 
@@ -466,538 +450,66 @@
 
 
 
-  <h1 id="作者">作者</h1>
-
-<ul>
-  <li>Wenmin Li</li>
-  <li>Jiawei Han</li>
-  <li>Jian Pei
-    <h1 id="摘要">摘要</h1>
-  </li>
-</ul>
-
-<p>傳統的關聯規則分類(CBA)在處理非結構化資料具有比較高的分類準確度及靈活性。但是在處理大型的資料庫時有問題，且因為基於<code class="language-plaintext highlighter-rouge">Confidence</code>來挑選分類規則導致出現過耦合的狀況。</p>
-
-<p>本篇研究提出一種新的關聯規則分類的方法<code class="language-plaintext highlighter-rouge">CMAR</code>其挖掘規則的方法採用<code class="language-plaintext highlighter-rouge">FP-Growth</code>，並採用<code class="language-plaintext highlighter-rouge">Support</code>、<code class="language-plaintext highlighter-rouge">Confidence</code>、<code class="language-plaintext highlighter-rouge">相關度</code>修剪規則，並進行加權分析建構分類器。</p>
-
-<p>實驗結果表示<code class="language-plaintext highlighter-rouge">CMAR</code>與其他分類演算法<code class="language-plaintext highlighter-rouge">CBA</code>、<code class="language-plaintext highlighter-rouge">C4.5</code>相比有更好的效率也有更好的分類準確度。
+  <h1 id="前言">前言</h1>
+<p>紀錄一下怎麼在Centos7安裝新版的Python3並將<code class="language-plaintext highlighter-rouge">python</code>命令取代原本預安裝Python2.7。
 <!-- more --></p>
-<h1 id="方法">方法</h1>
 
-<h2 id="生成fp-tree">生成FP-tree</h2>
-<p>假設有一組資料
-<img src="/assets/images/007/1.png" alt="1" />
-循著FP-Growth的作法先定義<code class="language-plaintext highlighter-rouge">Support threshold</code>為<code class="language-plaintext highlighter-rouge">2</code>且本研究因為要將類別標籤也放入Tree中，所以有定義一<code class="language-plaintext highlighter-rouge">confidence threshold</code>為50%</p>
+<h1 id="安裝流程">安裝流程</h1>
+<p>先用yum安裝編譯python安裝包需要的軟體</p>
 
-<div class="alert">
-這邊指的Support是表示item在data set中出現的次數。
-且在生成樹的時候暫時不會用到confidence。
-</div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6</pre></td><td class="code"><pre class="highlight"><code># yum update -y
+ 
+# yum -y groupinstall "Development tools"
+ 
+# yum install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel sqlite-devel psmisc libffi-devel
 
-<p>依照<code class="language-plaintext highlighter-rouge">Support threshold</code>生成<code class="language-plaintext highlighter-rouge">header table</code>:</p>
+</code></pre></td></tr></tbody></table></div></div>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">item</th>
-      <th style="text-align: center">count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">$a_1$</td>
-      <td style="text-align: center">4</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">$b_2$</td>
-      <td style="text-align: center">3</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">$c_1$</td>
-      <td style="text-align: center">3</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">$d_3$</td>
-      <td style="text-align: center">3</td>
-    </tr>
-  </tbody>
-</table>
+<p>這邊我裝的是<a href="https://www.python.org/downloads/release/python-3913/">Python 3.9.13</a>，下載for Linux的<code class="language-plaintext highlighter-rouge">XZ compressed source tarball</code>下載完之後解壓縮並進到python安裝檔目錄下。</p>
 
-<p>根據<code class="language-plaintext highlighter-rouge">header table</code>去除不符合<code class="language-plaintext highlighter-rouge">Support threshold</code>的<code class="language-plaintext highlighter-rouge">item</code>生成的<code class="language-plaintext highlighter-rouge">item set</code>:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7</pre></td><td class="code"><pre class="highlight"><code>cd ~
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">id</th>
-      <th style="text-align: center">item</th>
-      <th style="text-align: center">class</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">$a_1, c_1$</td>
-      <td style="text-align: center">A</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">$a_1, b_2, c_1$</td>
-      <td style="text-align: center">B</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">3</td>
-      <td style="text-align: center">$d_3$</td>
-      <td style="text-align: center">A</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">4</td>
-      <td style="text-align: center">$a_1, b_2, d_3$</td>
-      <td style="text-align: center">C</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">5</td>
-      <td style="text-align: center">$a_1, b_2, c_1, d_3$</td>
-      <td style="text-align: center">C</td>
-    </tr>
-  </tbody>
-</table>
+# wget https://www.python.org/ftp/python/3.9.13/Python-3.9.13.tar.xz
 
-<p>最後生成出來的<code class="language-plaintext highlighter-rouge">FP-tree</code>
-<img src="/assets/images/007/2.png" alt="2" /></p>
+# tar Jxvf Python-3.9.13.tar.xz
 
-<h2 id="從fp-tree提取規則">從FP-tree提取規則</h2>
+# cd Python-3.9.13
+</code></pre></td></tr></tbody></table></div></div>
 
-<div class="alert">
-這裡support表示這筆item包含該屬性值，confidence表示有包含這個屬性值的item且類別與規則相符的次數/有包含這個屬性值的item的總數X100%。
-</div>
+<p>然後創建欲安裝的目錄之後生成安裝配置文件最後進行編譯與安裝。</p>
 
-<p>依照生成的<code class="language-plaintext highlighter-rouge">FP-tree</code>來找<code class="language-plaintext highlighter-rouge">pattern</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8</pre></td><td class="code"><pre class="highlight"><code>/* path = ~/Python-3.9.13 
+*/
 
-<p>先從 <code class="language-plaintext highlighter-rouge">d</code>節點來看(以下為了簡化將各個item去掉下標):</p>
+# mkdir /usr/local/python
 
-<p><img src="/assets/images/007/3.png" alt="3" /></p>
+# ./configure --prefix=/usr/local/python
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">item</th>
-      <th style="text-align: center">count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">$a$</td>
-      <td style="text-align: center">2</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">$b$</td>
-      <td style="text-align: center">2</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">$d$</td>
-      <td style="text-align: center">2</td>
-    </tr>
-  </tbody>
-</table>
+# make &amp;&amp; make install
+</code></pre></td></tr></tbody></table></div></div>
 
-<p>生成的規則：</p>
-<ul>
-  <li>$abd \to C, sup=2,conf=100\%$</li>
-</ul>
+<p>安裝完成後，接下來開始修改環境變數。</p>
 
-<p><code class="language-plaintext highlighter-rouge">d</code>節點完成之後要把原本<code class="language-plaintext highlighter-rouge">d</code>節點的類別標籤合併到父節點上，結果如圖:</p>
+<p>首先把centos舊的python版本移走：</p>
 
-<p><img src="/assets/images/007/4.png" alt="4" /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code># mv /usr/bin/python /usr/bin/python_old
+# mv /usr/bin/pip /usr/bin/pip_old
+</code></pre></td></tr></tbody></table></div></div>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">item</th>
-      <th style="text-align: center">count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">$a$</td>
-      <td style="text-align: center">3</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">$b$</td>
-      <td style="text-align: center">2</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">$c$</td>
-      <td style="text-align: center">3</td>
-    </tr>
-  </tbody>
-</table>
+<p>建立新的軟連結</p>
 
-<p>生成的規則：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code># ln -s /usr/local/python/bin/python3.9 /usr/bin/python
+# ln -s /usr/local/python/bin/pip3.9 /usr/bin/pip
+</code></pre></td></tr></tbody></table></div></div>
 
-<ul>
-  <li>$ac \to A, sup=1,conf=33\%$</li>
-  <li>$abc \to B, sup=1,conf=50\%$</li>
-  <li>$abc \to C, sup=1,conf=50\%$</li>
-</ul>
+<p>下個指令檢查有沒有安裝成功</p>
 
-<p>依此類推 <code class="language-plaintext highlighter-rouge">b</code>、<code class="language-plaintext highlighter-rouge">a</code>節點</p>
-
-<p><img src="/assets/images/007/5.png" alt="5" /></p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">item</th>
-      <th style="text-align: center">count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">$a$</td>
-      <td style="text-align: center">3</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">$b$</td>
-      <td style="text-align: center">3</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>生成的規則：</p>
-
-<ul>
-  <li>$ab \to B, sup=1,conf=33\%$</li>
-  <li>$ab \to C, sup=2,conf=66\%$</li>
-</ul>
-
-<p><img src="/assets/images/007/6.png" alt="6" /></p>
-
-<p>生成的規則：</p>
-
-<ul>
-  <li>$a \to A, sup=1,conf=25\%$</li>
-  <li>$a \to B, sup=1,conf=25\%$</li>
-  <li>$a \to C, sup=2,conf=50\%$</li>
-</ul>
-
-<p>最後由這棵樹生成的規則為下表：</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">ID</th>
-      <th style="text-align: center">Rule</th>
-      <th style="text-align: center">Support</th>
-      <th style="text-align: center">Confidece</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">$abd \to C$</td>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">100%</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">$ab \to C$</td>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">66%</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">3</td>
-      <td style="text-align: center">$a \to C$</td>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">50%</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="rule的排序">Rule的排序</h2>
-
-<p>有兩個規則$R_1$、$R_2$，如果:</p>
-<ol>
-  <li>$conf(R_1)&gt;conf(R_2)$</li>
-  <li>$conf(R_1)=conf(R_2)\&amp;sup(R_1)&gt;sup(R_2)$</li>
-  <li>$conf(R_1)=conf(R_2)\&amp;sup(R_1)=sup(R_2)$ 但$R_1$的屬性值比$R_2$少</li>
-</ol>
-
-<p>這樣就可以說 $R_1$<strong>is having higher rank than</strong>$R_2$</p>
-
-<p>另外可以說如果一個規則$R_1:P\to c$是$R_2:P^ˊ\to c^ˊ$的子集合，就可以說$R_1$是$R_2$的<code class="language-plaintext highlighter-rouge">general rule</code>。</p>
-
-<h2 id="pruning-rule">Pruning Rule</h2>
-
-<p>透過剛剛的<code class="language-plaintext highlighter-rouge">general rule</code>我們在由規則生成CR-tree的時候進行第一步的Pruning。</p>
-
-<h3 id="general-rule">general rule</h3>
-
-<p>如果有兩個規則$R_1$、$R_2$，若$R_1$是$R_2$的<code class="language-plaintext highlighter-rouge">general rule</code>且$R_1$的rank比$R_2$高就要將$R_2$ pruning掉。這部分是在建構CR-tree時完成。</p>
-
-<h3 id="選擇正相關的規則">選擇正相關的規則</h3>
-
-<p>假設有一條規則: (support = 30)
-<img src="/assets/images/007/7.png" alt="7" /></p>
-
-<p>實際表格：</p>
-
-<p><img src="/assets/images/007/8.png" alt="8" /></p>
-
-<p>期望表格:</p>
-
-<p>$total_no$佔比$=\frac{30}{500} =\frac{3}{50}$</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">$R_1$</th>
-      <th style="text-align: center">approved</th>
-      <th style="text-align: center">rejected</th>
-      <th style="text-align: center">total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">$job=yes$</td>
-      <td style="text-align: center">$450 \times \frac{47}{50}$</td>
-      <td style="text-align: center">$50 \times \frac{47}{50}$</td>
-      <td style="text-align: center">$470$</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">$job=no$</td>
-      <td style="text-align: center">$450 \times \frac{3}{50}$</td>
-      <td style="text-align: center">$50 \times \frac{3}{50}$</td>
-      <td style="text-align: center">$30$</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>會等於:</p>
-
-<p><img src="/assets/images/007/9.png" alt="9" /></p>
-
-<p>套用公式:</p>
-
-\[job=no \to class=rejected: X^2=\frac{(438-423)^2}{423}+\frac{(47-32)^2}{47}+\frac{(27-12)^2}{27}+\frac{(18-3)^2}{3}\approx88.4\]
-
-<p>若$X^2$沒通過設定的<code class="language-plaintext highlighter-rouge">significance level threshold</code>該規則就該pruning掉。</p>
-
-<h3 id="selecting-rules-based-on-database-coverage">Selecting rules based on database coverage</h3>
-
-<p>計算每個item被rule覆蓋且正確分類的次數:
-規則:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">ID</th>
-      <th style="text-align: center">Rule</th>
-      <th style="text-align: center">Support</th>
-      <th style="text-align: center">Confidece</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">$abd \to C$</td>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">100%</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">$ab \to C$</td>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">66%</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">3</td>
-      <td style="text-align: center">$a \to C$</td>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">50%</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>item set $\to R_1$</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">id</th>
-      <th style="text-align: center">item</th>
-      <th style="text-align: center">class</th>
-      <th style="text-align: center">count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">$a, c$</td>
-      <td style="text-align: center">A</td>
-      <td style="text-align: center">0</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">$a, b, c$</td>
-      <td style="text-align: center">B</td>
-      <td style="text-align: center">0</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">3</td>
-      <td style="text-align: center">$d$</td>
-      <td style="text-align: center">A</td>
-      <td style="text-align: center">0</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">4</td>
-      <td style="text-align: center">$a, b, d$</td>
-      <td style="text-align: center">C</td>
-      <td style="text-align: center">1</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">5</td>
-      <td style="text-align: center">$a, b, c, d$</td>
-      <td style="text-align: center">C</td>
-      <td style="text-align: center">1</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>item set $\to R_2$</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">id</th>
-      <th style="text-align: center">item</th>
-      <th style="text-align: center">class</th>
-      <th style="text-align: center">count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">$a, c$</td>
-      <td style="text-align: center">A</td>
-      <td style="text-align: center">0</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">$a, b, c$</td>
-      <td style="text-align: center">B</td>
-      <td style="text-align: center">1</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">3</td>
-      <td style="text-align: center">$d$</td>
-      <td style="text-align: center">A</td>
-      <td style="text-align: center">0</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">4</td>
-      <td style="text-align: center">$a, b, d$</td>
-      <td style="text-align: center">C</td>
-      <td style="text-align: center">2</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">5</td>
-      <td style="text-align: center">$a, b, c, d$</td>
-      <td style="text-align: center">C</td>
-      <td style="text-align: center">2</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>item set $\to R_3$</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">id</th>
-      <th style="text-align: center">item</th>
-      <th style="text-align: center">class</th>
-      <th style="text-align: center">count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">$a, c$</td>
-      <td style="text-align: center">A</td>
-      <td style="text-align: center">1</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">$a, b, c$</td>
-      <td style="text-align: center">B</td>
-      <td style="text-align: center">2</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">3</td>
-      <td style="text-align: center">$d$</td>
-      <td style="text-align: center">A</td>
-      <td style="text-align: center">0</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">4</td>
-      <td style="text-align: center">$a, b, d$</td>
-      <td style="text-align: center">C</td>
-      <td style="text-align: center">3</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">5</td>
-      <td style="text-align: center">$a, b, c, d$</td>
-      <td style="text-align: center">C</td>
-      <td style="text-align: center">3</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>這邊三條規則都有被select到。最終select到的規則就是我們拿來建構分類器的規則。</p>
-
-<h2 id="分類">分類</h2>
-
-<p>分類結果分成三類</p>
-
-<ol>
-  <li>沒有matching rules</li>
-  <li>有一到多條matching rules，但只有對應到一個class。</li>
-  <li>有多條matching rules，有多個class，需要對選到的規則計算累計卡分值決定分為哪一類</li>
-</ol>
-
-<p><img src="/assets/images/007/15.png" alt="15" /></p>
-
-<p>計算 <img src="/assets/images/007/10.png" alt="10" /> 及 <img src="/assets/images/007/11.png" alt="11" /></p>
-
-<p>得</p>
-
-<p>$R_1:job=no\to rejected$的$max^2\approx292.490226288$</p>
-
-<p>$R_1:job=no\to rejected$的$X^2\approx88.4$</p>
-
-<p>$R_1:job=no\to rejected$的$weightedX^2\approx0.3022$</p>
-
-<p>$R_2:education=university\to approved$的$max^2\approx495.84$</p>
-
-<p>$R_2:education=university\to approved$的$X^2\approx33.4256$</p>
-
-<p>$R_2:education=university\to approved$的$weightedX^2\approx0.06741$</p>
-
-<p>如果這邊有一個item符合這兩個<code class="language-plaintext highlighter-rouge">rule</code>的話這邊就要選擇$weightedX^2$較高的<code class="language-plaintext highlighter-rouge">R_1</code>來分類。</p>
-
-<h1 id="結論">結論</h1>
-<p>與各方法比較的準確度:</p>
-
-<p><img src="/assets/images/007/12.png" alt="12" /></p>
-
-<p>與各方法比較的記憶體使用量:</p>
-
-<p><img src="/assets/images/007/13.png" alt="13" /></p>
-
-<p>與各方法比較的運行時間:</p>
-
-<p><img src="/assets/images/007/14.png" alt="14" /></p>
-
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4</pre></td><td class="code"><pre class="highlight"><code># python -V
+&gt;&gt;&gt; Python 3.9.13
+# pip -V
+&gt;&gt;&gt; pip 22.0.4 from /usr/local/python/lib/python3.9/site-packages/pip (python 3.9)
+</code></pre></td></tr></tbody></table></div></div>
+<p>至此在Centos7安裝新版Python成功。</p>
 
 
       
@@ -1028,7 +540,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文連結：</strong>
-      <a href="http://localhost:4000/stady/2022/07/20/007-CMAR/" title="CMAR: Accurate and Efficient Classification Based on Multiple Class-Association Rules">http://localhost:4000/stady/2022/07/20/007-CMAR/</a>
+      <a href="http://localhost:4000/server/2022/08/04/008-centospy/" title="在CentOS7安裝新版Python">http://localhost:4000/server/2022/08/04/008-centospy/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版權聲明： </strong>
@@ -1046,16 +558,10 @@
         <div class="post-tags">
           
             
-            <a href="/tag/#/CBA" rel="tag"># CBA</a>
+            <a href="/tag/#/Centos" rel="tag"># Centos</a>
           
             
-            <a href="/tag/#/Association%20rule" rel="tag"># Association rule</a>
-          
-            
-            <a href="/tag/#/data%20mining" rel="tag"># data mining</a>
-          
-            
-            <a href="/tag/#/FP-growth" rel="tag"># FP-growth</a>
+            <a href="/tag/#/Python" rel="tag"># Python</a>
           
         </div>
       
@@ -1071,18 +577,14 @@
         <div class="post-nav" id="post-nav-id">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/server/2022/08/04/008-centospy/" rel="next" title="在CentOS7安裝新版Python">
-                <i class="fa fa-chevron-left"></i> 在CentOS7安裝新版Python
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/server/2022/07/18/006-laravelsail/" rel="prev" title="Windows部署Laravel Sail">
-                Windows部署Laravel Sail <i class="fa fa-chevron-right"></i>
+              <a href="/stady/2022/07/20/007-CMAR/" rel="prev" title="CMAR: Accurate and Efficient Classification Based on Multiple Class-Association Rules">
+                CMAR: Accurate and Efficient Classification Based on Multiple Class-Association Rules <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1240,7 +742,7 @@
             
               <div class="post-toc-content">
     <ol class=nav>
-      <li class="nav-item nav-level-1"> <a class="nav-link" href="#作者"> <span class="nav-number">1</span> <span class="nav-text">作者</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#摘要"> <span class="nav-number">2</span> <span class="nav-text">摘要</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#方法"> <span class="nav-number">3</span> <span class="nav-text">方法</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#生成fp-tree"> <span class="nav-number">3.1</span> <span class="nav-text">生成FP-tree</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#從fp-tree提取規則"> <span class="nav-number">3.2</span> <span class="nav-text">從FP-tree提取規則</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#rule的排序"> <span class="nav-number">3.3</span> <span class="nav-text">Rule的排序</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#pruning-rule"> <span class="nav-number">3.4</span> <span class="nav-text">Pruning Rule</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#general-rule"> <span class="nav-number">3.4.1</span> <span class="nav-text">general rule</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#選擇正相關的規則"> <span class="nav-number">3.4.2</span> <span class="nav-text">選擇正相關的規則</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#selecting-rules-based-on-database-coverage"> <span class="nav-number">3.4.3</span> <span class="nav-text">Selecting rules based on database coverage</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#分類"> <span class="nav-number">3.5</span> <span class="nav-text">分類</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#結論"> <span class="nav-number">4</span> <span class="nav-text">結論</span> </a> </li>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#前言"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#安裝流程"> <span class="nav-number">2</span> <span class="nav-text">安裝流程</span> </a> </li>
     </ol>
   </div>
             

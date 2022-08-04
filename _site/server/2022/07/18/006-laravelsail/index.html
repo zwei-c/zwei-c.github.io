@@ -992,7 +992,7 @@ sail php script.php
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -1014,7 +1014,7 @@ sail php script.php
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -1203,16 +1203,16 @@ sail php script.php
   <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
 <script>
-	document.addEventListener("copy", function (evt) {
-		let text = document.getSelection().toString();
-		if (text.length >= 100) {
-			text = text + "\n\n" + "=========================================\n" + "你複製整段要幹嘛==?";
-		}
-        console.log(text)
-		let clipdata = evt.clipboardData || window.clipboardData;
-		clipdata.setData("text", text);
-		evt.preventDefault();
-	});
+	// document.addEventListener("copy", function (evt) {
+	// 	let text = document.getSelection().toString();
+	// 	if (text.length >= 100) {
+	// 		text = text + "\n\n" + "=========================================\n" + "你複製整段要幹嘛==?";
+	// 	}
+    //     console.log(text)
+	// 	let clipdata = evt.clipboardData || window.clipboardData;
+	// 	clipdata.setData("text", text);
+	// 	evt.preventDefault();
+	// });
 </script>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
