@@ -635,9 +635,9 @@
 <p>生成的規則：</p>
 
 <ul>
-  <li>$ac \to A, sup=1,conf=33\%$</li>
-  <li>$abc \to B, sup=1,conf=50\%$</li>
-  <li>$abc \to C, sup=1,conf=50\%$</li>
+  <li>$ac \to A, sup=3,conf=33\%$</li>
+  <li>$abc \to B, sup=2,conf=50\%$</li>
+  <li>$abc \to C, sup=2,conf=50\%$</li>
 </ul>
 
 <p>依此類推 <code class="language-plaintext highlighter-rouge">b</code>、<code class="language-plaintext highlighter-rouge">a</code>節點</p>
@@ -666,8 +666,8 @@
 <p>生成的規則：</p>
 
 <ul>
-  <li>$ab \to B, sup=1,conf=33\%$</li>
-  <li>$ab \to C, sup=2,conf=66\%$</li>
+  <li>$ab \to B, sup=3,conf=33\%$</li>
+  <li>$ab \to C, sup=3,conf=66\%$</li>
 </ul>
 
 <p><img src="/assets/images/007/6.png" alt="6" /></p>
@@ -675,9 +675,9 @@
 <p>生成的規則：</p>
 
 <ul>
-  <li>$a \to A, sup=1,conf=25\%$</li>
-  <li>$a \to B, sup=1,conf=25\%$</li>
-  <li>$a \to C, sup=2,conf=50\%$</li>
+  <li>$a \to A, sup=4,conf=25\%$</li>
+  <li>$a \to B, sup=4,conf=25\%$</li>
+  <li>$a \to C, sup=4,conf=50\%$</li>
 </ul>
 
 <p>最後由這棵樹生成的規則為下表：</p>
@@ -700,14 +700,26 @@
     </tr>
     <tr>
       <td style="text-align: center">2</td>
-      <td style="text-align: center">$ab \to C$</td>
+      <td style="text-align: center">$abc \to B$</td>
       <td style="text-align: center">2</td>
-      <td style="text-align: center">66%</td>
+      <td style="text-align: center">50%</td>
     </tr>
     <tr>
       <td style="text-align: center">3</td>
-      <td style="text-align: center">$a \to C$</td>
+      <td style="text-align: center">$abc \to C$</td>
       <td style="text-align: center">2</td>
+      <td style="text-align: center">50%</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">$ab \to C$</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">66%</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">$a \to C$</td>
+      <td style="text-align: center">4</td>
       <td style="text-align: center">50%</td>
     </tr>
   </tbody>
@@ -1071,8 +1083,8 @@
         <div class="post-nav" id="post-nav-id">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/server/2022/08/04/008-centospy/" rel="next" title="在CentOS7安裝新版Python">
-                <i class="fa fa-chevron-left"></i> 在CentOS7安裝新版Python
+              <a href="/stady/2022/07/20/009-FACA/" rel="next" title="A new fast associative classification algorithm for detecting phishing websites">
+                <i class="fa fa-chevron-left"></i> A new fast associative classification algorithm for detecting phishing websites
               </a>
             
           </div>
@@ -1166,7 +1178,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -1177,7 +1189,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分類</span>
               </a>
             </div>
@@ -1188,7 +1200,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

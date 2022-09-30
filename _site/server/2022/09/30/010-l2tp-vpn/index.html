@@ -85,7 +85,7 @@
 <link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Laravel,Docker,Sail,WSL2," />
+  <meta name="keywords" content="L2TP,IPSec,VPN," />
 
 
 
@@ -111,22 +111,33 @@
 
 
 
-<meta name="description" content="前言   目前在研究各種架設Laravel的方法，經歷了Homestead、laradock最終還是走到了一開始最想使用的Sail。實際上使用起來跟感受到與laradock使用有明顯差別，原因是在於laradock使用的專案資料夾位於windows系統，而Laravel Sail是直接存放於WSL系統內，以筆者為例，開新的laravel專案在laradock開啟/歡迎頁面需要load 1秒的時間而在Sail中大概就只要幾十毫秒，以體感差非常多。剛好在laradock上的案件量不多趁新鮮趕緊換成Laravel Sail來使用，以下將帶來在Windows 11 上部屬Laravel Sail的過程。 關於laradock在windows上的檔案IO其實是有解的，但我覺得有點麻煩就沒用了。">
-<meta name="keywords" content="Laravel, Docker, Sail, WSL2">
+<meta name="description" content="前言 原先公司使用的PPTP VPN無法在Iphone跟MAC上使用，又因為OpenVPN在Client要載應用程式才能使用略顯麻煩，所以這次要在Server上架設L2TP IPSec VPN的伺服器。">
+<meta name="keywords" content="L2TP, IPSec, VPN">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows部署Laravel Sail">
-<meta property="og:url" content="http://localhost:4000/server/2022/07/18/006-laravelsail/">
+<meta property="og:title" content="Ubuntu 22.04中 設定L2TP IPSec VPN伺服器">
+<meta property="og:url" content="http://localhost:4000/server/2022/09/30/010-l2tp-vpn/">
 <meta property="og:site_name" content="WeiChang&apos;s diary">
-<meta property="og:description" content="前言   目前在研究各種架設Laravel的方法，經歷了Homestead、laradock最終還是走到了一開始最想使用的Sail。實際上使用起來跟感受到與laradock使用有明顯差別，原因是在於laradock使用的專案資料夾位於windows系統，而Laravel Sail是直接存放於WSL系統內，以筆者為例，開新的laravel專案在laradock開啟/歡迎頁面需要load 1秒的時間而在Sail中大概就只要幾十毫秒，以體感差非常多。剛好在laradock上的案件量不多趁新鮮趕緊換成Laravel Sail來使用，以下將帶來在Windows 11 上部屬Laravel Sail的過程。 關於laradock在windows上的檔案IO其實是有解的，但我覺得有點麻煩就沒用了。">
+<meta property="og:description" content="前言 原先公司使用的PPTP VPN無法在Iphone跟MAC上使用，又因為OpenVPN在Client要載應用程式才能使用略顯麻煩，所以這次要在Server上架設L2TP IPSec VPN的伺服器。">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="/assets/images/006/1.png">
-<meta property="og:image" content="/assets/images/006/2.png">
-<meta property="og:image" content="/assets/images/006/3.png">
-<meta property="og:image" content="/assets/images/006/4.png">
+<meta property="og:image" content="/assets/images/010/1.jpg">
+<meta property="og:image" content="/assets/images/010/2.jpg">
+<meta property="og:image" content="/assets/images/010/3.jpg">
+<meta property="og:image" content="/assets/images/010/4.jpg">
+<meta property="og:image" content="/assets/images/010/5.jpg">
+<meta property="og:image" content="/assets/images/010/6.jpg">
+<meta property="og:image" content="/assets/images/010/7.jpg">
+<meta property="og:image" content="/assets/images/010/8.jpg">
+<meta property="og:image" content="/assets/images/010/9.jpg">
+<meta property="og:image" content="/assets/images/010/10.jpg">
+<meta property="og:image" content="/assets/images/010/11.jpg">
+<meta property="og:image" content="/assets/images/010/12.jpg">
+<meta property="og:image" content="/assets/images/010/13.jpg">
+<meta property="og:image" content="/assets/images/010/14.jpg">
+<meta property="og:image" content="/assets/images/010/15.jpg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows部署Laravel Sail">
-<meta name="twitter:description" content="前言   目前在研究各種架設Laravel的方法，經歷了Homestead、laradock最終還是走到了一開始最想使用的Sail。實際上使用起來跟感受到與laradock使用有明顯差別，原因是在於laradock使用的專案資料夾位於windows系統，而Laravel Sail是直接存放於WSL系統內，以筆者為例，開新的laravel專案在laradock開啟/歡迎頁面需要load 1秒的時間而在Sail中大概就只要幾十毫秒，以體感差非常多。剛好在laradock上的案件量不多趁新鮮趕緊換成Laravel Sail來使用，以下將帶來在Windows 11 上部屬Laravel Sail的過程。 關於laradock在windows上的檔案IO其實是有解的，但我覺得有點麻煩就沒用了。">
-<meta name="twitter:image" content="/assets/images/006/1.png">
+<meta name="twitter:title" content="Ubuntu 22.04中 設定L2TP IPSec VPN伺服器">
+<meta name="twitter:description" content="前言 原先公司使用的PPTP VPN無法在Iphone跟MAC上使用，又因為OpenVPN在Client要載應用程式才能使用略顯麻煩，所以這次要在Server上架設L2TP IPSec VPN的伺服器。">
+<meta name="twitter:image" content="/assets/images/010/1.jpg">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -159,7 +170,7 @@
 
 
 
-  <title>Windows部署Laravel Sail | WeiChang's diary</title>
+  <title>Ubuntu 22.04中 設定L2TP IPSec VPN伺服器 | WeiChang's diary</title>
   
 
 
@@ -342,7 +353,7 @@
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/server/2022/07/18/006-laravelsail/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/server/2022/09/30/010-l2tp-vpn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wei Chang">
@@ -362,7 +373,7 @@
           <h2 class="post-title" itemprop="name headline">
           
           
-            Windows部署Laravel Sail
+            Ubuntu 22.04中 設定L2TP IPSec VPN伺服器
           
         </h2>
         
@@ -376,8 +387,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-07-18T00:00:00+08:00">
-                2022-07-18
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-09-30T00:00:00+08:00">
+                2022-09-30
               </time>
             
 
@@ -400,8 +411,8 @@
               
                 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/Server" itemprop="url" rel="index">
-                    <span itemprop="name">Server</span>
+                  <a href="/category/#/server" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
                   </a>
                 </span>
 
@@ -456,374 +467,143 @@
 
 
   <h1 id="前言">前言</h1>
+<p>原先公司使用的PPTP VPN無法在Iphone跟MAC上使用，又因為OpenVPN在Client要載應用程式才能使用略顯麻煩，所以這次要在Server上架設L2TP IPSec VPN的伺服器。
+<!-- more --></p>
 
-<p>  目前在研究各種架設Laravel的方法，經歷了<code class="language-plaintext highlighter-rouge">Homestead</code>、<code class="language-plaintext highlighter-rouge">laradock</code>最終還是走到了一開始最想使用的<code class="language-plaintext highlighter-rouge">Sail</code>。實際上使用起來跟感受到與<code class="language-plaintext highlighter-rouge">laradock</code>使用有明顯差別，原因是在於<code class="language-plaintext highlighter-rouge">laradock</code>使用的專案資料夾位於windows系統，而<code class="language-plaintext highlighter-rouge">Laravel Sail</code>是直接存放於WSL系統內，以筆者為例，開新的laravel專案在<code class="language-plaintext highlighter-rouge">laradock</code>開啟<code class="language-plaintext highlighter-rouge">/</code>歡迎頁面需要load 1秒的時間而在Sail中大概就只要幾十毫秒，以體感差非常多。剛好在laradock上的案件量不多趁新鮮趕緊換成<code class="language-plaintext highlighter-rouge">Laravel Sail</code>來使用，以下將帶來在<code class="language-plaintext highlighter-rouge">Windows 11</code> 上部屬<code class="language-plaintext highlighter-rouge">Laravel Sail</code>的過程。</p>
-<div class="alert">
-關於laradock在windows上的檔案IO其實是有解的，但我覺得有點麻煩就沒用了。
-</div>
+<h1 id="事前準備">事前準備</h1>
 
-<!-- more -->
-<h1 id="部屬流程">部屬流程</h1>
-<p>  Sail還是基於Docker的做法，所以依然要安裝Docker，在windows上安裝Docker可以看我<a href="https://zwei-c.github.io/server/2022/07/07/005-laradock/">上一篇文章</a>有介紹。</p>
+<ul>
+  <li>
+    <p>作業系統: Ubuntu 22.04</p>
+  </li>
+  <li>
+    <p>IPSec VPN: https://github.com/hwdsl2/setup-ipsec-vpn</p>
+  </li>
+</ul>
 
-<h2 id="安裝ubuntu">安裝Ubuntu</h2>
+<h1 id="實作">實作</h1>
 
-<p>  打開<code class="language-plaintext highlighter-rouge">Microsoft Store</code>搜尋<code class="language-plaintext highlighter-rouge">Ubuntu</code>我這邊安裝的是<code class="language-plaintext highlighter-rouge">20.4.4</code>版
-<img src="/assets/images/006/1.png" alt="1" /></p>
+<h2 id="系統套件更新">系統套件更新</h2>
 
-<p>安裝好後要確認WSL版本是不是2，Windows11的話預設就是WSL2了，好了之後要去Dokcer Desktop設定<code class="language-plaintext highlighter-rouge">Resources&gt;WSL intergration</code>選取安裝的Linux系統。
-<img src="/assets/images/006/2.png" alt="2" /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>apt update &amp;&amp; apt upgrade
+</code></pre></td></tr></tbody></table></div></div>
 
-<p>好了之後開啟<code class="language-plaintext highlighter-rouge">Windows終端機</code>(沒有的話一樣去MSstore裝一裝就好了)。會自動新增剛剛安裝的ubuntu於你的新增標籤內。
-<img src="/assets/images/006/3.png" alt="3" /></p>
+<h2 id="安裝ipsec-vpn">安裝IPSec VPN</h2>
 
-<p>開啟Ubuntu後因為如果是舊專案會需要用到composer所以要先安裝PHP，依自己的需求安裝PHP版本及擴展。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>wget https://get.vpnsetup.net -O vpn.sh &amp;&amp; sudo sh vpn.sh
+</code></pre></td></tr></tbody></table></div></div>
+<p>完成後會自動產生這些參數</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7</pre></td><td class="code"><pre class="highlight"><code>#更新apt
-sudo apt update &amp;&amp; sudo apt install php
+<p><img src="/assets/images/010/1.jpg" alt="1" /></p>
 
-#添加安裝包
-sudo apt install software-properties-common
-sudo add-apt-repository ppa:ondrej/php
+<ul>
+  <li>Server IP: 該VPN的IP，連線時就填入這個IP。</li>
+  <li>IPsec PSK: 共用金鑰，也可以改用RSA公鑰鑰當認證。</li>
+  <li>Username: 預設使用者帳號。</li>
+  <li>Password: 預設使用者密碼。</li>
+</ul>
+
+<h2 id="管理使用者">管理使用者</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5</pre></td><td class="code"><pre class="highlight"><code>//下載新增使用者的sh檔
+wget https://get.vpnsetup.net/updateusers -O addvpnuser.sh
+
+//新增使用者 (username跟password需要用單引號包起來)。
+sudo addvpnuser.sh 'username' 'password' 
+</code></pre></td></tr></tbody></table></div></div>
+<p><img src="/assets/images/010/2.jpg" alt="2" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6</pre></td><td class="code"><pre class="highlight"><code>下載刪除使用者的sh檔
+wget https://get.vpnsetup.net/updateusers -O delvpnuser.sh
+
+//刪除使用者(指定username)
+sudo delvpnuser.sh 'username'
 
 </code></pre></td></tr></tbody></table></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6</pre></td><td class="code"><pre class="highlight"><code>#安裝php 8.1
-sudo apt install php8.1
-
-#安裝php拓展
-
-sudo apt install php8.1-gd php8.1-xml php8.1-soap php8.1-mbstring php8.1-mysql
+<p>有更改VPN的設定的話鑰重啟服務之後才會生效</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>sudo service ipsec restart
+sudo service xl2tpd restart
 </code></pre></td></tr></tbody></table></div></div>
 
-<p>如果有切換php版本的需求可以使用</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>sudo update-alternatives --config php 
+<p>PSK 檔案 <code class="language-plaintext highlighter-rouge">/etc/ipsec.secrets</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code>cat /etc/ipsec.secrets
+
+&gt;&gt;&gt; %any %any : PSK "&lt;PSK_password&gt;"
+</code></pre></td></tr></tbody></table></div></div>
+<p>L2TP密碼檔案 <code class="language-plaintext highlighter-rouge">/etc/ppp/chap-secrets</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4</pre></td><td class="code"><pre class="highlight"><code>cat /etc/ppp/chap-secrets
+
+&gt;&gt;&gt; "vpnuser" l2tpd "PassWord" *
+&gt;&gt;&gt; "wei" l2tpd "PassWord" *
 </code></pre></td></tr></tbody></table></div></div>
 
-<p>再來安裝composer</p>
+<p>IP Sec密碼檔案 <code class="language-plaintext highlighter-rouge">/etc/ipsec.d/passwd</code></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8</pre></td><td class="code"><pre class="highlight"><code>#下載composer安裝檔
-wget -O composer-setup.php https://getcomposer.org/installer
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code>cat /etc/ipsec.d/passwd
 
-#安裝到/usr/local/bin目錄下
-sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-
-#查看是否安裝成功
-composer -v
-</code></pre></td></tr></tbody></table></div></div>
-<h2 id="安裝nginx-proxy-manager">安裝Nginx-proxy-manager</h2>
-<p>  為了方便設定自己想要的域名，首先進入WSL終端機下，到家目錄新建一個<code class="language-plaintext highlighter-rouge">proxy-manager</code>資料夾。</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>cd ~ &amp;&amp; mkdir proxy-manager
-</code></pre></td></tr></tbody></table></div></div>
-<p>進入proxy-manager文件夾並創建<code class="language-plaintext highlighter-rouge">docker-compose.yml</code></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>cd proxy-manager &amp;&amp; vim docker-compose.yml
-</code></pre></td></tr></tbody></table></div></div>
-<p>於<code class="language-plaintext highlighter-rouge">docker-composer.yml</code>文件貼上</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20</pre></td><td class="code"><pre class="highlight"><code>version: "3"
-services:
-  app:
-    image: 'jc21/nginx-proxy-manager:latest'
-    restart: always
-    ports:
-      # Public HTTP Port:
-      - '80:80'
-      # Public HTTPS Port:
-      - '443:443'
-      # Admin Web Port:
-      - '81:81'
-    environment:
-      # These are the settings to access your db
-      DB_SQLITE_FILE: "/data/database.sqlite"
-      # Uncomment this if IPv6 is not enabled on your host
-      DISABLE_IPV6: 'true'
-    volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
+&gt;&gt;&gt; wei:passwordToHash:xauth-psk
 </code></pre></td></tr></tbody></table></div></div>
 
-<p>然後啟動container</p>
+<p>產生 password Hash的方法</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>docker-composer up -d
-</code></pre></td></tr></tbody></table></div></div>
-<p>好了之後去瀏覽器進入<code class="language-plaintext highlighter-rouge">localhost:81</code>就可以進到管理員頁面</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>Email address: admin@example.com
-Password: changeme
-</code></pre></td></tr></tbody></table></div></div>
-<p>就可以設定你的帳號。</p>
-
-<p>設定完成後: <img src="/assets/images/006/4.png" alt="4" /></p>
-
-<h2 id="設定laravel-sail">設定Laravel Sail</h2>
-
-<p>  分成兩個部分：<code class="language-plaintext highlighter-rouge">在舊的專案上使用Sail</code>、<code class="language-plaintext highlighter-rouge">新增新的專案使用Sail</code></p>
-
-<p>這邊先講如果在舊專案上使用Sail。</p>
-
-<p>首先先進入Ubuntu然後在你的專案底下，使用 composer 安裝 Laravel Sail。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>composer require laravel/sail --dev
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>sudo openssl passwd -1 '&lt;new_password&gt;'
 </code></pre></td></tr></tbody></table></div></div>
 
-<p>接著使用 artisan 指令產出 docker-compose.yml。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>php artisan sail:install
-</code></pre></td></tr></tbody></table></div></div>
-<p>可以選擇想要使用的服務。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13</pre></td><td class="code"><pre class="highlight"><code> Which services would you like to install? [mysql]:
-  [0] mysql
-  [1] pgsql
-  [2] mariadb
-  [3] redis
-  [4] memcached
-  [5] meilisearch
-  [6] minio
-  [7] mailhog
-  [8] selenium
- &gt; 0,3,7
-
-Sail scaffolding installed successfully.
+<h2 id="移除ipsec-vpn">移除IPSec VPN</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code># wget https://get.vpnsetup.net/unst -O vpnunst.sh &amp;&amp; sudo bash vpnunst.sh
 </code></pre></td></tr></tbody></table></div></div>
 
-<p>之後就可以使用 docker 來建置開發環境了。</p>
+<h2 id="連接vpn">連接VPN</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>./vendor/bin/sail up
+<h3 id="windows">Windows</h3>
+
+<p>筆者用的系統是windows11。</p>
+
+<p>在Windows系統中是連接到Router上，要讓他轉發到router後的NAT上。</p>
+
+<p>IPSec VPN伺服器作者也介紹一個簡單一次性的方法。利用系統管理員身份，打開Windows 11電腦終端機，輸入以下命令，完成後重新啟動電腦一次。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>REG ADD HKLM\SYSTEM\CurrentControlSet\Services\PolicyAgent /v AssumeUDPEncapsulationContextOnSendRule /t REG_DWORD /d 0x2 /f
 </code></pre></td></tr></tbody></table></div></div>
 
-<p>如果不想打那麼多字的話可以在 <code class="language-plaintext highlighter-rouge">.bashrc</code> 或是 <code class="language-plaintext highlighter-rouge">.zshrc</code> 中設定 <code class="language-plaintext highlighter-rouge">alias</code>（別名）。</p>
+<p>再來打開 <code class="language-plaintext highlighter-rouge">設定/網路和網際網路/VPN</code></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>alias sail='bash vendor/bin/sail'
-</code></pre></td></tr></tbody></table></div></div>
+<p>點選<code class="language-plaintext highlighter-rouge">新增VPN連線</code></p>
 
-<p>這樣啟動開發環境只需要輸入 sail 就好，啟動之後如果想終止，可以使用 <code class="language-plaintext highlighter-rouge">Ctrl + C</code> 終止容器。</p>
+<p><img src="/assets/images/010/3.jpg" alt="3" /></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>sail up
-</code></pre></td></tr></tbody></table></div></div>
-<p>如果想要在背景執行，可以加上 <code class="language-plaintext highlighter-rouge">-d</code> 選項，即 Docker 原始提供的參數 <code class="language-plaintext highlighter-rouge">-d</code>, <code class="language-plaintext highlighter-rouge">--detach</code>。</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>sail up -d
-</code></pre></td></tr></tbody></table></div></div>
+<p>點選<code class="language-plaintext highlighter-rouge">連線</code> 即可連上VPN。</p>
 
-<p>終止所有 Laravel Sail 所有服務容器。</p>
+<p>再來到GOOGLE上隨便找個查IP的網站看有沒有成功指到VPN Server的IP就好了!</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>sail stop
-</code></pre></td></tr></tbody></table></div></div>
-<p>想要終止在背景執行的 Laravel Sail 並刪除所有服務容器的話。</p>
+<h3 id="macos">MacOS</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>sail down
-</code></pre></td></tr></tbody></table></div></div>
+<p>按圖操作!</p>
 
-<h2 id="設置域名">設置域名</h2>
+<p><img src="/assets/images/010/4.jpg" alt="4" />
+<img src="/assets/images/010/5.jpg" alt="5" />
+<img src="/assets/images/010/6.jpg" alt="6" />
+<img src="/assets/images/010/7.jpg" alt="7" />
+<img src="/assets/images/010/8.jpg" alt="8" />
+<img src="/assets/images/010/9.jpg" alt="9" />
+<img src="/assets/images/010/10.jpg" alt="10" /></p>
 
-<p>編輯你專案的<code class="language-plaintext highlighter-rouge">.env</code></p>
+<h3 id="iphone">Iphone</h3>
 
-<p>新增</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6</pre></td><td class="code"><pre class="highlight"><code>APP_PORT=48080
-FORWARD_DB_PORT=43306
-FORWARD_REDIS_PORT=46379
-FORWARD_MEILISEARCH_PORT=47700
-FORWARD_MAILHOG_PORT=41025
-FORWARD_MAILHOG_DASHBOARD_PORT=48025
-</code></pre></td></tr></tbody></table></div></div>
-
-<p>之後到你本機修改<code class="language-plaintext highlighter-rouge">host</code>新增域名</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>127.0.0.1 project.tset
-</code></pre></td></tr></tbody></table></div></div>
-
-<p>之後瀏覽器開啟<code class="language-plaintext highlighter-rouge">localhost:81</code></p>
-
-<p>點選<code class="language-plaintext highlighter-rouge">Hosts -&gt; Proxy Hosts -&gt; Add Proxy Hosts</code></p>
-
-<p>輸入你定義的域名，並在<code class="language-plaintext highlighter-rouge">Forward Hostname/IP</code>填入<code class="language-plaintext highlighter-rouge">host.docker.internal</code>，<code class="language-plaintext highlighter-rouge">port</code>填入<code class="language-plaintext highlighter-rouge">48080</code>後save。</p>
-
-<p>之後直接訪問<code class="language-plaintext highlighter-rouge">project.tset</code>就可以看到你的專案了。</p>
-<div class="alert">
-之後新增新的專案除了.env裡的port要改，docker-compose.yml 裡面的vite port也要改(如果laravel版本&gt;9)。
-</div>
-
-<h2 id="新增專案">新增專案</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>curl -s https://laravel.build/project1 | bash
-</code></pre></td></tr></tbody></table></div></div>
-
-<p>設定方法跟上面一樣。</p>
-
-<h2 id="我的-docker-composeyml">我的 docker-compose.yml</h2>
-<p>加裝了phpmyadmin</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39<br/>40<br/>41<br/>42<br/>43<br/>44<br/>45<br/>46<br/>47<br/>48<br/>49<br/>50<br/>51<br/>52<br/>53<br/>54<br/>55<br/>56<br/>57<br/>58<br/>59<br/>60<br/>61<br/>62<br/>63<br/>64<br/>65<br/>66<br/>67<br/>68<br/>69<br/>70<br/>71<br/>72<br/>73<br/>74<br/>75<br/>76<br/>77<br/>78<br/>79<br/>80<br/>81<br/>82<br/>83<br/>84<br/>85<br/>86<br/>87<br/>88<br/>89<br/>90<br/>91<br/>92<br/>93<br/>94<br/>95<br/>96<br/>97<br/>98<br/>99<br/>100<br/>101<br/>102<br/>103<br/>104<br/>105<br/>106<br/>107<br/>108<br/>109<br/>110<br/>111</pre></td><td class="code"><pre class="highlight"><code># For more information: https://laravel.com/docs/sail
-version: '3'
-services:
-    laravel.test:
-        build:
-            context: ./vendor/laravel/sail/runtimes/8.1
-            dockerfile: Dockerfile
-            args:
-                WWWGROUP: '${WWWGROUP}'
-        image: sail-8.1/app
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
-        ports:
-            - '${APP_PORT:-80}:80'
-            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
-        environment:
-            WWWUSER: '${WWWUSER}'
-            LARAVEL_SAIL: 1
-            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
-            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
-        volumes:
-            - '.:/var/www/html'
-        networks:
-            - sail
-        depends_on:
-            - mysql
-            - redis
-            - meilisearch
-            - selenium
-    mysql:
-        image: 'mysql/mysql-server:8.0'
-        ports:
-            - '${FORWARD_DB_PORT:-3306}:3306'
-        environment:
-            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ROOT_HOST: "%"
-            MYSQL_DATABASE: '${DB_DATABASE}'
-            MYSQL_USER: '${DB_USERNAME}'
-            MYSQL_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ALLOW_EMPTY_PASSWORD: 1
-        volumes:
-            - 'sail-mysql:/var/lib/mysql'
-            - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
-        networks:
-            - sail
-        healthcheck:
-            test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
-            retries: 3
-            timeout: 5s
-    redis:
-        image: 'redis:alpine'
-        ports:
-            - '${FORWARD_REDIS_PORT:-6379}:6379'
-        volumes:
-            - 'sail-redis:/data'
-        networks:
-            - sail
-        healthcheck:
-            test: ["CMD", "redis-cli", "ping"]
-            retries: 3
-            timeout: 5s
-    meilisearch:
-        image: 'getmeili/meilisearch:latest'
-        ports:
-            - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
-        volumes:
-            - 'sail-meilisearch:/meili_data'
-        networks:
-            - sail
-        healthcheck:
-            test: ["CMD", "wget", "--no-verbose", "--spider",  "http://localhost:7700/health"]
-            retries: 3
-            timeout: 5s
-    mailhog:
-        image: 'mailhog/mailhog:latest'
-        ports:
-            - '${FORWARD_MAILHOG_PORT:-1025}:1025'
-            - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
-        networks:
-            - sail
-    selenium:
-        image: 'selenium/standalone-chrome'
-        volumes:
-            - '/dev/shm:/dev/shm'
-        networks:
-            - sail
-    phpmyadmin:
-        image: 'phpmyadmin:latest'
-        ports:
-          - 8080:80
-        environment:
-          MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-          PMA_HOST: mysql
-          PMA_USER: '${DB_USERNAME}'
-          PMA_PASSWORD: '${DB_PASSWORD}'
-        links:
-          - "mysql:db"
-        depends_on:
-          - mysql
-        networks:
-          - sail
-networks:
-    sail:
-        driver: bridge
-volumes:
-    sail-mysql:
-        driver: local
-    sail-redis:
-        driver: local
-    sail-meilisearch:
-        driver: local
-</code></pre></td></tr></tbody></table></div></div>
-
-<p>可以直接照用，</p>
-
-<p>如果想要對建立的容器進行調整的話，可以將 sail 的 docker-compose.yml 產出來。</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>php artisan sail:publish
-</code></pre></td></tr></tbody></table></div></div>
-<p>此時專案底下就會多一個 docker 資料夾，底下會放置建置容器用的 Dockerfile 還有 php.ini 等設定檔案。</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18</pre></td><td class="code"><pre class="highlight"><code>$ tree docker
-docker
-├── 7.4
-│   ├── Dockerfile
-│   ├── php.ini
-│   ├── start-container
-│   └── supervisord.conf
-├── 8.0
-│   ├── Dockerfile
-│   ├── php.ini
-│   ├── start-container
-│   └── supervisord.conf
-└── 8.1
-    ├── Dockerfile
-    ├── php.ini
-    ├── start-container
-    └── supervisord.conf
-3 directories, 12 files
-</code></pre></td></tr></tbody></table></div></div>
-<p>docker-compse.yml 中的 context 也會更動，從 <code class="language-plaintext highlighter-rouge">./vendor/laravel/sail/runtimes/8.1</code> 會從改成 <code class="language-plaintext highlighter-rouge">./docker/81</code>。</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code>build:
-    context: ./docker/8.1
-    dockerfile: Dockerfile
-</code></pre></td></tr></tbody></table></div></div>
-<p>更動後，需要重新建立容器，這裡可以使用 build 的指令。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>sail build --no-cache
-</code></pre></td></tr></tbody></table></div></div>
-
-<h2 id="用sailx來開發">用Sailx來開發</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8</pre></td><td class="code"><pre class="highlight"><code>#原先使用
-
-php artisan migrate
-
-#改成
-
-sail artisan migrate
-
-</code></pre></td></tr></tbody></table></div></div>
-<p>除此之外還有整合 php 指令。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>sail php --version
-sail php script.php
-</code></pre></td></tr></tbody></table></div></div>
-<p>其他東西邏輯差不多，可以參考官網的Sail文檔。</p>
+<p><img src="/assets/images/010/11.jpg" alt="11" />
+<img src="/assets/images/010/12.jpg" alt="12" />
+<img src="/assets/images/010/13.jpg" alt="13" />
+<img src="/assets/images/010/14.jpg" alt="14" />
+<img src="/assets/images/010/15.jpg" alt="15" /></p>
 
 <h1 id="參考資料">參考資料</h1>
 
-<ol>
-  <li><a href="https://docfunc.com/posts/47/%E7%94%A8-laravel-sail-%E4%BE%86%E5%BB%BA%E7%BD%AE-laravel-%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83-post">用 Laravel Sail 來建置 Laravel 開發環境</a></li>
-  <li><a href="https://laravel.com/docs/9.x/sail">Laravel SAil</a></li>
-  <li><a href="https://gist.github.com/kiddtang/adb6385d8faa86d8ee2e2a45ed32b5bd">proxy-manager</a></li>
-</ol>
+<ul>
+  <li><a href="https://itkb.ddns.net/%E5%A6%82%E4%BD%95%E5%9C%A8ubuntu-20-04%E4%B8%AD%E2%80%A7%E8%A8%AD%E5%AE%9Aipsec-vpn%E4%BC%BA%E6%9C%8D%E5%99%A8/">如何在Ubuntu 20.04中‧設定IPSec VPN伺服器</a></li>
+</ul>
 
 
       
@@ -854,7 +634,7 @@ sail php script.php
     </li>
     <li class="post-copyright-link">
       <strong>本文連結：</strong>
-      <a href="http://localhost:4000/server/2022/07/18/006-laravelsail/" title="Windows部署Laravel Sail">http://localhost:4000/server/2022/07/18/006-laravelsail/</a>
+      <a href="http://localhost:4000/server/2022/09/30/010-l2tp-vpn/" title="Ubuntu 22.04中 設定L2TP IPSec VPN伺服器">http://localhost:4000/server/2022/09/30/010-l2tp-vpn/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版權聲明： </strong>
@@ -872,16 +652,13 @@ sail php script.php
         <div class="post-tags">
           
             
-            <a href="/tag/#/Laravel" rel="tag"># Laravel</a>
+            <a href="/tag/#/L2TP" rel="tag"># L2TP</a>
           
             
-            <a href="/tag/#/Docker" rel="tag"># Docker</a>
+            <a href="/tag/#/IPSec" rel="tag"># IPSec</a>
           
             
-            <a href="/tag/#/Sail" rel="tag"># Sail</a>
-          
-            
-            <a href="/tag/#/WSL2" rel="tag"># WSL2</a>
+            <a href="/tag/#/VPN" rel="tag"># VPN</a>
           
         </div>
       
@@ -897,18 +674,14 @@ sail php script.php
         <div class="post-nav" id="post-nav-id">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/stady/2022/07/20/007-CMAR/" rel="next" title="CMAR: Accurate and Efficient Classification Based on Multiple Class-Association Rules">
-                <i class="fa fa-chevron-left"></i> CMAR: Accurate and Efficient Classification Based on Multiple Class-Association Rules
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/server/2022/07/07/005-laradock/" rel="prev" title="Windows部署Laradock">
-                Windows部署Laradock <i class="fa fa-chevron-right"></i>
+              <a href="/server/2022/08/04/008-centospy/" rel="prev" title="在CentOS7安裝新版Python">
+                在CentOS7安裝新版Python <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1066,7 +839,7 @@ sail php script.php
             
               <div class="post-toc-content">
     <ol class=nav>
-      <li class="nav-item nav-level-1"> <a class="nav-link" href="#前言"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#部屬流程"> <span class="nav-number">2</span> <span class="nav-text">部屬流程</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#安裝ubuntu"> <span class="nav-number">2.1</span> <span class="nav-text">安裝Ubuntu</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#安裝nginx-proxy-manager"> <span class="nav-number">2.2</span> <span class="nav-text">安裝Nginx-proxy-manager</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#設定laravel-sail"> <span class="nav-number">2.3</span> <span class="nav-text">設定Laravel Sail</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#設置域名"> <span class="nav-number">2.4</span> <span class="nav-text">設置域名</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#新增專案"> <span class="nav-number">2.5</span> <span class="nav-text">新增專案</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#我的-docker-composeyml"> <span class="nav-number">2.6</span> <span class="nav-text">我的 docker-compose.yml</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#用sailx來開發"> <span class="nav-number">2.7</span> <span class="nav-text">用Sailx來開發</span> </a> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#參考資料"> <span class="nav-number">3</span> <span class="nav-text">參考資料</span> </a> </li>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#前言"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#事前準備"> <span class="nav-number">2</span> <span class="nav-text">事前準備</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#實作"> <span class="nav-number">3</span> <span class="nav-text">實作</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#系統套件更新"> <span class="nav-number">3.1</span> <span class="nav-text">系統套件更新</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#安裝ipsec-vpn"> <span class="nav-number">3.2</span> <span class="nav-text">安裝IPSec VPN</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#管理使用者"> <span class="nav-number">3.3</span> <span class="nav-text">管理使用者</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#移除ipsec-vpn"> <span class="nav-number">3.4</span> <span class="nav-text">移除IPSec VPN</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#連接vpn"> <span class="nav-number">3.5</span> <span class="nav-text">連接VPN</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#windows"> <span class="nav-number">3.5.1</span> <span class="nav-text">Windows</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#macos"> <span class="nav-number">3.5.2</span> <span class="nav-text">MacOS</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#iphone"> <span class="nav-number">3.5.3</span> <span class="nav-text">Iphone</span> </a> </li> </ol> </li> </ol> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#參考資料"> <span class="nav-number">4</span> <span class="nav-text">參考資料</span> </a> </li>
     </ol>
   </div>
             
