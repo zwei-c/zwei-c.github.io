@@ -85,7 +85,7 @@
 <link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="FACA,Association rule,data mining,FP-growth," />
+  <meta name="keywords" content="Laravel,Docker-compose,PhpMyAdmin," />
 
 
 
@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="">
-<meta name="keywords" content="FACA, Association rule, data mining, FP-growth">
+<meta name="description" content="前言 我本地開發 php 是用 laradock 的容器，其中已經內建了 phpmyadmin，但先前一直要輸入 server 跟 user, password 資訊我覺得很麻煩，所以這次透過 user.config 與 docker copy file 的方式來做修改，以達到可以自動登入的效果。 備註： 在生產環境千萬不要這要搞！">
+<meta name="keywords" content="Laravel, Docker-compose, PhpMyAdmin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="A new fast associative classification algorithm for detecting phishing websites">
-<meta property="og:url" content="http://localhost:4000/stady/2022/07/20/009-FACA/">
+<meta property="og:title" content="laradock中phpmyadmin的config設定">
+<meta property="og:url" content="http://localhost:4000/server/2022/09/30/010-laradock-pma/">
 <meta property="og:site_name" content="WeiChang&apos;s diary">
-<meta property="og:description" content="">
+<meta property="og:description" content="前言 我本地開發 php 是用 laradock 的容器，其中已經內建了 phpmyadmin，但先前一直要輸入 server 跟 user, password 資訊我覺得很麻煩，所以這次透過 user.config 與 docker copy file 的方式來做修改，以達到可以自動登入的效果。 備註： 在生產環境千萬不要這要搞！">
 <meta property="og:locale" content="zh-tw">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A new fast associative classification algorithm for detecting phishing websites">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="laradock中phpmyadmin的config設定">
+<meta name="twitter:description" content="前言 我本地開發 php 是用 laradock 的容器，其中已經內建了 phpmyadmin，但先前一直要輸入 server 跟 user, password 資訊我覺得很麻煩，所以這次透過 user.config 與 docker copy file 的方式來做修改，以達到可以自動登入的效果。 備註： 在生產環境千萬不要這要搞！">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -154,7 +154,7 @@
 
 
 
-  <title>A new fast associative classification algorithm for detecting phishing websites | WeiChang's diary</title>
+  <title>laradock中phpmyadmin的config設定 | WeiChang's diary</title>
   
 
 
@@ -337,7 +337,7 @@
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/stady/2022/07/20/009-FACA/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/server/2022/09/30/010-laradock-pma/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wei Chang">
@@ -357,7 +357,7 @@
           <h2 class="post-title" itemprop="name headline">
           
           
-            A new fast associative classification algorithm for detecting phishing websites
+            laradock中phpmyadmin的config設定
           
         </h2>
         
@@ -371,8 +371,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-07-20T00:00:00+08:00">
-                2022-07-20
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2022-09-30T00:00:00+08:00">
+                2022-09-30
               </time>
             
 
@@ -395,8 +395,8 @@
               
                 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/stady" itemprop="url" rel="index">
-                    <span itemprop="name">stady</span>
+                  <a href="/category/#/server" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
                   </a>
                 </span>
 
@@ -450,7 +450,54 @@
 
 
 
-  
+  <h1 id="前言">前言</h1>
+
+<p>我本地開發 php 是用 laradock 的容器，其中已經內建了 phpmyadmin，但先前一直要輸入 server 跟 user, password 資訊我覺得很麻煩，所以這次透過 user.config 與 docker copy file 的方式來做修改，以達到可以自動登入的效果。 <br />
+備註： 在生產環境千萬不要這要搞！</p>
+
+<!-- more -->
+
+<h1 id="docker-compose-設定">docker compose 設定</h1>
+
+<p>首先把 Container、Netwrok 等移除</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>docker-compose down -v
+參數-v 會把 Compose 檔中所建立的 volume 刪除
+</code></pre></td></tr></tbody></table></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">/laradock/phpmyadmin</code> 新增 <a href="/uploads/010/config.user.inc.php">config.user.inc.php</a></p>
+
+<p><code class="language-plaintext highlighter-rouge">/laradock/docker-compose.yml</code> phpmyadmin 的部分修改為</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18</pre></td><td class="code"><pre class="highlight"><code>### phpMyAdmin
+
+phpmyadmin:
+build: ./phpmyadmin
+environment: - PMA_HOST=${PMA_DB_ENGINE}
+      - PMA_ARBITRARY=1
+      - MYSQL_USER=${PMA_USER} - MYSQL_PASSWORD=${PMA_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${PMA_ROOT_PASSWORD} - MAX_EXECUTION_TIME=${PMA_MAX_EXECUTION_TIME}
+      - MEMORY_LIMIT=${PMA_MEMORY_LIMIT} - UPLOAD_LIMIT=${PMA_UPLOAD_LIMIT}
+    ports:
+      - "${PMA_PORT}:80"
+volumes: - ./phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php //主要加了這行
+
+    depends_on:
+      - "${PMA_DB_ENGINE}"
+    networks:
+      - frontend
+      - backend
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>接著啟動你的容器就好了！</p>
+
+<h1 id="參考資料">參考資料</h1>
+
+<ul>
+  <li><a href="https://docs.phpmyadmin.net/en/latest/config.html#config-examples">phpmyadmin-config</a></li>
+  <li><a href="https://stackoverflow.com/questions/71717606/where-is-the-phpmyadmin-config-file-on-a-laradock-docker-installation">laradock-pma-config</a></li>
+  <li><a href="http://11113127.blogspot.com/2015/07/phpmyadmin-root.html">pma 設定自動登入</a></li>
+</ul>
 
 
       
@@ -481,7 +528,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文連結：</strong>
-      <a href="http://localhost:4000/stady/2022/07/20/009-FACA/" title="A new fast associative classification algorithm for detecting phishing websites">http://localhost:4000/stady/2022/07/20/009-FACA/</a>
+      <a href="http://localhost:4000/server/2022/09/30/010-laradock-pma/" title="laradock中phpmyadmin的config設定">http://localhost:4000/server/2022/09/30/010-laradock-pma/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版權聲明： </strong>
@@ -499,16 +546,13 @@
         <div class="post-tags">
           
             
-            <a href="/tag/#/FACA" rel="tag"># FACA</a>
+            <a href="/tag/#/Laravel" rel="tag"># Laravel</a>
           
             
-            <a href="/tag/#/Association%20rule" rel="tag"># Association rule</a>
+            <a href="/tag/#/Docker-compose" rel="tag"># Docker-compose</a>
           
             
-            <a href="/tag/#/data%20mining" rel="tag"># data mining</a>
-          
-            
-            <a href="/tag/#/FP-growth" rel="tag"># FP-growth</a>
+            <a href="/tag/#/PhpMyAdmin" rel="tag"># PhpMyAdmin</a>
           
         </div>
       
@@ -524,18 +568,14 @@
         <div class="post-nav" id="post-nav-id">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/server/2022/08/04/008-centospy/" rel="next" title="在CentOS7安裝新版Python">
-                <i class="fa fa-chevron-left"></i> 在CentOS7安裝新版Python
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/stady/2022/07/20/007-CMAR/" rel="prev" title="CMAR: Accurate and Efficient Classification Based on Multiple Class-Association Rules">
-                CMAR: Accurate and Efficient Classification Based on Multiple Class-Association Rules <i class="fa fa-chevron-right"></i>
+              <a href="/server/2022/09/30/009-l2tp-vpn/" rel="prev" title="Ubuntu 22.04中 設定L2TP IPSec VPN伺服器">
+                Ubuntu 22.04中 設定L2TP IPSec VPN伺服器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -594,8 +634,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/assets/dog.png"
@@ -632,7 +681,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -665,6 +714,34 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#前言"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#docker-compose-設定"> <span class="nav-number">2</span> <span class="nav-text">docker compose 設定</span> </a> </li> <li class="nav-item nav-level-1"> <a class="nav-link" href="#參考資料"> <span class="nav-number">3</span> <span class="nav-text">參考資料</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -680,8 +757,8 @@
         <div class="copyright" >
   
   
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  &copy;  2022 - 
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-"></i>
   </span>

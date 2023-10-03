@@ -2,8 +2,29 @@
 <search>
   
     <entry>
+      <title><![CDATA[laradock中phpmyadmin的config設定]]></title>
+      <url>/server/2022/09/30/010-laradock-pma/</url>
+      <content type="text"><![CDATA[前言我本地開發 php 是用 laradock 的容器，其中已經內建了 phpmyadmin，但先前一直要輸入 server 跟 user, password 資訊我覺得很麻煩，所以這次透過 user.config 與 docker copy file 的方式來做修改，以達到可以自動登入的效果。 備註： 在生產環境千萬不要這要搞！docker compose 設定首先把 Container、Netwrok 等移除docker-compose down -v參數-v 會把 Compose 檔中所建立的 volume 刪除/laradock/phpmyadmin 新增 config.user.inc.php/laradock/docker-compose.yml phpmyadmin 的部分修改為### phpMyAdminphpmyadmin:build: ./phpmyadminenvironment: - PMA_HOST=${PMA_DB_ENGINE}      - PMA_ARBITRARY=1      - MYSQL_USER=${PMA_USER} - MYSQL_PASSWORD=${PMA_PASSWORD}      - MYSQL_ROOT_PASSWORD=${PMA_ROOT_PASSWORD} - MAX_EXECUTION_TIME=${PMA_MAX_EXECUTION_TIME}      - MEMORY_LIMIT=${PMA_MEMORY_LIMIT} - UPLOAD_LIMIT=${PMA_UPLOAD_LIMIT}    ports:      - "${PMA_PORT}:80"volumes: - ./phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php //主要加了這行    depends_on:      - "${PMA_DB_ENGINE}"    networks:      - frontend      - backend接著啟動你的容器就好了！參考資料  phpmyadmin-config  laradock-pma-config  pma 設定自動登入]]></content>
+      <categories>
+        
+          <category> server </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> Laravel </tag>
+        
+          <tag> Docker-compose </tag>
+        
+          <tag> PhpMyAdmin </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
       <title><![CDATA[Ubuntu 22.04中 設定L2TP IPSec VPN伺服器]]></title>
-      <url>/server/2022/09/30/010-l2tp-vpn/</url>
+      <url>/server/2022/09/30/009-l2tp-vpn/</url>
       <content type="text"><![CDATA[前言原先公司使用的PPTP VPN無法在Iphone跟MAC上使用，又因為OpenVPN在Client要載應用程式才能使用略顯麻煩，所以這次要在Server上架設L2TP IPSec VPN的伺服器。事前準備      作業系統: Ubuntu 22.04        IPSec VPN: https://github.com/hwdsl2/setup-ipsec-vpn  實作系統套件更新apt update &amp;&amp; apt upgrade安裝IPSec VPNwget https://get.vpnsetup.net -O vpn.sh &amp;&amp; sudo sh vpn.sh完成後會自動產生這些參數  Server IP: 該VPN的IP，連線時就填入這個IP。  IPsec PSK: 共用金鑰，也可以改用RSA公鑰鑰當認證。  Username: 預設使用者帳號。  Password: 預設使用者密碼。管理使用者//下載新增使用者的sh檔wget https://get.vpnsetup.net/updateusers -O addvpnuser.sh//新增使用者 (username跟password需要用單引號包起來)。sudo addvpnuser.sh 'username' 'password' 下載刪除使用者的sh檔wget https://get.vpnsetup.net/updateusers -O delvpnuser.sh//刪除使用者(指定username)sudo delvpnuser.sh 'username'有更改VPN的設定的話鑰重啟服務之後才會生效sudo service ipsec restartsudo service xl2tpd restartPSK 檔案 /etc/ipsec.secretscat /etc/ipsec.secrets&gt;&gt;&gt; %any %any : PSK "&lt;PSK_password&gt;"L2TP密碼檔案 /etc/ppp/chap-secretscat /etc/ppp/chap-secrets&gt;&gt;&gt; "vpnuser" l2tpd "PassWord" *&gt;&gt;&gt; "wei" l2tpd "PassWord" *IP Sec密碼檔案 /etc/ipsec.d/passwdcat /etc/ipsec.d/passwd&gt;&gt;&gt; wei:passwordToHash:xauth-psk產生 password Hash的方法sudo openssl passwd -1 '&lt;new_password&gt;'移除IPSec VPN# wget https://get.vpnsetup.net/unst -O vpnunst.sh &amp;&amp; sudo bash vpnunst.sh連接VPNWindows筆者用的系統是windows11。在Windows系統中是連接到Router上，要讓他轉發到router後的NAT上。IPSec VPN伺服器作者也介紹一個簡單一次性的方法。利用系統管理員身份，打開Windows 11電腦終端機，輸入以下命令，完成後重新啟動電腦一次。REG ADD HKLM\SYSTEM\CurrentControlSet\Services\PolicyAgent /v AssumeUDPEncapsulationContextOnSendRule /t REG_DWORD /d 0x2 /f再來打開 設定/網路和網際網路/VPN點選新增VPN連線點選連線 即可連上VPN。再來到GOOGLE上隨便找個查IP的網站看有沒有成功指到VPN Server的IP就好了!MacOS按圖操作!Iphone參考資料  如何在Ubuntu 20.04中‧設定IPSec VPN伺服器]]></content>
       <categories>
         
@@ -36,29 +57,6 @@
           <tag> Centos </tag>
         
           <tag> Python </tag>
-        
-      </tags>
-      <tags></tags>
-    </entry>
-  
-    <entry>
-      <title><![CDATA[A new fast associative classification algorithm for detecting phishing websites]]></title>
-      <url>/stady/2022/07/20/009-FACA/</url>
-      <content type="text"><![CDATA[]]></content>
-      <categories>
-        
-          <category> stady </category>
-        
-      </categories>
-      <tags>
-        
-          <tag> FACA </tag>
-        
-          <tag> Association rule </tag>
-        
-          <tag> data mining </tag>
-        
-          <tag> FP-growth </tag>
         
       </tags>
       <tags></tags>
